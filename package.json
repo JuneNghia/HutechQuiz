@@ -1,7 +1,7 @@
 {
   "name": "hutech-quiz",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -12,6 +12,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.5",
     "@tanem/react-nprogress": "^5.0.48",
     "axios": "^1.4.0",
@@ -21,8 +22,10 @@
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.10.1",
+    "react-pro-sidebar": "^1.1.0-alpha.1",
     "react-router-dom": "^6.15.0",
     "react-spinners": "^0.13.8",
+    "sweetalert2": "^11.7.26",
     "web-vitals": "^3.4.0",
     "yup": "^1.2.0"
   },

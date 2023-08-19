@@ -66,7 +66,11 @@ export const AuthLayout = (props) => {
             >
               Công cụ giúp ôn tập chứng chỉ M1, M3, B1 và hơn thế nữa
             </Typography>
-            <img src={logo} alt="logo" className="xl:w-full lg:w-[80%] xs:w-[40%] md:w-[60%] " />
+            <img
+              src={logo}
+              alt="logo"
+              className="xl:w-full lg:w-[80%] xs:w-[40%] md:w-[60%] "
+            />
           </Box>
         </Grid>
         <Grid
