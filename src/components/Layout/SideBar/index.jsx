@@ -6,13 +6,11 @@ import {
   MenuItem,
   SubMenu,
 } from "react-pro-sidebar";
-import { Box, IconButton, Typography, useTheme, Avatar } from "@mui/material";
-import TimelineOutlinedIcon from "@mui/icons-material/TimelineOutlined";
+import { Box, IconButton, Typography, useTheme } from "@mui/material";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
-import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
-import RoomPreferencesOutlinedIcon from "@mui/icons-material/RoomPreferencesOutlined";
 import logoHutech from "../../../assets/logo-hutech.png";
 import { MenuSideBar } from "../../../constants";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import useAuth from "../../../hooks/useAuth";
 
 const Item = ({ title, to, icon, selected }) => {
@@ -30,15 +28,22 @@ const Item = ({ title, to, icon, selected }) => {
 
 const Sidebar = () => {
   const { user } = useAuth();
-  const [isCollapsed, setIsCollapsed] = useState(false);
-  const [selected, setSelected] = useState("dashboard");
+  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [selected, setSelected] = useState("");
   const location = useLocation();
+  const theme = useTheme();
+
+  const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
 
   useEffect(() => {
     if (location.pathname !== "/") {
       setSelected(location.pathname);
     }
   }, [location.pathname]);
+
+  useEffect(() => {
+    setIsCollapsed(isMobile);
+  }, [isMobile]);
 
   return (
     <Box
@@ -156,7 +161,6 @@ const Sidebar = () => {
         <Menu iconShape="square">
           {!isCollapsed ? (
             <div className="w-[90%] h-[200px] mx-auto relative mt-3.5">
-              {/* <img src={Logo} alt="logo" /> */}
               <span
                 className={`absolute z-10 left-0 right-0 top-2.5 m-auto flex justify-start items-center text-xl font-bold`}
               >
@@ -180,12 +184,14 @@ const Sidebar = () => {
                         },
                     }}
                   >
-                    <img
-                      className="mt-[75px]"
-                      width={170}
-                      src={logoHutech}
-                      alt="logo-hutech"
-                    />
+                    <Link>
+                      <img
+                        className="mt-[75px]"
+                        width={170}
+                        src={logoHutech}
+                        alt="logo-hutech"
+                      />
+                    </Link>
                   </Box>
                 </div>
               </div>

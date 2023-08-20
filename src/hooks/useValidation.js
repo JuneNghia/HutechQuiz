@@ -38,3 +38,10 @@ export const userCreateValidationSchema = Yup.object({
   password: Yup.string().max(255).min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự').required('Mật khẩu không được để trống'),
 })
 
+export const paymentValidation = Yup.object({
+  amount: Yup.string().required('Vui lòng nhập số tiền cần nạp')
+})
+
+
+
+

@@ -27,9 +27,9 @@ const Register = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Đăng ký</title>
-    </Helmet>
+      <Helmet>
+        <title>Đăng ký</title>
+      </Helmet>
       <AuthLayout>
         <Box
           sx={{
@@ -40,10 +40,11 @@ const Register = () => {
           }}
         >
           <Box
+            className='py-[100px] xs:pt-[18px] xs:pb-[30px]'
             sx={{
               maxWidth: 550,
               px: 3,
-              py: '100px',
+
               width: '100%'
             }}
           >
@@ -77,10 +78,10 @@ const Register = () => {
                     fullWidth
                     helperText={formik.touched.email && formik.errors.email}
                     label={
-                        <span>
-                          Địa chỉ email <span className='text-red-600'>*</span>
-                        </span>
-                      }
+                      <span>
+                        Địa chỉ email <span className='text-red-600'>*</span>
+                      </span>
+                    }
                     name='email'
                     onChange={formik.handleChange}
                     type='email'
@@ -91,10 +92,10 @@ const Register = () => {
                     fullWidth
                     helperText={formik.touched.password && formik.errors.password}
                     label={
-                        <span>
-                          Mật khẩu <span className='text-red-600'>*</span>
-                        </span>
-                      }
+                      <span>
+                        Mật khẩu <span className='text-red-600'>*</span>
+                      </span>
+                    }
                     name='password'
                     onChange={formik.handleChange}
                     type='password'
@@ -105,10 +106,10 @@ const Register = () => {
                     fullWidth
                     helperText={formik.touched.repassword && formik.errors.repassword}
                     label={
-                        <span>
-                          Nhập lại mật khẩu <span className='text-red-600'>*</span>
-                        </span>
-                      }
+                      <span>
+                        Nhập lại mật khẩu <span className='text-red-600'>*</span>
+                      </span>
+                    }
                     name='repassword'
                     onChange={formik.handleChange}
                     type='password'

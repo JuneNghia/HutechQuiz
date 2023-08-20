@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import AccountMenu from "../../AccountMenu";
 
@@ -27,8 +27,7 @@ const Topbar = () => {
             ? "rgba(80, 80, 80, 0.2) 0px 1px 8px 0px, rgba(80, 80, 80, 0.14) 0px 3px 4px 0px, rgba(80, 80, 80, 0.12) 0px 3px 3px -2px"
             : ""
         }`,
-        backgroundColor: 'mediumblue',
-        backgroundImage: `${scrolled ? `url(${BG})` : ""}`,
+        backgroundColor: "mediumblue",
         position: "fixed",
         zIndex: "99",
         top: 0,
@@ -42,7 +41,7 @@ const Topbar = () => {
       p={2}
     >
       {/* ICONS */}
-      <Box>
+      <Box className="flex items-center">
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -50,6 +49,10 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton> */}
+        <div className="mx-10 flex">
+          <Typography className="text-white pr-12">Số dư : <span>1.000.000đ</span></Typography>
+          <Typography className="text-white">Thưởng : 55.000đ</Typography>
+        </div>
         <AccountMenu />
       </Box>
     </Box>

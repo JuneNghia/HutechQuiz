@@ -38,10 +38,10 @@ const Login = () => {
       try {
         await auth.login(values.email, values.password).then(() => {
           setTimeout(() => {
-            setIsSuccess(true) 
+            setIsSuccess(true)
           }, 1500)
           setTimeout(() => {
-            navigate('/', {replace: true})
+            navigate('/', { replace: true })
           }, 3000)
         })
       } catch (err) {
@@ -94,7 +94,7 @@ const Login = () => {
     formik2.resetForm()
   }, [])
 
-  if(isSuccess) {
+  if (isSuccess) {
     return <PageLoader />
   }
 
@@ -114,10 +114,10 @@ const Login = () => {
           }}
         >
           <Box
+            className='py-[100px] xs:pt-[18px] xs:pb-[30px]'
             sx={{
               maxWidth: 550,
               px: 3,
-              py: '100px',
               width: '100%'
             }}
           >

@@ -26,7 +26,6 @@ export function createComponents(config) {
     MuiButton: {
       styleOverrides: {
         root: {
-          borderRadius: '12px',
           textTransform: 'none'
         },
         sizeSmall: {
@@ -52,7 +51,6 @@ export function createComponents(config) {
     MuiCard: {
       styleOverrides: {
         root: {
-          borderRadius: 20,
           [`&.${paperClasses.elevation1}`]: {
             boxShadow: '0px 5px 22px rgba(0, 0, 0, 0.04), 0px 0px 0px 0.5px rgba(0, 0, 0, 0.03)'
           }
@@ -62,7 +60,7 @@ export function createComponents(config) {
     MuiCardContent: {
       styleOverrides: {
         root: {
-          padding: '32px 24px',
+          padding: '10px 24px',
           '&:last-child': {
             paddingBottom: '32px'
           }
@@ -80,7 +78,7 @@ export function createComponents(config) {
       },
       styleOverrides: {
         root: {
-          padding: '32px 24px 16px'
+          padding: '32px 24px 0px'
         }
       }
     },
@@ -188,43 +186,43 @@ export function createComponents(config) {
         }
       }
     },
-    MuiOutlinedInput: {
-      styleOverrides: {
-        root: {
-          '&:hover': {
-            backgroundColor: palette.action.hover,
-            [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: palette.neutral[200]
-            }
-          },
-          [`&.${outlinedInputClasses.focused}`]: {
-            backgroundColor: 'transparent',
-            [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: palette.primary.main,
-              boxShadow: `${palette.primary.main} 0 0 0 2px`
-            }
-          },
-          [`&.${filledInputClasses.error}`]: {
-            [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: palette.error.main,
-              boxShadow: `${palette.error.main} 0 0 0 2px`
-            }
-          }
-        },
-        input: {
-          fontSize: 14,
-          fontWeight: 500,
-          lineHeight: '24px',
-        },
-        notchedOutline: {
-          borderColor: palette.neutral[200],
-          transition: muiTheme.transitions.create([
-            'border-color',
-            'box-shadow'
-          ])
-        }
-      }
-    },
+    // MuiOutlinedInput: {
+    //   styleOverrides: {
+    //     root: {
+    //       '&:hover': {
+    //         backgroundColor: palette.action.hover,
+    //         [`& .${outlinedInputClasses.notchedOutline}`]: {
+    //           borderColor: palette.neutral[200]
+    //         }
+    //       },
+    //       [`&.${outlinedInputClasses.focused}`]: {
+    //         backgroundColor: 'transparent',
+    //         [`& .${outlinedInputClasses.notchedOutline}`]: {
+    //           borderColor: palette.primary.main,
+    //           boxShadow: `${palette.primary.main} 0 0 0 2px`
+    //         }
+    //       },
+    //       [`&.${filledInputClasses.error}`]: {
+    //         [`& .${outlinedInputClasses.notchedOutline}`]: {
+    //           borderColor: palette.error.main,
+    //           boxShadow: `${palette.error.main} 0 0 0 2px`
+    //         }
+    //       }
+    //     },
+    //     input: {
+    //       fontSize: 14,
+    //       fontWeight: 500,
+    //       lineHeight: '24px',
+    //     },
+    //     notchedOutline: {
+    //       borderColor: palette.neutral[200],
+    //       transition: muiTheme.transitions.create([
+    //         'border-color',
+    //         'box-shadow'
+    //       ])
+    //     }
+    //   }
+    // },
     MuiFormLabel: {
       styleOverrides: {
         root: {
