@@ -29,7 +29,7 @@ const Login = () => {
   const formik1 = useFormik({
     initialValues: {
       email: 'admin@gmail.com',
-      password: '123456',
+      password: 'admin123',
       submit: null
     },
     validationSchema: loginEmailValidationSchema,
@@ -46,11 +46,11 @@ const Login = () => {
         })
       } catch (err) {
         setTimeout(() => {
-          const errCode = err.response.data.statusCode
+          const errCode = err.response.status
           setShowLoader(false)
           helpers.setStatus({ success: false })
           helpers.setSubmitting(false)
-          if (errCode === 401) {
+          if (errCode === 404) {
             helpers.setErrors({ submit: 'Địa chỉ email hoặc mật khẩu không chính xác' })
           } else {
             helpers.setErrors({ submit: `Lỗi kết nối máy chủ (Mã lỗi: ${errCode}) ` })
@@ -74,11 +74,11 @@ const Login = () => {
         navigate('/', { replace: true })
       } catch (err) {
         setTimeout(() => {
-          const errCode = err.response.data.statusCode
+          const errCode = err.response.status
           setShowLoader(false)
           helpers.setStatus({ success: false })
           helpers.setSubmitting(false)
-          if (errCode === 401) {
+          if (errCode === 404) {
             helpers.setErrors({ submit: 'Số điện thoại hoặc mật khẩu không chính xác' })
           } else {
             helpers.setErrors({ submit: `Lỗi kết nối máy chủ (Mã lỗi: ${errCode}) ` })

@@ -9,7 +9,8 @@ import {
   InputLabel,
   MenuItem,
   Select,
-  TextField
+  TextField,
+  Typography
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
@@ -47,6 +48,12 @@ const Payment = () => {
     formik.handleChange(e)
   }
 
+  const handleAmountChange = (event) => {
+    const { value } = event.target
+    const formattedValue = value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+    formik.handleChange('amount')(formattedValue)
+  }
+
   return (
     <>
       <Helmet>
@@ -76,7 +83,7 @@ const Payment = () => {
                   <TextField
                     name='amount'
                     value={formik.values.amount}
-                    onChange={formik.handleChange}
+                    onChange={handleAmountChange}
                     label={
                       <span>
                         Số tiền cần nạp <span className='text-red-500'>*</span>
@@ -87,6 +94,8 @@ const Payment = () => {
                   />
                 </FormControl>
               )}
+
+              {!!(formik.errors.amount && formik.touched.amount) && <Typography className='py-2'><span className='font-bold'>Lưu ý: </span>Nếu bạn thanh toán với số tiền nhỏ hơn mức quy định thì việc nạp tiền không được thực hiện và không được hoàn lại số tiền đã thanh toán.</Typography>}
 
               {formik.values.method === 'bank' && (
                 <FormControl margin='normal'>

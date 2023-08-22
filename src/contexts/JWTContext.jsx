@@ -40,8 +40,9 @@ export const JWTProvider = ({ children }) => {
 
   const login = async (phoneOrEmail, password) => {
     const response = await AuthService.login(phoneOrEmail, password)
-    const { access_token, user } = response.data.data
-    setSession(access_token)
+    const token = response.data.data
+    const user = jwtDecode(token)
+    setSession(token)
     dispatch({
       type: LOGIN,
       payload: {
@@ -57,9 +58,9 @@ export const JWTProvider = ({ children }) => {
 
   useEffect(() => {
     const init = async () => {
+      const serviceToken = await window.localStorage.getItem('serviceToken')
       try {
-        const serviceToken = await window.localStorage.getItem('serviceToken')
-        if (serviceToken) {
+        if (serviceToken && verifyToken(serviceToken)) {
           setSession(serviceToken)
           const response = await UserService.getMe()
           const { data } = response.data

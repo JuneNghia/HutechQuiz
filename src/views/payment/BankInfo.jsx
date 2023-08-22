@@ -29,7 +29,7 @@ const BankInfo = ({ data, type }) => {
   return (
     <Card>
       <CardHeader title='Thông tin chuyển khoản' />
-      <CardContent className='mt-3'>
+      <CardContent component='div' className='mt-3'>
         {type === 'bank'
           ? infoBank.map((info) => (
               <Typography key={info} sx={{ marginTop: '5px' }}>

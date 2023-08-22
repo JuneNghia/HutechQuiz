@@ -1,12 +1,8 @@
-import GridViewOutlinedIcon from "@mui/icons-material/GridViewOutlined";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ReadMoreOutlinedIcon from "@mui/icons-material/ReadMoreOutlined";
-import BusinessIcon from "@mui/icons-material/Business";
-import EditNoteIcon from "@mui/icons-material/EditNote";
 import CircleWithText from "../components/Icon/CircleWithText";
 
 export const BASE_URL = "/dashboard";
-export const BASE_URL_SERVICE = "https://bsc-system.bytesinsights.dev/v1/";
+export const BASE_URL_SERVICE = "http://localhost:8080/api/v1";
 
 export const MenuSideBar = [
   {

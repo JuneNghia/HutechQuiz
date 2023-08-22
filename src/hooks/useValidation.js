@@ -14,6 +14,7 @@ export const loginPhoneValidationSchema = Yup.object({
 
 export const registerValidationSchema = Yup.object({
   email: Yup.string().email('Địa chỉ email không hợp lệ').max(255).required('Vui lòng nhập địa chỉ email'),
+  phone: Yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ').required('Số điện thoại không được để trống'),
   name: Yup.string().max(255).required('Vui nhập nhập họ tên của bạn'),
   password: Yup.string().max(255).required('Vui lòng nhập mật khẩu').min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự'),
   repassword: Yup.string()
@@ -26,7 +27,7 @@ export const userUpdateValidationSchema = Yup.object({
   phone: Yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ').required('Số điện thoại không được để trống'),
   email: Yup.string().email('Địa chỉ email không hợp lệ').max(255).required('Địa chỉ email không được để trống'),
   fullName: Yup.string().max(255).required('Vui nhập nhập họ tên của bạn'),
-  password: Yup.string().max(255).min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự'),
+  password: Yup.string().max(255).min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự')
 })
 
 export const userCreateValidationSchema = Yup.object({
@@ -35,13 +36,21 @@ export const userCreateValidationSchema = Yup.object({
   phone: Yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ').required('Số điện thoại không được để trống'),
   email: Yup.string().email('Địa chỉ email không hợp lệ').max(255).required('Địa chỉ email không được để trống'),
   fullName: Yup.string().max(255).required('Vui nhập nhập họ tên của bạn'),
-  password: Yup.string().max(255).min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự').required('Mật khẩu không được để trống'),
+  password: Yup.string()
+    .max(255)
+    .min(8, 'Mật khẩu phải có độ dài ít nhất 8 kí tự')
+    .required('Mật khẩu không được để trống')
 })
 
 export const paymentValidation = Yup.object({
-  amount: Yup.string().required('Vui lòng nhập số tiền cần nạp')
+  amount: Yup.string()
+    .required('Vui lòng nhập số tiền cần nạp')
+    .test('minAmount', 'Số tiền phải lớn hơn hoặc bằng 20.000', function (value) {
+      if (!value) {
+        return false
+      }
+
+      const numericValue = parseInt(value.replace(/[.]/g, ''), 10)
+      return numericValue >= 20000
+    })
 })
-
-
-
-

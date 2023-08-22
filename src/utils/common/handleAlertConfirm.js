@@ -17,6 +17,7 @@ export const handleAlertConfirm = ({
     html: html,
     text: text,
     icon: icon,
+    allowOutsideClick: false,
     confirmButtonText: confirmText || 'Xác nhận',
     confirmButtonColor: confirmButtonColor || undefined,
     cancelButtonColor: cancelButtonColor || undefined,

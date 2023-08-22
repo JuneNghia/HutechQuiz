@@ -1,26 +1,56 @@
+import { useState } from 'react'
 import { useFormik } from 'formik'
 import { Box, Button, Link, Stack, TextField, Typography } from '@mui/material'
 import { registerValidationSchema } from '../../hooks/useValidation'
 import { AuthLayout } from '../../layouts/Auth'
 import { Helmet } from 'react-helmet'
+import AuthService from '../../services/auth.service'
+import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
+import { useNavigate } from 'react-router-dom'
 
 const Register = () => {
+  const [showLoader, setShowLoader] = useState(false)
+  const navigate = useNavigate()
   const formik = useFormik({
     initialValues: {
       email: '',
       name: '',
+      phone: '',
       password: '',
       repassword: '',
       submit: null
     },
     validationSchema: registerValidationSchema,
     onSubmit: async (values, helpers) => {
+      setShowLoader(true)
       try {
-        await auth.signUp(values.email, values.name, values.password)
+        await AuthService.register({
+          phone: values.phone,
+          name: values.name,
+          password: values.password,
+          email: values.email
+        }).then(() => {
+          setTimeout(() => {
+            handleAlertConfirm({
+              html: `Chúc mừng <b>${values.name}</b> đã tạo tài khoản thành công <br/>Bạn sẽ hài lòng khi đến với <span class='text-red-500 font-bold'>Hutech</span><span class='text-blue-500 font-bold'>Quiz</span>`,
+              icon: 'success',
+              confirmText: 'Đăng nhập ngay',
+              handleConfirmed: () => navigate('/login', { replace: true })
+            })
+          }, 1500)
+        })
       } catch (err) {
-        helpers.setStatus({ success: false })
-        helpers.setErrors({ submit: err.message })
-        helpers.setSubmitting(false)
+        setTimeout(() => {
+          const errCode = err.response.status
+          setShowLoader(false)
+          helpers.setStatus({ success: false })
+          helpers.setSubmitting(false)
+          if (errCode === 409) {
+            helpers.setErrors({ submit: 'Địa chỉ email hoặc số điện thoại đã được sử dụng' })
+          } else {
+            helpers.setErrors({ submit: `Lỗi kết nối máy chủ (Mã lỗi: ${errCode}) ` })
+          }
+        }, 1000)
       }
     }
   })
@@ -88,6 +118,19 @@ const Register = () => {
                     value={formik.values.email}
                   />
                   <TextField
+                    error={!!(formik.touched.phone && formik.errors.phone)}
+                    fullWidth
+                    helperText={formik.touched.phone && formik.errors.phone}
+                    label={
+                      <span>
+                        Số điện thoại <span className='text-red-600'>*</span>
+                      </span>
+                    }
+                    name='phone'
+                    onChange={formik.handleChange}
+                    value={formik.values.phone}
+                  />
+                  <TextField
                     error={!!(formik.touched.password && formik.errors.password)}
                     fullWidth
                     helperText={formik.touched.password && formik.errors.password}
@@ -97,6 +140,7 @@ const Register = () => {
                       </span>
                     }
                     name='password'
+                    autoComplete='new-password'
                     onChange={formik.handleChange}
                     type='password'
                     value={formik.values.password}
@@ -121,8 +165,8 @@ const Register = () => {
                     {formik.errors.submit}
                   </Typography>
                 )}
-                <Button fullWidth size='large' sx={{ mt: 3 }} type='submit' variant='contained'>
-                  Đăng ký
+                <Button sx={{ mt: 3 }} disabled={showLoader} fullWidth size='large' type='submit' variant='contained'>
+                  {showLoader ? 'Đang đăng ký...' : 'Đăng ký'}
                 </Button>
               </form>
             </div>
