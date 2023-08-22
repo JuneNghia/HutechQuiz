@@ -1,11 +1,9 @@
 import React, { createContext, useEffect, useReducer } from 'react'
 import jwtDecode from 'jwt-decode'
-
 import { ACCOUNT_INITIALISE, LOGIN, LOGOUT } from '../store/actions'
 import RouteLoader from '../components/Loader/RouteLoader'
 import AuthService from '../services/auth.service'
 import accountReducer from '../store/accountReducer'
-import UserService from '../services/user.service'
 
 const initialState = {
   isLoggedIn: false,
@@ -18,7 +16,7 @@ const verifyToken = (serviceToken) => {
     return false
   }
   const decoded = jwtDecode(serviceToken)
-  return decoded.iat > Date.now() / 1000
+  return decoded.exp > Date.now() / 1000
 }
 
 const setSession = (serviceToken) => {
@@ -58,19 +56,29 @@ export const JWTProvider = ({ children }) => {
 
   useEffect(() => {
     const init = async () => {
-      const serviceToken = await window.localStorage.getItem('serviceToken')
       try {
-        if (serviceToken && verifyToken(serviceToken)) {
-          setSession(serviceToken)
-          const response = await UserService.getMe()
-          const { data } = response.data
-          dispatch({
-            type: ACCOUNT_INITIALISE,
-            payload: {
-              isLoggedIn: true,
-              user: data
-            }
-          })
+        const serviceToken = await window.localStorage.getItem('serviceToken')
+        if (serviceToken) {
+          const checkValidToken = verifyToken(serviceToken)
+          if (checkValidToken) {
+            setSession(serviceToken)
+            const data = jwtDecode(serviceToken)
+            dispatch({
+              type: ACCOUNT_INITIALISE,
+              payload: {
+                isLoggedIn: true,
+                user: data
+              }
+            })
+          } else {
+            dispatch({
+              type: ACCOUNT_INITIALISE,
+              payload: {
+                isLoggedIn: false,
+                user: null
+              }
+            })
+          }
         } else {
           dispatch({
             type: ACCOUNT_INITIALISE,

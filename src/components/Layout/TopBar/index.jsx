@@ -1,47 +1,49 @@
-import { Box, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
-import AccountMenu from "../../AccountMenu";
+import { Box, Typography } from '@mui/material'
+import { useState, useEffect } from 'react'
+import AccountMenu from '../../AccountMenu'
+import useAuth from '../../../hooks/useAuth'
 
 const Topbar = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [scrolled, setScrolled] = useState(false)
+  const { user } = useAuth()
 
   useEffect(() => {
     const onScroll = () => {
       if (window.scrollY > 50) {
-        setScrolled(true);
+        setScrolled(true)
       } else {
-        setScrolled(false);
+        setScrolled(false)
       }
-    };
+    }
 
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener('scroll', onScroll)
 
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
 
   return (
     <Box
       sx={{
         boxShadow: `${
           scrolled
-            ? "rgba(80, 80, 80, 0.2) 0px 1px 8px 0px, rgba(80, 80, 80, 0.14) 0px 3px 4px 0px, rgba(80, 80, 80, 0.12) 0px 3px 3px -2px"
-            : ""
+            ? 'rgba(80, 80, 80, 0.2) 0px 1px 8px 0px, rgba(80, 80, 80, 0.14) 0px 3px 4px 0px, rgba(80, 80, 80, 0.12) 0px 3px 3px -2px'
+            : ''
         }`,
-        backgroundColor: "mediumblue",
-        position: "fixed",
-        zIndex: "99",
+        backgroundColor: 'mediumblue',
+        position: 'fixed',
+        zIndex: '99',
         top: 0,
-        height: "75px",
-        transitionDuration: "300ms",
-        width: "-webkit-fill-available",
+        height: '75px',
+        transitionDuration: '300ms',
+        width: '-webkit-fill-available'
       }}
-      display="flex"
-      justifyContent="end"
-      alignItems="center"
+      display='flex'
+      justifyContent='end'
+      alignItems='center'
       p={2}
     >
       {/* ICONS */}
-      <Box className="flex items-center">
+      <Box className='flex items-center'>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
             <DarkModeOutlinedIcon />
@@ -49,14 +51,16 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton> */}
-        <div className="mx-10 flex">
-          <Typography className="text-white pr-12">Số dư : <span>1.000.000đ</span></Typography>
-          <Typography className="text-white">Thưởng : 55.000đ</Typography>
+        <div className='mx-10 flex'>
+          <Typography className='text-white pr-12'>
+            Số dư : <span>{user.wallet.balance}đ</span>
+          </Typography>
+          <Typography className='text-white'>Thưởng : {user.wallet.bonus}đ</Typography>
         </div>
         <AccountMenu />
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default Topbar;
+export default Topbar

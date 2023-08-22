@@ -17,9 +17,12 @@ import { Helmet } from 'react-helmet'
 import BankInfo from './BankInfo'
 import { useFormik } from 'formik'
 import { paymentValidation } from '../../hooks/useValidation'
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
+import { useNavigate } from 'react-router-dom'
 
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState(false)
+  const navigate = useNavigate()
 
   const dataBanking = [
     '08001010962089 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa',
@@ -59,6 +62,7 @@ const Payment = () => {
       <Helmet>
         <title>Nạp tiền vào ví</title>
       </Helmet>
+      <Button color='success' onClick={() => navigate('/wallet')} variant='contained' sx={{mb: 2}}><KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small'/> Quay lại ví tiền</Button>
       <Card className='!bg-white !mb-5'>
         <CardHeader title='Nạp tiền vào ví Hutech Quiz' />
         <CardContent>

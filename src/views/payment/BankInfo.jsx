@@ -1,8 +1,10 @@
 import { Button, Card, CardContent, CardHeader, Typography } from '@mui/material'
 import React from 'react'
 import Swal from 'sweetalert2'
+import useAuth from '../../hooks/useAuth'
 
 const BankInfo = ({ data, type }) => {
+  const { user } = useAuth()
   const [accountNo, bankName, accountOwner] = data.info.split(' - ')
 
   const infoBank = [
@@ -10,13 +12,13 @@ const BankInfo = ({ data, type }) => {
     `Ngân hàng :  ${bankName}`,
     `Chủ tài khoản : ${accountOwner}`,
     `Số tiền chuyển khoản : ${data.amount}`,
-    `Nội dung : `
+    `Nội dung : hutechquiz ${user.phone}`
   ]
   const infoMomo = [
     'Số điện thoại : 0934945803',
     'Tên người nhận : Nguyễn Minh Trung Nghĩa',
     `Số tiền chuyển khoản : ${data.amount}`,
-    `Nội dung : `
+    `Nội dung : hutechquiz ${user.phone}`
   ]
 
   const handlePaid = () => {
