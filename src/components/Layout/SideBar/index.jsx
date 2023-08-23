@@ -50,7 +50,7 @@ const Sidebar = () => {
         position: "relative",
         "& .ps-sidebar-container.css-dip3t8": {
           position: "fixed",
-          width: `${isCollapsed && isMobile ? "75px" : "250px"}`,
+          width: `${isCollapsed ? "75px" : "250px"}`,
           transitionDuration: "300ms",
           backgroundColor: "white",
           boxShadow:

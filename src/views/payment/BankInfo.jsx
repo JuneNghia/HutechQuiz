@@ -40,7 +40,7 @@ const BankInfo = ({ data, type }) => {
   return (
     <Card>
       {isLoading ? (
-        <PageLoader height='30vh' text='Đang tạo' />
+        <PageLoader height='30vh' text='Đang tạo' variant='h5' />
       ) : (
         <>
           <CardHeader title='Thông tin chuyển khoản' />
