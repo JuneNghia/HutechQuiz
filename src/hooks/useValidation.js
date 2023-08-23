@@ -54,3 +54,17 @@ export const paymentValidation = Yup.object({
       return numericValue >= 20000
     })
 })
+
+export const depositUserValidation = Yup.object({
+  phone: Yup.string().matches(phoneRegExp, 'Số điện thoại không hợp lệ').required('Số điện thoại không được để trống'),
+  amount: Yup.string()
+    .required('Vui lòng nhập số tiền cần nạp')
+    .test('minAmount', 'Số tiền phải lớn hơn hoặc bằng 20.000', function (value) {
+      if (!value) {
+        return false
+      }
+
+      const numericValue = parseInt(value.replace(/[.]/g, ''), 10)
+      return numericValue >= 20000
+    })
+})

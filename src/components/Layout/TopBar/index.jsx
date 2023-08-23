@@ -2,6 +2,7 @@ import { Box, Typography } from '@mui/material'
 import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
 import useAuth from '../../../hooks/useAuth'
+import { formattedValuePrice } from '../../../utils/common/formatValue'
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -53,9 +54,9 @@ const Topbar = () => {
         </IconButton> */}
         <div className='mx-10 flex'>
           <Typography className='text-white pr-12'>
-            Số dư : <span>{user.wallet.balance}đ</span>
+            Số dư : <span>{formattedValuePrice(user.wallet.balance.toString())}đ</span>
           </Typography>
-          <Typography className='text-white'>Thưởng : {user.wallet.bonus}đ</Typography>
+          <Typography className='text-white'>Thưởng : {formattedValuePrice(user.wallet.bonus.toString())}đ</Typography>
         </div>
         <AccountMenu />
       </Box>

@@ -11,7 +11,6 @@ import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import logoHutech from "../../../assets/logo-hutech.png";
 import { MenuSideBar } from "../../../constants";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import useAuth from "../../../hooks/useAuth";
 
 const Item = ({ title, to, icon, selected }) => {
   return (

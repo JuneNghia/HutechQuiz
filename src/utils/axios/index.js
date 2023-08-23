@@ -7,7 +7,7 @@ const axiosConfig = axios.create({
   baseURL: BASE_URL_SERVICE,
   headers: {
     'Content-type': 'application/json',
-    Authorization: `Bearer ${token}`
+    token: `${token}`
   }
 })
 

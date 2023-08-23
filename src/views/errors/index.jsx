@@ -2,7 +2,7 @@ import { Box, Button, Container, Typography } from '@mui/material'
 import img404 from '../../assets/errors/error-404.png'
 import { HiArrowSmLeft } from 'react-icons/hi'
 
-const Error = () => (
+const Error = ({minHeight}) => (
   <>
     <Box
       className=''
@@ -11,7 +11,7 @@ const Error = () => (
         alignItems: 'center',
         display: 'flex',
         flexGrow: 1,
-        minHeight: '100vh'
+        minHeight: minHeight || '85vh'
       }}
     >
       <Container maxWidth='md'>

@@ -2,11 +2,14 @@ import { Button, Card, CardContent, CardHeader, Divider, Typography } from '@mui
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
+import { Helmet } from 'react-helmet'
+import { formattedValuePrice } from '../../utils/common/formatValue'
 
 const Wallet = () => {
   const { user } = useAuth()
   const wallet = user.wallet
   const navigate = useNavigate()
+  const formatValue = (value) => formattedValuePrice(value)
 
   const dataWallet = [
     {
@@ -42,28 +45,33 @@ const Wallet = () => {
   ]
 
   return (
-    <Card>
-      <CardHeader title='Ví tiền' />
-      <CardContent className='mt-2'>
-        {dataWallet.slice(0, 2).map((data) => (
-          <Typography key={data.content} className='py-1'>
-            {data.content} : <span className='font-bold'>{data.value}</span>
-          </Typography>
-        ))}
-        <Divider className='!border-indigo-500/100 pt-3' />
-        <div className='mt-3'>
-          {dataWallet.slice(2, 6).map((data) => (
+    <>
+      <Helmet>
+        <title>Ví tiền</title>
+      </Helmet>
+      <Card>
+        <CardHeader title='Ví tiền' />
+        <CardContent className='mt-2'>
+          {dataWallet.slice(0, 2).map((data) => (
             <Typography key={data.content} className='py-1'>
-              {data.content} : <span className='font-bold'>{data.value}</span>
+              {data.content} : <span className='font-bold'>{formattedValuePrice(data.value.toString())}đ</span>
             </Typography>
           ))}
-        </div>
+          <Divider className='!border-indigo-500/100 pt-3' />
+          <div className='mt-3'>
+            {dataWallet.slice(2, 6).map((data) => (
+              <Typography key={data.content} className='py-1'>
+                {data.content} : <span className='font-bold'>{formattedValuePrice(data.value.toString())}đ</span>
+              </Typography>
+            ))}
+          </div>
 
-        <Button onClick={() => navigate('/payment')} sx={{ marginTop: '15px' }} variant='contained' color='success'>
-          Nạp tiền
-        </Button>
-      </CardContent>
-    </Card>
+          <Button onClick={() => navigate('/payment')} sx={{ marginTop: '15px' }} variant='contained' color='success'>
+            Nạp tiền
+          </Button>
+        </CardContent>
+      </Card>
+    </>
   )
 }
 

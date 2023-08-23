@@ -16,8 +16,9 @@ import { Helmet } from 'react-helmet'
 import BankInfo from './BankInfo'
 import { useFormik } from 'formik'
 import { paymentValidation } from '../../hooks/useValidation'
-import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined';
+import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined'
 import { useNavigate } from 'react-router-dom'
+import { formattedValuePrice } from '../../utils/common/formatValue'
 
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -53,8 +54,7 @@ const Payment = () => {
   const handleAmountChange = (event) => {
     setIsSuccess(false)
     const { value } = event.target
-    const formattedValue = value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
-    formik.handleChange('amount')(formattedValue)
+    formik.handleChange('amount')(formattedValuePrice(value))
   }
 
   return (
@@ -62,7 +62,9 @@ const Payment = () => {
       <Helmet>
         <title>Nạp tiền vào ví</title>
       </Helmet>
-      <Button color='success' onClick={() => navigate('/wallet')} variant='contained' sx={{mb: 2}}><KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small'/> Quay lại ví tiền</Button>
+      <Button onClick={() => navigate('/wallet')} variant='outlined' sx={{ mb: 2 }}>
+        <KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small' /> Quay lại ví tiền
+      </Button>
       <Card className='!bg-white !mb-5'>
         <CardHeader title='Nạp tiền vào ví Hutech Quiz' />
         <CardContent>
@@ -99,7 +101,12 @@ const Payment = () => {
                 </FormControl>
               )}
 
-              {!!(formik.errors.amount && formik.touched.amount) && <Typography className='py-2'><span className='font-bold'>Lưu ý: </span>Nếu bạn thanh toán với số tiền nhỏ hơn mức quy định thì việc nạp tiền không được thực hiện và không được hoàn lại số tiền đã thanh toán.</Typography>}
+              {!!(formik.errors.amount && formik.touched.amount) && (
+                <Typography className='py-2'>
+                  <span className='font-bold'>Lưu ý: </span>Nếu bạn thanh toán với số tiền nhỏ hơn mức quy định thì việc
+                  nạp tiền không được thực hiện và không được hoàn lại số tiền đã thanh toán.
+                </Typography>
+              )}
 
               {formik.values.method === 'bank' && (
                 <FormControl margin='normal'>
