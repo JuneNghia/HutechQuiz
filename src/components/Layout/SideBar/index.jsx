@@ -27,7 +27,6 @@ const Item = ({ title, to, icon, selected }) => {
 };
 
 const Sidebar = () => {
-  const { user } = useAuth();
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("");
   const location = useLocation();
@@ -51,7 +50,7 @@ const Sidebar = () => {
         position: "relative",
         "& .ps-sidebar-container.css-dip3t8": {
           position: "fixed",
-          width: `${isCollapsed ? "75px" : "250px"}`,
+          width: `${isCollapsed && isMobile ? "75px" : "250px"}`,
           transitionDuration: "300ms",
           backgroundColor: "white",
           boxShadow:
@@ -250,7 +249,7 @@ const Sidebar = () => {
       <Box
         sx={{
           position: "fixed",
-          zIndex: "20",
+          zIndex: "9999",
           top: "21px",
           left: `${isCollapsed ? "20px" : "200px"}`,
           transitionDuration: "200ms",

@@ -1,10 +1,12 @@
 import { Button, Card, CardContent, CardHeader, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
+import PageLoader from '../../components/Loader/PageLoader'
 
 const BankInfo = ({ data, type }) => {
   const { user } = useAuth()
+  const [isLoading, setIsLoading] = useState(true)
   const [accountNo, bankName, accountOwner] = data.info.split(' - ')
 
   const infoBank = [
@@ -28,31 +30,44 @@ const BankInfo = ({ data, type }) => {
       'info'
     )
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false)
+    }, 1200)
+  })
+
   return (
     <Card>
-      <CardHeader title='Thông tin chuyển khoản' />
-      <CardContent component='div' className='mt-3'>
-        {type === 'bank'
-          ? infoBank.map((info) => (
-              <Typography key={info} sx={{ marginTop: '5px' }}>
-                {info}
-              </Typography>
-            ))
-          : infoMomo.map((info) => (
-              <Typography key={info} sx={{ marginTop: '5px' }}>
-                {info}
-              </Typography>
-            ))}
+      {isLoading ? (
+        <PageLoader height='30vh' text='Đang tạo' />
+      ) : (
+        <>
+          <CardHeader title='Thông tin chuyển khoản' />
+          <CardContent component='div' className='mt-3'>
+            {type === 'bank'
+              ? infoBank.map((info) => (
+                  <Typography key={info} sx={{ marginTop: '5px' }}>
+                    {info}
+                  </Typography>
+                ))
+              : infoMomo.map((info) => (
+                  <Typography key={info} sx={{ marginTop: '5px' }}>
+                    {info}
+                  </Typography>
+                ))}
 
-        <Button
-          onClick={handlePaid}
-          variant='contained'
-          color='success'
-          sx={{ textTransform: 'uppercase', marginTop: '25px' }}
-        >
-          Tôi đã thực hiện thanh toán
-        </Button>
-      </CardContent>
+            <Button
+              onClick={handlePaid}
+              variant='contained'
+              color='success'
+              sx={{ textTransform: 'uppercase', marginTop: '25px' }}
+            >
+              Tôi đã thực hiện thanh toán
+            </Button>
+          </CardContent>
+        </>
+      )}
     </Card>
   )
 }

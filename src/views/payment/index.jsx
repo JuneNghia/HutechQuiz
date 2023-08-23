@@ -1,4 +1,3 @@
-import { Label } from '@mui/icons-material'
 import {
   Button,
   Card,
@@ -52,6 +51,7 @@ const Payment = () => {
   }
 
   const handleAmountChange = (event) => {
+    setIsSuccess(false)
     const { value } = event.target
     const formattedValue = value.replace(/\D/g, '').replace(/\B(?=(\d{3})+(?!\d))/g, '.')
     formik.handleChange('amount')(formattedValue)
