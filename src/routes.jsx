@@ -61,6 +61,11 @@ const router = createBrowserRouter([
         path: '/module-m1/powerpoint',
         element: <PracticeTestPage />,
         exact: true
+      },
+      {
+        path: '/module-m1/exam',
+        element: <PracticeTestPage />,
+        exact: true
       }
     ]
   },

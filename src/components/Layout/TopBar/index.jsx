@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
 import useAuth from '../../../hooks/useAuth'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
+import StepTitle from '../../StepTitle'
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false)
@@ -44,6 +45,7 @@ const Topbar = () => {
       p={2}
     >
       {/* ICONS */}
+      
       <Box className='flex items-center'>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (

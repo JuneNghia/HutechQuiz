@@ -31,6 +31,12 @@ export const MenuSideBar = [
         index: 13,
         icon: <HomeOutlinedIcon />,
       },
+      {
+        title: "Kiểm tra",
+        to: "/module-m1/exam",
+        index: 14,
+        icon: <HomeOutlinedIcon />,
+      },
     ],
     index: 1,
   },
@@ -98,5 +104,4 @@ export const MenuSideBar = [
     icon: <CircleWithText text="B1" />,
     index: 4,
   },
-  
 ];

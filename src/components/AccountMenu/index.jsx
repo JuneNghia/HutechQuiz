@@ -58,6 +58,46 @@ const AccountMenu = () => {
       }
     })
   }
+
+  const listMenu = [
+    {
+      title: 'Thông tin cá nhân',
+      icon: <PersonOutlineIcon fontSize='small' />,
+      onClick: () => navigate('/'),
+      onlyAdmin: false
+    },
+    {
+      title: 'Ví tiền',
+      icon: <AccountBalanceWalletOutlinedIcon fontSize='small' />,
+      onClick: () => navigate('/wallet'),
+      onlyAdmin: false
+    },
+    {
+      title: 'Quản lý tài khoản',
+      icon: <ManageAccountsOutlinedIcon fontSize='small' />,
+      onClick: () => navigate('/user-management'),
+      onlyAdmin: true
+    },
+    {
+      title: 'Nạp tiền khách',
+      icon: <AccountBalanceOutlinedIcon fontSize='small' />,
+      onClick: () => navigate('/user-deposit'),
+      onlyAdmin: true
+    },
+    {
+      title: 'Cài đặt',
+      icon: <Settings fontSize='small' />,
+      onClick: () => navigate('/settings'),
+      onlyAdmin: false
+    },
+    {
+      title: 'Đăng xuất',
+      icon: <Logout fontSize='small' />,
+      onClick: handleLogOut,
+      onlyAdmin: false
+    }
+  ]
+
   return (
     <React.Fragment>
       <Box>
@@ -115,48 +155,23 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonOutlineIcon fontSize='small' />
-          </ListItemIcon>
-          Thông tin cá nhân
-        </MenuItem>
-        <MenuItem onClick={() => navigate('/wallet')}>
-          <ListItemIcon>
-            <AccountBalanceWalletOutlinedIcon fontSize='small' />
-          </ListItemIcon>
-          Ví tiền
-        </MenuItem>
+        {listMenu.map((menu) => (
+          <span>
+            {!menu.onlyAdmin && (
+              <MenuItem key={menu.title} onClick={menu.onClick}>
+                <ListItemIcon>{menu.icon}</ListItemIcon>
+                {menu.title}
+              </MenuItem>
+            )}
 
-        {user.role === 'ADMIN' && (
-          <>
-            <MenuItem onClick={() => navigate('/user-management')}>
-              <ListItemIcon>
-                <ManageAccountsOutlinedIcon fontSize='small' />
-              </ListItemIcon>
-              Quản lý tài khoản
-            </MenuItem>
-            <MenuItem onClick={() => navigate('/user-deposit')}>
-              <ListItemIcon>
-                <AccountBalanceOutlinedIcon fontSize='small' />
-              </ListItemIcon>
-              Nạp tiền khách
-            </MenuItem>
-          </>
-        )}
-
-        <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <Settings fontSize='small' />
-          </ListItemIcon>
-          Cài đặt
-        </MenuItem>
-        <MenuItem onClick={handleLogOut}>
-          <ListItemIcon>
-            <Logout fontSize='small' />
-          </ListItemIcon>
-          Đăng xuất
-        </MenuItem>
+            {menu.onlyAdmin && user.role === 'ADMIN' && (
+              <MenuItem key={menu.title} onClick={menu.onClick}>
+                <ListItemIcon>{menu.icon}</ListItemIcon>
+                {menu.title}
+              </MenuItem>
+            )}
+          </span>
+        ))}
       </Menu>
     </React.Fragment>
   )

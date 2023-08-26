@@ -5,8 +5,12 @@ import Swal from 'sweetalert2'
 import { depositUserValidation } from '../../../hooks/useValidation'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
 import AdminService from '../../../services/admin.service'
+import Error from '../../errors'
+import useAuth from '../../../hooks/useAuth'
 
 const UserDeposit = () => {
+  const { user } = useAuth()
+
   const handleSubmit = (values) => {
     const amountWithoutDot = values.amount.replace(/\./g, '')
     const amount = parseInt(amountWithoutDot, 10)
@@ -71,42 +75,48 @@ const UserDeposit = () => {
   }
 
   return (
-    <Card>
-      <CardHeader className='text-center' title='Nạp tiền khách hàng' />
-      <CardContent>
-        <form noValidate onSubmit={formik.handleSubmit}>
-          <FormGroup>
-            <FormControl margin='normal'>
-              <TextField
-                name='phone'
-                value={formik.values.phone}
-                onChange={formik.handleChange}
-                label='Số điện thoại'
-                size='small'
-                error={!!(formik.errors.phone && formik.touched.phone)}
-                helperText={formik.touched.phone && formik.errors.phone}
-              />
-            </FormControl>
-            <FormControl margin='normal'>
-              <TextField
-                name='amount'
-                value={formik.values.amount}
-                onChange={handleAmountChange}
-                label='Số tiền'
-                size='small'
-                error={!!(formik.errors.amount && formik.touched.amount)}
-                helperText={formik.touched.amount && formik.errors.amount}
-              />
-            </FormControl>
-          </FormGroup>
-          <div className='w-full flex justify-center mt-2'>
-            <Button type='submit' variant='contained' color='success'>
-              Nạp tiền
-            </Button>
-          </div>
-        </form>
-      </CardContent>
-    </Card>
+    <>
+      {user.role === 'USER' ? (
+        <Error />
+      ) : (
+        <Card>
+          <CardHeader className='text-center' title='Nạp tiền khách hàng' />
+          <CardContent>
+            <form noValidate onSubmit={formik.handleSubmit}>
+              <FormGroup>
+                <FormControl margin='normal'>
+                  <TextField
+                    name='phone'
+                    value={formik.values.phone}
+                    onChange={formik.handleChange}
+                    label='Số điện thoại'
+                    size='small'
+                    error={!!(formik.errors.phone && formik.touched.phone)}
+                    helperText={formik.touched.phone && formik.errors.phone}
+                  />
+                </FormControl>
+                <FormControl margin='normal'>
+                  <TextField
+                    name='amount'
+                    value={formik.values.amount}
+                    onChange={handleAmountChange}
+                    label='Số tiền'
+                    size='small'
+                    error={!!(formik.errors.amount && formik.touched.amount)}
+                    helperText={formik.touched.amount && formik.errors.amount}
+                  />
+                </FormControl>
+              </FormGroup>
+              <div className='w-full flex justify-center mt-2'>
+                <Button type='submit' variant='contained' color='success'>
+                  Nạp tiền
+                </Button>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      )}
+    </>
   )
 }
 
