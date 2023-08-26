@@ -1,4 +1,4 @@
-import { Box, Typography } from '@mui/material'
+import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
 import useAuth from '../../../hooks/useAuth'
@@ -7,6 +7,8 @@ import StepTitle from '../../StepTitle'
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
   const { user } = useAuth()
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const Topbar = () => {
       p={2}
     >
       {/* ICONS */}
-      
+
       <Box className='flex items-center'>
         {/* <IconButton onClick={colorMode.toggleColorMode}>
           {theme.palette.mode === "dark" ? (
@@ -54,12 +56,17 @@ const Topbar = () => {
             <LightModeOutlinedIcon />
           )}
         </IconButton> */}
-        <div className='mx-10 flex'>
-          <Typography className='text-white pr-12'>
-            Số dư : <span>{formattedValuePrice(user.wallet.balance.toString())}đ</span>
-          </Typography>
-          <Typography className='text-white'>Thưởng : {formattedValuePrice(user.wallet.bonus.toString())}đ</Typography>
-        </div>
+        {!isMobile && (
+          <div className='mx-10 flex'>
+            <Typography className='text-white pr-12'>
+              Số dư : <span>{formattedValuePrice(user.wallet.balance.toString())}đ</span>
+            </Typography>
+            <Typography className='text-white'>
+              Thưởng : {formattedValuePrice(user.wallet.bonus.toString())}đ
+            </Typography>
+          </div>
+        )}
+
         <AccountMenu />
       </Box>
     </Box>

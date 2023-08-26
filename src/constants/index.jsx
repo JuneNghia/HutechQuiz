@@ -40,68 +40,68 @@ export const MenuSideBar = [
     ],
     index: 1,
   },
-  {
-    title: "Module M3",
-    to: "/module-m3",
-    icon: <CircleWithText text="M3" />,
-    subMenu: [
-      {
-        title: "Word",
-        to: "/module-m3/word",
-        index: 21,
-        icon: <HomeOutlinedIcon />,
-      },
-      {
-        title: "Powerpoint",
-        to: "/module-m3/powerpoint",
-        index: 22,
-        icon: <HomeOutlinedIcon />,
-      },
-      {
-        title: "Excel",
-        to: "/module-m3/excel",
-        index: 23,
-        icon: <HomeOutlinedIcon />,
-      },
-    ],
-    index: 2,
-  },
-  {
-    title: "B1 Tiếng Anh",
-    to: "/b1/english",
-    icon: <CircleWithText text="B1" />,
-    subMenu: [
-        {
-          title: "200 câu trắc nghiệm",
-          to: "/module-m3/word",
-          index: 31,
-          icon: <HomeOutlinedIcon />,
-        },
-        {
-          title: "40 câu hình",
-          to: "/module-m3/powerpoint",
-          index: 32,
-          icon: <HomeOutlinedIcon />,
-        },
-        {
-          title: "Đọc - Hiểu",
-          to: "/module-m3/excel",
-          index: 33,
-          icon: <HomeOutlinedIcon />,
-        },
-        {
-          title: "Nghe",
-          to: "/module-m3/excel",
-          index: 34,
-          icon: <HomeOutlinedIcon />,
-        },
-      ],
-    index: 3,
-  },
-  {
-    title: "B1 Tiếng Hàn",
-    to: "/b1/korea",
-    icon: <CircleWithText text="B1" />,
-    index: 4,
-  },
+  // {
+  //   title: "Module M3",
+  //   to: "/module-m3",
+  //   icon: <CircleWithText text="M3" />,
+  //   subMenu: [
+  //     {
+  //       title: "Word",
+  //       to: "/module-m3/word",
+  //       index: 21,
+  //       icon: <HomeOutlinedIcon />,
+  //     },
+  //     {
+  //       title: "Powerpoint",
+  //       to: "/module-m3/powerpoint",
+  //       index: 22,
+  //       icon: <HomeOutlinedIcon />,
+  //     },
+  //     {
+  //       title: "Excel",
+  //       to: "/module-m3/excel",
+  //       index: 23,
+  //       icon: <HomeOutlinedIcon />,
+  //     },
+  //   ],
+  //   index: 2,
+  // },
+  // {
+  //   title: "B1 Tiếng Anh",
+  //   to: "/b1/english",
+  //   icon: <CircleWithText text="B1" />,
+  //   subMenu: [
+  //       {
+  //         title: "200 câu trắc nghiệm",
+  //         to: "/module-m3/word",
+  //         index: 31,
+  //         icon: <HomeOutlinedIcon />,
+  //       },
+  //       {
+  //         title: "40 câu hình",
+  //         to: "/module-m3/powerpoint",
+  //         index: 32,
+  //         icon: <HomeOutlinedIcon />,
+  //       },
+  //       {
+  //         title: "Đọc - Hiểu",
+  //         to: "/module-m3/excel",
+  //         index: 33,
+  //         icon: <HomeOutlinedIcon />,
+  //       },
+  //       {
+  //         title: "Nghe",
+  //         to: "/module-m3/excel",
+  //         index: 34,
+  //         icon: <HomeOutlinedIcon />,
+  //       },
+  //     ],
+  //   index: 3,
+  // },
+  // {
+  //   title: "B1 Tiếng Hàn",
+  //   to: "/b1/korea",
+  //   icon: <CircleWithText text="B1" />,
+  //   index: 4,
+  // },
 ];

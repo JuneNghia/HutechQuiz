@@ -1,4 +1,14 @@
-import { Button, Card, CardContent, CardHeader, FormControlLabel, Grid, Radio, RadioGroup } from '@mui/material'
+import {
+  Button,
+  Card,
+  CardContent,
+  CardHeader,
+  FormControlLabel,
+  Grid,
+  Radio,
+  RadioGroup,
+  Typography
+} from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import TestService from '../../services/test.service'
 import StepTitle from '../../components/StepTitle'
@@ -99,9 +109,9 @@ const PracticeTest = () => {
               aria-labelledby='demo-row-radio-buttons-group-label'
               name={`row-radio-buttons-group-${ques.id}`}
             >
-              <Grid container>
-                {ques.choices.map((choice, index) => (
-                  <Grid key={choice} lg={6} xs={12}>
+              <Grid container >
+                {ques.choices.map((choice) => (
+                  <Grid className='xs:mb-3 xs:first:mt-1 lg:mb-0 last:mb-0' key={choice} lg={6} xs={12}>
                     <FormControlLabel
                       value={choice}
                       control={
@@ -111,7 +121,7 @@ const PracticeTest = () => {
                           id={`radio-${ques.id}-${choice}`}
                         />
                       }
-                      label={choice}
+                      label={<Typography>{choice}</Typography>}
                       htmlFor={`radio-${ques.id}-${choice}`}
                       style={{
                         paddingRight: '10px',
