@@ -17,9 +17,11 @@ import PageLoader from '../../components/Loader/PageLoader'
 import InfoExam from './InfoExam'
 import WalletService from '../../services/wallet.service'
 import useAuth from '../../hooks/useAuth'
+import { useNavigate } from 'react-router-dom'
 
 const PracticeTest = () => {
   const { user } = useAuth()
+  const navigate = useNavigate()
   const [isPaid, setIsPaid] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -60,8 +62,6 @@ const PracticeTest = () => {
             amount: 1000
           }
 
-          console.log(data)
-
           WalletService.pay(data)
             .then(() => {
               Swal.fire({
@@ -89,10 +89,16 @@ const PracticeTest = () => {
                 icon: 'error',
                 title: 'Thanh toán thất bại',
                 html: `Số dư của bạn không đủ`,
-                showConfirmButton: false,
+                showConfirmButton: true,
+                confirmButtonText: 'Nạp tiền',
+                confirmButtonColor: 'blue',
                 showCancelButton: true,
-                cancelButtonColor: 'blue',
+                cancelButtonColor: 'red',
                 cancelButtonText: 'Thử lại'
+              }).then((confirm) => {
+                if(confirm.isConfirmed) {
+                  navigate('/payment')
+                }
               })
             })
 
