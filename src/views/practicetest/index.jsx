@@ -48,6 +48,7 @@ const PracticeTest = () => {
         allowOutsideClick: false,
         preConfirm: () => {
           Swal.update({
+            title: 'Đang thanh toán',
             icon: 'info',
             html: 'Đang xử lý...<br/>Không tắt trang hoặc trình duyệt',
             showCancelButton: false,
@@ -71,7 +72,7 @@ const PracticeTest = () => {
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
                   setIsPaid(true)
-                  TestService.getExam('46f45600-4554-4040-8bcb-244a0b6d2aff')
+                  TestService.getExam('37901f73-7c4f-4cad-8074-1c2b4e99191d')
                     .then((res) => {
                       setData(res.data.data)
                       setIsLoading(false)

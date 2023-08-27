@@ -28,8 +28,8 @@ const Login = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const formik1 = useFormik({
     initialValues: {
-      email: 'admin@gmail.com',
-      password: 'admin123',
+      email: '',
+      password: '',
       submit: null
     },
     validationSchema: loginEmailValidationSchema,

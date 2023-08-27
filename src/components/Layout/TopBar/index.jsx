@@ -3,12 +3,13 @@ import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
 import useAuth from '../../../hooks/useAuth'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
-import UserService from '../../../services/user.service'
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false)
-  const {user} = useAuth()
-  const [dataUser, setDataUser] = useState(user)
+  const { user } = useAuth()
+  const [balance, setBalance] = useState(user?.wallet?.balance || 0)
+  const [bonus, setBonus] = useState(user?.wallet?.bonus || 0)
+
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
@@ -27,10 +28,11 @@ const Topbar = () => {
   }, [])
 
   useEffect(() => {
-    UserService.getMe().then((res) => {
-      setDataUser(res.data.data)
-    })
-  }, [dataUser])
+    setBalance(user?.wallet?.balance || 0)
+    setBonus(user?.wallet?.bonus || 0)
+  }, [user?.wallet])
+
+  console.log('hello')
 
   return (
     <Box
@@ -53,23 +55,14 @@ const Topbar = () => {
       alignItems='center'
       p={2}
     >
-      {/* ICONS */}
-
       <Box className='flex items-center'>
-        {/* <IconButton onClick={colorMode.toggleColorMode}>
-          {theme.palette.mode === "dark" ? (
-            <DarkModeOutlinedIcon />
-          ) : (
-            <LightModeOutlinedIcon />
-          )}
-        </IconButton> */}
         {!isMobile && (
           <div className='mx-10 flex'>
             <Typography className='text-white pr-12'>
-              Số dư : <span>{formattedValuePrice(dataUser.wallet.balance.toString())}đ</span>
+              Số dư : <span>{formattedValuePrice(balance.toString())}đ</span>
             </Typography>
             <Typography className='text-white'>
-              Thưởng : {formattedValuePrice(dataUser.wallet.bonus.toString())}đ
+              Thưởng : {formattedValuePrice(bonus.toString())}đ
             </Typography>
           </div>
         )}
