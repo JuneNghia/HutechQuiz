@@ -2,7 +2,7 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CircleWithText from "../components/Icon/CircleWithText";
 
 export const BASE_URL = "/dashboard";
-export const BASE_URL_SERVICE = "https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1";
+export const BASE_URL_SERVICE = "http://localhost:8080/api/v1";
 
 // https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1
 // http://localhost:8080/api/v1

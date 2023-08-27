@@ -14,8 +14,13 @@ import TestService from '../../services/test.service'
 import StepTitle from '../../components/StepTitle'
 import Swal from 'sweetalert2'
 import PageLoader from '../../components/Loader/PageLoader'
+import InfoExam from './InfoExam'
+import WalletService from '../../services/wallet.service'
+import useAuth from '../../hooks/useAuth'
 
 const PracticeTest = () => {
+  const { user } = useAuth()
+  const [isPaid, setIsPaid] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
   const [selectedAnswers, setSelectedAnswers] = useState({})
@@ -28,6 +33,72 @@ const PracticeTest = () => {
         [questionId]: selectedChoice
       }))
     }
+  }
+
+  const handlePaid = () => {
+    try {
+      Swal.fire({
+        title: 'Xác nhận thanh toán',
+        html: 'Số tiền sẽ được trừ từ số dư và tiền thưởng <br/><b>( ưu tiên tiền thưởng )</b>',
+        icon: 'question',
+        showCancelButton: true,
+        cancelButtonText: 'Huỷ',
+        confirmButtonText: 'Thanh toán ngay',
+        confirmButtonColor: 'green',
+        allowOutsideClick: false,
+        preConfirm: () => {
+          Swal.update({
+            icon: 'info',
+            html: 'Đang xử lý...<br/>Không tắt trang hoặc trình duyệt',
+            showCancelButton: false,
+            showConfirmButton: false
+          })
+
+          const data = {
+            phone: user.phone,
+            amount: 1000
+          }
+
+          console.log(data)
+
+          WalletService.pay(data)
+            .then(() => {
+              Swal.fire({
+                icon: 'success',
+                title: 'Thanh toán thành công',
+                html: `Khi nhấn nút làm bài dưới đây, vui lòng không tải lại trang hoặc tắt trình duyệt`,
+                confirmButtonText: 'Làm bài ngay'
+              }).then((confirm) => {
+                if (confirm.isConfirmed) {
+                  setIsPaid(true)
+                  TestService.getExam('46f45600-4554-4040-8bcb-244a0b6d2aff')
+                    .then((res) => {
+                      setData(res.data.data)
+                      setIsLoading(false)
+                    })
+                    .catch((error) => {
+                      console.log(error)
+                      setIsLoading(false)
+                    })
+                }
+              })
+            })
+            .catch(() => {
+              Swal.fire({
+                icon: 'error',
+                title: 'Thanh toán thất bại',
+                html: `Số dư của bạn không đủ`,
+                showConfirmButton: false,
+                showCancelButton: true,
+                cancelButtonColor: 'blue',
+                cancelButtonText: 'Thử lại'
+              })
+            })
+
+          return false
+        }
+      })
+    } catch (error) {}
   }
 
   const handleSubmit = () => {
@@ -71,17 +142,9 @@ const PracticeTest = () => {
     } catch (error) {}
   }
 
-  useEffect(() => {
-    TestService.getExam('46f45600-4554-4040-8bcb-244a0b6d2aff')
-      .then((res) => {
-        setData(res.data.data)
-        setIsLoading(false)
-      })
-      .catch((error) => {
-        console.log(error)
-        setIsLoading(false)
-      })
-  }, [])
+  if (!isPaid) {
+    return <InfoExam title='Kiểm tra Module 1' quantity={30} price={1000} handleSubmit={handlePaid} />
+  }
 
   if (isLoading) {
     return <PageLoader height='80vh' text='Đang tải dữ liệu' />
@@ -109,7 +172,7 @@ const PracticeTest = () => {
               aria-labelledby='demo-row-radio-buttons-group-label'
               name={`row-radio-buttons-group-${ques.id}`}
             >
-              <Grid container >
+              <Grid container>
                 {ques.choices.map((choice) => (
                   <Grid className='xs:mb-3 xs:first:mt-1 lg:mb-0 last:mb-0' key={choice} lg={6} xs={12}>
                     <FormControlLabel
@@ -139,6 +202,11 @@ const PracticeTest = () => {
         {!saved && !isLoading && (
           <Button onClick={handleSubmit} variant='contained'>
             Nộp bài
+          </Button>
+        )}
+        {saved && !isLoading && (
+          <Button onClick={() => window.location.reload()} variant='contained'>
+            Thử lại
           </Button>
         )}
       </div>

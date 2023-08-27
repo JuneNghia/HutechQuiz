@@ -3,13 +3,14 @@ import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
 import useAuth from '../../../hooks/useAuth'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
-import StepTitle from '../../StepTitle'
+import UserService from '../../../services/user.service'
 
 const Topbar = () => {
   const [scrolled, setScrolled] = useState(false)
+  const {user} = useAuth()
+  const [dataUser, setDataUser] = useState(user)
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
-  const { user } = useAuth()
 
   useEffect(() => {
     const onScroll = () => {
@@ -24,6 +25,12 @@ const Topbar = () => {
 
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
+
+  useEffect(() => {
+    UserService.getMe().then((res) => {
+      setDataUser(res.data.data)
+    })
+  }, [dataUser])
 
   return (
     <Box
@@ -59,10 +66,10 @@ const Topbar = () => {
         {!isMobile && (
           <div className='mx-10 flex'>
             <Typography className='text-white pr-12'>
-              Số dư : <span>{formattedValuePrice(user.wallet.balance.toString())}đ</span>
+              Số dư : <span>{formattedValuePrice(dataUser.wallet.balance.toString())}đ</span>
             </Typography>
             <Typography className='text-white'>
-              Thưởng : {formattedValuePrice(user.wallet.bonus.toString())}đ
+              Thưởng : {formattedValuePrice(dataUser.wallet.bonus.toString())}đ
             </Typography>
           </div>
         )}

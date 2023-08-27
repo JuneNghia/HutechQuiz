@@ -4,6 +4,7 @@ import { ACCOUNT_INITIALISE, LOGIN, LOGOUT } from '../store/actions'
 import RouteLoader from '../components/Loader/RouteLoader'
 import AuthService from '../services/auth.service'
 import accountReducer from '../store/accountReducer'
+import UserService from '../services/user.service'
 
 const initialState = {
   isLoggedIn: false,
@@ -62,12 +63,12 @@ export const JWTProvider = ({ children }) => {
           const checkValidToken = verifyToken(serviceToken)
           if (checkValidToken) {
             setSession(serviceToken)
-            const data = jwtDecode(serviceToken)
+            const res = await UserService.getMe()
             dispatch({
               type: ACCOUNT_INITIALISE,
               payload: {
                 isLoggedIn: true,
-                user: data
+                user: res.data.data
               }
             })
           } else {

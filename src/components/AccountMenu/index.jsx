@@ -155,8 +155,8 @@ const AccountMenu = () => {
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
-        {listMenu.map((menu) => (
-          <span>
+        {listMenu.map((menu, index) => (
+          <span key={`menu-${index}`}>
             {!menu.onlyAdmin && (
               <MenuItem key={menu.title} onClick={menu.onClick}>
                 <ListItemIcon>{menu.icon}</ListItemIcon>
