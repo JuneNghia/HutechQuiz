@@ -5,6 +5,7 @@ import { Chip } from '@mui/material'
 import CustomDataGrid from '../../../components/Datagrid'
 import UserService from '../../../services/user.service'
 import dayjs from 'dayjs'
+import { formattedValuePrice } from '../../../utils/common/formatValue'
 
 const UserManagement = () => {
   const { user } = useAuth()
@@ -54,6 +55,18 @@ const UserManagement = () => {
       }
     },
     {
+      field: 'balance',
+      headerName: 'Số dư hiện tại',
+      flex: 1,
+      valueGetter: (params) => formattedValuePrice(params.row.wallet.balance.toString())
+    },
+    {
+      field: 'totalDeposit',
+      headerName: 'Tổng tiền đã nạp',
+      flex: 1,
+      valueGetter: (params) => formattedValuePrice(params.row.wallet.totalDeposit.toString())
+    },
+    {
       field: 'createdAt',
       headerName: 'Thời gian khởi tạo',
       flex: 1,
@@ -80,13 +93,7 @@ const UserManagement = () => {
   }, [])
 
   return (
-    <>
-      {user.role === 'USER' ? (
-        <Error />
-      ) : (
-        <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} />
-      )}
-    </>
+    <>{user.role === 'USER' ? <Error /> : <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} />}</>
   )
 }
 
