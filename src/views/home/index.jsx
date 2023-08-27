@@ -14,14 +14,6 @@ const Home = () => {
             <span className='text-red-500'>
               Hiện tại trang web chỉ được tối ưu cho máy tính, xin vui lòng sử dụng máy tính để đạt trải nghiệm cao nhất
             </span>
-            <br />
-            <br />
-            Bạn đã được tặng 5000đ vào tài khoản thưởng để trải nghiệm
-            <br />
-            Kiểm tra số dư tại{' '}
-            <Link className='text-blue-700' to='wallet'>
-              đây
-            </Link>
           </Typography>
         </CardContent>
       </Card>

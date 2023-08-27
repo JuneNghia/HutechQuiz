@@ -1,5 +1,5 @@
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import CircleWithText from "../components/Icon/CircleWithText";
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
 
 export const BASE_URL = "/dashboard";
 export const BASE_URL_SERVICE = "https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1";
@@ -13,29 +13,29 @@ export const MenuSideBar = [
     to: "/module-m1",
     icon: <CircleWithText text="M1" />,
     subMenu: [
-      {
-        title: "Word",
-        to: "/module-m1/word",
-        index: 11,
-        icon: <HomeOutlinedIcon />,
-      },
-      {
-        title: "Powerpoint",
-        to: "/module-m1/powerpoint",
-        index: 12,
-        icon: <HomeOutlinedIcon />,
-      },
-      {
-        title: "Excel",
-        to: "/module-m1/excel",
-        index: 13,
-        icon: <HomeOutlinedIcon />,
-      },
+      // {
+      //   title: "Word",
+      //   to: "/module-m1/word",
+      //   index: 11,
+      //   icon: <HomeOutlinedIcon />,
+      // },
+      // {
+      //   title: "Powerpoint",
+      //   to: "/module-m1/powerpoint",
+      //   index: 12,
+      //   icon: <HomeOutlinedIcon />,
+      // },
+      // {
+      //   title: "Excel",
+      //   to: "/module-m1/excel",
+      //   index: 13,
+      //   icon: <HomeOutlinedIcon />,
+      // },
       {
         title: "Kiểm tra",
         to: "/module-m1/exam",
         index: 14,
-        icon: <HomeOutlinedIcon />,
+        icon: <EmojiEventsOutlinedIcon />,
       },
     ],
     index: 1,

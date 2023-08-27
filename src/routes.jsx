@@ -47,21 +47,21 @@ const router = createBrowserRouter([
         path: '/user-deposit',
         element: <UserDepositPage />
       },
-      {
-        path: '/module-m1/word',
-        element: <PracticeTestPage />,
-        exact: true
-      },
-      {
-        path: '/module-m1/excel',
-        element: <PracticeTestPage />,
-        exact: true
-      },
-      {
-        path: '/module-m1/powerpoint',
-        element: <PracticeTestPage />,
-        exact: true
-      },
+      // {
+      //   path: '/module-m1/word',
+      //   element: <PracticeTestPage />,
+      //   exact: true
+      // },
+      // {
+      //   path: '/module-m1/excel',
+      //   element: <PracticeTestPage />,
+      //   exact: true
+      // },
+      // {
+      //   path: '/module-m1/powerpoint',
+      //   element: <PracticeTestPage />,
+      //   exact: true
+      // },
       {
         path: '/module-m1/exam',
         element: <PracticeTestPage />,
