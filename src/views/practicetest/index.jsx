@@ -18,6 +18,7 @@ import InfoExam from './InfoExam'
 import WalletService from '../../services/wallet.service'
 import useAuth from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
+import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 
 const PracticeTest = () => {
   const { user } = useAuth()
@@ -35,6 +36,15 @@ const PracticeTest = () => {
         [questionId]: selectedChoice
       }))
     }
+  }
+
+  const handleTryAgain = () => {
+    handleAlertConfirm({
+      title: 'Xác nhận thử lại',
+      icon: 'question',
+      showCancelButton: true,
+      html: "Bạn có chắc chắn muốn thử lại ?"
+    })
   }
 
   const handlePaid = () => {
@@ -212,7 +222,7 @@ const PracticeTest = () => {
           </Button>
         )}
         {saved && !isLoading && (
-          <Button onClick={() => window.location.reload()} variant='contained'>
+          <Button onClick={handleTryAgain} variant='contained'>
             Thử lại
           </Button>
         )}

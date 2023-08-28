@@ -54,7 +54,7 @@ const CustomDataGrid = ({
         pagination
         disableRowSelectionOnClick
         paginationMode={paginationMode || 'server'}
-        autoPageSize={paginationMode ? true : false}
+        autoPageSize={paginationMode ? false : true}
         localeText={viVNGrid}
         rowCount={total}
         checkboxSelection

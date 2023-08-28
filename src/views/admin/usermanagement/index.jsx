@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Error from '../../errors'
 import useAuth from '../../../hooks/useAuth'
-import { Chip } from '@mui/material'
+import { Chip, Typography } from '@mui/material'
 import CustomDataGrid from '../../../components/Datagrid'
 import UserService from '../../../services/user.service'
 import dayjs from 'dayjs'
@@ -10,6 +10,7 @@ import { formattedValuePrice } from '../../../utils/common/formatValue'
 const UserManagement = () => {
   const { user } = useAuth()
   const [isLoading, setIsLoading] = useState(true)
+  const [totalRevenue, setTotalRevenue] = useState(0)
   const [total, setTotal] = useState(0)
   const [rows, setRows] = useState([])
   const columns = [
@@ -86,14 +87,37 @@ const UserManagement = () => {
           setRows(listUser)
           setTotal(rows.length)
         }
+
+        const totalRevenue = listUser.reduce((total = 0, user) => {
+          if (user.role === 'USER') {
+            return total + user.wallet.totalDeposit
+          }
+          return total
+        }, 0)
+
+        setTotalRevenue(totalRevenue)
       })
       .catch(() => {
         setIsLoading(false)
       })
   }, [])
 
+  console.log(totalRevenue)
+  console.log(rows)
+
   return (
-    <>{user.role === 'USER' ? <Error /> : <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} />}</>
+    <>
+      {user.role === 'USER' ? (
+        <Error />
+      ) : (
+        <>
+          <div className='mb-3'>
+            Tổng doanh thu: <span className='font-bold'>{formattedValuePrice(totalRevenue.toString())}đ</span>
+          </div>
+          <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} paginationMode='client' />
+        </>
+      )}
+    </>
   )
 }
 
