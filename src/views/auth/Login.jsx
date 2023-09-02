@@ -41,7 +41,7 @@ const Login = () => {
             setIsSuccess(true)
           }, 1500)
           setTimeout(() => {
-            navigate('/', { replace: true })
+            navigate('/', {replace: true})
           }, 3000)
         })
       } catch (err) {
