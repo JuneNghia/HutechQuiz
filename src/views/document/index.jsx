@@ -1,9 +1,10 @@
-import { Card, CardContent, CardHeader, Chip, IconButton, TextField } from '@mui/material'
+import { Box, Card, CardContent, CardHeader, Chip, IconButton, TextField, Typography } from '@mui/material'
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
 import data from './data.json'
 import SearchIcon from '@mui/icons-material/Search'
 import Swal from 'sweetalert2'
+import StepTitle from '../../components/StepTitle'
 
 const textFieldStyle = {
   '& .MuiInputBase-root': {
@@ -38,6 +39,8 @@ const Document = () => {
       <Helmet>
         <title>Tài liệu ôn tập</title>
       </Helmet>
+
+      <StepTitle title='Tài liệu ôn tập Hutech' />
 
       <TextField
         className='w-full bg-white !mb-3'

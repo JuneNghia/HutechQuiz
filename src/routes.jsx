@@ -70,7 +70,14 @@ const router = createBrowserRouter([
       // },
       {
         path: '/module-m1/exam',
-        element: <PracticeTestPage />,
+        element: (
+          <PracticeTestPage quantity={30} title='Kiểm tra Module M1' id='37901f73-7c4f-4cad-8074-1c2b4e99191d' />
+        ),
+        exact: true
+      },
+      {
+        path: '/qpan_1/exam',
+        element: <PracticeTestPage quantity={60} title='Kiểm tra QPAN 1' id='15d57bbc-fb32-4c06-b0d8-1de3c4e8fd4b' />,
         exact: true
       }
     ]

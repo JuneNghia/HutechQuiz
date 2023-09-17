@@ -44,5 +44,13 @@
       "Quản trị chất lượng",
       "Kinh doanh quốc tế 1"
     ]
+  },
+  {
+    "category": "Các môn kinh tế",
+    "subject": [
+      "Kinh tế vi mô",
+      "Kinh tế vĩ mô",
+      "Nguyên lý thống kê kinh tế"
+    ]
   }
 ]

@@ -37,12 +37,9 @@ const Login = () => {
       setShowLoader(true)
       try {
         await auth.login(values.email, values.password).then(() => {
-          setTimeout(() => {
-            setIsSuccess(true)
-          }, 1500)
-          setTimeout(() => {
-            navigate('/', {replace: true})
-          }, 3000)
+          setIsSuccess(true)
+          navigate('/', { replace: true })
+          window.location.reload()
         })
       } catch (err) {
         setTimeout(() => {
@@ -70,8 +67,12 @@ const Login = () => {
     onSubmit: async (values, helpers) => {
       setShowLoader(true)
       try {
-        await auth.login(values.phone, values.password)
-        navigate('/', { replace: true })
+        await auth.login(values.phone, values.password).then(() => {
+          setIsSuccess(true)
+
+          navigate('/', { replace: true })
+          window.location.reload()
+        })
       } catch (err) {
         setTimeout(() => {
           const errCode = err.response.status

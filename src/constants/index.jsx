@@ -99,6 +99,13 @@ export const MenuSideBar = [
   //   index: 3,
   // },
   {
+    title: "QPAN 1",
+    to: "/qpan_1/exam",
+    icon: <CircleWithText text="QP" />,
+    index: 2,
+    subMenu: []
+  },
+  {
     title: "Tài liệu ôn tập",
     to: "/document",
     icon: <CircleWithText text="TL" />,

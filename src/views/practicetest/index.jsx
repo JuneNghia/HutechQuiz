@@ -20,7 +20,7 @@ import useAuth from '../../hooks/useAuth'
 import { useNavigate } from 'react-router-dom'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 
-const PracticeTest = () => {
+const PracticeTest = ({ id, quantity, title }) => {
   const { user } = useAuth()
   const navigate = useNavigate()
   const [isPaid, setIsPaid] = useState(false)
@@ -28,7 +28,7 @@ const PracticeTest = () => {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [saved, setSaved] = useState(false)
-
+  const [examId, setExamId] = useState('')
   const handleAnswerChange = (questionId, selectedChoice) => {
     if (!saved) {
       setSelectedAnswers((prevAnswers) => ({
@@ -43,7 +43,7 @@ const PracticeTest = () => {
       title: 'Xác nhận thử lại',
       icon: 'question',
       showCancelButton: true,
-      html: "Bạn có chắc chắn muốn thử lại ?"
+      html: 'Bạn có chắc chắn muốn thử lại ?'
     })
   }
 
@@ -82,7 +82,7 @@ const PracticeTest = () => {
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
                   setIsPaid(true)
-                  TestService.getExam('37901f73-7c4f-4cad-8074-1c2b4e99191d')
+                  TestService.getExam(examId)
                     .then((res) => {
                       setData(res.data.data)
                       setIsLoading(false)
@@ -106,7 +106,7 @@ const PracticeTest = () => {
                 cancelButtonColor: 'red',
                 cancelButtonText: 'Thử lại'
               }).then((confirm) => {
-                if(confirm.isConfirmed) {
+                if (confirm.isConfirmed) {
                   navigate('/payment')
                 }
               })
@@ -159,8 +159,14 @@ const PracticeTest = () => {
     } catch (error) {}
   }
 
+  useEffect(() => {
+    if (id) {
+      setExamId(id)
+    }
+  }, [id])
+
   if (!isPaid) {
-    return <InfoExam title='Kiểm tra Module 1' quantity={30} price={1000} handleSubmit={handlePaid} />
+    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} />
   }
 
   if (isLoading) {
@@ -169,7 +175,7 @@ const PracticeTest = () => {
 
   return (
     <>
-      <StepTitle title='Kiểm tra Module 1' />
+      <StepTitle title={title} />
       {data.map((ques, index) => (
         <Card
           key={ques.id}
