@@ -93,3 +93,22 @@ body {
 ::-webkit-scrollbar:horizontal {
   height: 6px; /* Chiều cao của thanh cuộn ngang */
 }
+
+/* CSS */
+@keyframes flash {
+  0% {
+    background-color: white;
+    color: black 
+  }
+  50% {
+    background-color: rgb(238, 163, 176); 
+  }
+  100% {
+    background-color: white;
+    color: black 
+  }
+}
+
+.flashing {
+  animation: flash 1s infinite;
+}

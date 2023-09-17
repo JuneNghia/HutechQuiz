@@ -1,5 +1,7 @@
 import CircleWithText from "../components/Icon/CircleWithText";
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
+import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
 
 export const BASE_URL = "/dashboard";
 export const BASE_URL_SERVICE = "https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1";
@@ -8,6 +10,13 @@ export const BASE_URL_SERVICE = "https://hutechquiz-api-64604df21b2f.herokuapp.c
 // http://localhost:8080/api/v1
 
 export const MenuSideBar = [
+  {
+    title: "Trang chủ",
+    to: "/",
+    icon: <HomeOutlinedIcon />,
+    index: 0,
+    subMenu: []
+  },
   {
     title: "Module M1",
     to: "/module-m1",
@@ -108,8 +117,8 @@ export const MenuSideBar = [
   {
     title: "Tài liệu ôn tập",
     to: "/document",
-    icon: <CircleWithText text="TL" />,
-    index: 2,
+    icon: <LocalLibraryOutlinedIcon />,
+    index: 3,
     subMenu: []
   },
 ];

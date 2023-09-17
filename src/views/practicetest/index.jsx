@@ -17,10 +17,16 @@ import PageLoader from '../../components/Loader/PageLoader'
 import InfoExam from './InfoExam'
 import WalletService from '../../services/wallet.service'
 import useAuth from '../../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 
-const PracticeTest = ({ id, quantity, title }) => {
+const PracticeTest = ({ id, quantity, title, time }) => {
+  const location = useLocation()
+
+  useEffect(() => {
+    setIsPaid(false)
+  }, [location.pathname])
+
   const { user } = useAuth()
   const navigate = useNavigate()
   const [isPaid, setIsPaid] = useState(false)
@@ -28,7 +34,6 @@ const PracticeTest = ({ id, quantity, title }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [saved, setSaved] = useState(false)
-  const [examId, setExamId] = useState('')
   const handleAnswerChange = (questionId, selectedChoice) => {
     if (!saved) {
       setSelectedAnswers((prevAnswers) => ({
@@ -82,7 +87,7 @@ const PracticeTest = ({ id, quantity, title }) => {
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
                   setIsPaid(true)
-                  TestService.getExam(examId)
+                  TestService.getExam(id)
                     .then((res) => {
                       setData(res.data.data)
                       setIsLoading(false)
@@ -116,6 +121,35 @@ const PracticeTest = ({ id, quantity, title }) => {
         }
       })
     } catch (error) {}
+  }
+
+  const handleTimeOut = () => {
+    Swal.fire({
+      icon: 'info',
+      html: 'Đang xử lý...<br/>Không tắt trang hoặc trình duyệt',
+      showCancelButton: false,
+      showConfirmButton: false,
+      allowOutsideClick: false,
+      allowEscapeKey: false
+    })
+
+    let correctCount = 0
+    data.forEach((ques) => {
+      if (selectedAnswers[ques.id] === ques.answer) {
+        correctCount++
+      }
+      setTimeout(() => {
+        Swal.fire({
+          icon: 'success',
+          html: `Nộp bài thành công<br/>Số câu làm đúng : <b>${correctCount} / ${data.length}</b>`,
+          confirmButtonText: 'Xem đáp án'
+        }).then((confirm) => {
+          if (confirm.isConfirmed) {
+            setSaved(true)
+          }
+        })
+      }, 1200)
+    })
   }
 
   const handleSubmit = () => {
@@ -159,14 +193,8 @@ const PracticeTest = ({ id, quantity, title }) => {
     } catch (error) {}
   }
 
-  useEffect(() => {
-    if (id) {
-      setExamId(id)
-    }
-  }, [id])
-
   if (!isPaid) {
-    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} />
+    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} time={time}/>
   }
 
   if (isLoading) {
@@ -175,7 +203,7 @@ const PracticeTest = ({ id, quantity, title }) => {
 
   return (
     <>
-      <StepTitle title={title} />
+      <StepTitle title={title} timeInSeconds={time} onSubmit={handleTimeOut} />
       {data.map((ques, index) => (
         <Card
           key={ques.id}

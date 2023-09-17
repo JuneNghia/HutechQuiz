@@ -34,6 +34,23 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
+      <Card className='mt-3'>
+        <CardHeader
+          title={
+            <div>
+              <span>Kiểm tra QPAN 1</span> <Chip label='Sắp ra mắt' color='info' size='small' />
+            </div>
+          }
+        />
+        <CardContent>
+          <Typography>
+            Di chuyển nhanh tới trang kiểm tra QPAN 1 tại{' '}
+            <Link className='text-blue-700' to='qpan_1/exam'>
+              đây
+            </Link>
+          </Typography>
+        </CardContent>
+      </Card>
     </>
   )
 }

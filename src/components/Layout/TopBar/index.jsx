@@ -32,8 +32,6 @@ const Topbar = () => {
     setBonus(user?.wallet?.bonus || 0)
   }, [user?.wallet])
 
-  console.log('hello')
-
   return (
     <Box
       sx={{
