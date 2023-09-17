@@ -98,10 +98,11 @@ export const MenuSideBar = [
   //     ],
   //   index: 3,
   // },
-  // {
-  //   title: "B1 Tiếng Hàn",
-  //   to: "/b1/korea",
-  //   icon: <CircleWithText text="B1" />,
-  //   index: 4,
-  // },
+  {
+    title: "Tài liệu ôn tập",
+    to: "/document",
+    icon: <CircleWithText text="TL" />,
+    index: 2,
+    subMenu: []
+  },
 ];

@@ -1,0 +1,48 @@
+[
+  {
+    "category": "Đại cương",
+    "subject": [
+      "Kinh tế chính trị Mác - Lênin",
+      "Chủ nghĩa xã hội",
+      "Cơ sở văn hoá Việt Nam",
+      "Lịch sử Đảng Cộng Sản Việt Nam",
+      "Lịch sử văn minh thế giới",
+      "Triết học Mác - Lê Nin",
+      "Pháp luật đại cương",
+      "Xã hội học",
+      "Quản trị học",
+      "Tâm lý học",
+      "Tư tưởng Hồ Chí Minh",
+      "Những nguyên lý cơ bản của chủ nghĩa Mác - Lênin",
+      "Con người và môi trường"
+    ]
+  },
+  {
+    "category": "Quốc phòng an ninh",
+    "subject": ["Quốc phòng an ninh 1", "Quốc phòng an ninh 2", "Quốc phòng an ninh 3"]
+  },
+  {
+    "category": "Tiếng anh",
+    "subject": ["Tiếng anh 1", "Tiếng anh 2", "Tiếng anh 3", "Tiếng anh 4", "Tiếng anh 5", "Tiếng anh 6"]
+  },
+  {
+    "category": "Chuyên ngành Công Nghệ Thông Tin",
+    "subject": ["Lập trình hướng đối tượng", "Nhập môn công nghệ thông tin"]
+  },
+  {
+    "category": "Chuyên ngành Quản Trị Kinh Doanh",
+    "subject": [
+      "Nghiệp vụ ngoại thương",
+      "Quản trị kinh doanh quốc tế",
+      "Thanh toán quốc tế",
+      "Marketing căn bản",
+      "Luật kinh doanh",
+      "Quản trị nguồn nhân lực",
+      "Quản trị chiến lược",
+      "Quản trị Logistics",
+      "Quản trị tài chính",
+      "Quản trị chất lượng",
+      "Kinh doanh quốc tế 1"
+    ]
+  }
+]
