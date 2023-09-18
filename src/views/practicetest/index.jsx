@@ -20,6 +20,7 @@ import useAuth from '../../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 import warningImg from '../../assets/warning.svg'
+import ReportService from '../../services/report.service'
 
 const PracticeTest = ({ id, quantity, title, time }) => {
   const location = useLocation()
@@ -129,9 +130,23 @@ const PracticeTest = ({ id, quantity, title, time }) => {
   }
 
   const handleReport = (id) => {
-    setIsReported(true)
-    console.log(id)
+    const data = {
+      id: id,
+      userId: user.id,
+      userPhone: user.phone,
+      userEmail: user.email,
+      userName: user.name
+    }
+    ReportService.question(data)
+      .then(() => {
+        setIsReported(true)
+      })
+      .catch(() => {
+        Swal.fire('Thất bại', 'Đã xảy ra lỗi, vui lòng thử lại sau', 'error')
+      })
   }
+
+  console.log(user)
 
   const handleTimeOut = () => {
     Swal.fire({
@@ -234,7 +249,7 @@ const PracticeTest = ({ id, quantity, title, time }) => {
                 </span>
                 {saved && (
                   <Button
-                    disabled={true}
+                    disabled={isReported}
                     onClick={() => handleReport(ques.id)}
                     variant='contained'
                     className={`!ml-2 !p-0 !px-2 !text-[15px] ${
