@@ -19,21 +19,20 @@ import WalletService from '../../services/wallet.service'
 import useAuth from '../../hooks/useAuth'
 import { useLocation, useNavigate } from 'react-router-dom'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
+import warningImg from '../../assets/warning.svg'
 
 const PracticeTest = ({ id, quantity, title, time }) => {
   const location = useLocation()
-
-  useEffect(() => {
-    setIsPaid(false)
-  }, [location.pathname])
 
   const { user } = useAuth()
   const navigate = useNavigate()
   const [isPaid, setIsPaid] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
+  const [isReported, setIsReported] = useState(false)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [saved, setSaved] = useState(false)
+
   const handleAnswerChange = (questionId, selectedChoice) => {
     if (!saved) {
       setSelectedAnswers((prevAnswers) => ({
@@ -42,6 +41,12 @@ const PracticeTest = ({ id, quantity, title, time }) => {
       }))
     }
   }
+
+  useEffect(() => {
+    setIsLoading(true)
+    setIsPaid(false)
+    setSaved(false)
+  }, [location.pathname])
 
   const handleTryAgain = () => {
     handleAlertConfirm({
@@ -123,6 +128,11 @@ const PracticeTest = ({ id, quantity, title, time }) => {
     } catch (error) {}
   }
 
+  const handleReport = (id) => {
+    setIsReported(true)
+    console.log(id)
+  }
+
   const handleTimeOut = () => {
     Swal.fire({
       icon: 'info',
@@ -194,7 +204,7 @@ const PracticeTest = ({ id, quantity, title, time }) => {
   }
 
   if (!isPaid) {
-    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} time={time}/>
+    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} time={time} />
   }
 
   if (isLoading) {
@@ -203,7 +213,7 @@ const PracticeTest = ({ id, quantity, title, time }) => {
 
   return (
     <>
-      <StepTitle title={title} timeInSeconds={time} onSubmit={handleTimeOut} />
+      <StepTitle title={title} timeInSeconds={time} onSubmit={handleTimeOut} showTimer={true} isSubmitted={saved} />
       {data.map((ques, index) => (
         <Card
           key={ques.id}
@@ -216,7 +226,29 @@ const PracticeTest = ({ id, quantity, title, time }) => {
               : 'bg-white outline-1'
           } outline mb-4`}
         >
-          <CardHeader title={`Câu ${index + 1}: ${ques.question}`} titleTypographyProps={{ fontSize: '1rem' }} />
+          <CardHeader
+            title={
+              <div className='flex justify-between items-center'>
+                <span>
+                  Câu {index + 1}: {ques.question}
+                </span>
+                {saved && (
+                  <Button
+                    disabled={true}
+                    onClick={() => handleReport(ques.id)}
+                    variant='contained'
+                    className={`!ml-2 !p-0 !px-2 !text-[15px] ${
+                      isReported ? '!bg-green-600 !text-white' : '!bg-white'
+                    } !text-black hover:!bg-red-600 hover:!text-white`}
+                  >
+                    <img src={warningImg} width='15px' className='mr-2' />
+                    {isReported ? 'Đã báo cáo' : 'Báo cáo'}
+                  </Button>
+                )}
+              </div>
+            }
+            titleTypographyProps={{ fontSize: '1rem' }}
+          />
           <CardContent>
             <RadioGroup
               row

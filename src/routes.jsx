@@ -87,7 +87,7 @@ const router = createBrowserRouter([
         //     quantity={60}
         //     title='Kiểm tra QPAN 1'
         //     id='15d57bbc-fb32-4c06-b0d8-1de3c4e8fd4b'
-        //     time={40 * 60}
+        //     time={0.3 * 60}
         //   />
         // ),
         element: (

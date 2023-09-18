@@ -1,4 +1,7 @@
 import React, { useEffect, useState } from 'react'
+import warningImg from '../../assets/warning.svg'
+import trophyImg from '../../assets/trophy.png'
+import clockImg from '../../assets/clock.svg'
 
 const style = {
   position: 'fixed',
@@ -10,29 +13,33 @@ const style = {
   zIndex: 999
 }
 
-const StepTitle = ({ title, timeInSeconds, onSubmit }) => {
+const StepTitle = ({ title, timeInSeconds, onSubmit, showTimer, isSubmitted }) => {
   const [timer, setTimer] = useState(timeInSeconds)
   const [warning, setWarning] = useState(false)
 
   useEffect(() => {
-    if (timer > 0) {
-      const intervalId = setInterval(() => {
-        setTimer((prevTimer) => prevTimer - 1)
-        if (timer <= 15) {
-          setWarning(true)
-        }
-      }, 1000)
-
-      return () => {
-        clearInterval(intervalId)
-      }
-    } else {
+    if (isSubmitted) {
       setWarning(false)
-      if (onSubmit) {
-        onSubmit()
+    } else {
+      if (timer > 0) {
+        const intervalId = setInterval(() => {
+          setTimer((prevTimer) => prevTimer - 1)
+          if (timer <= 15) {
+            setWarning(true)
+          }
+        }, 1000)
+
+        return () => {
+          clearInterval(intervalId)
+        }
+      } else {
+        setWarning(false)
+        if (onSubmit) {
+          onSubmit()
+        }
       }
     }
-  }, [timer])
+  }, [timer, isSubmitted])
 
   const hours = Math.floor(timer / 3600)
   const minutes = Math.floor((timer % 3600) / 60)
@@ -49,7 +56,8 @@ const StepTitle = ({ title, timeInSeconds, onSubmit }) => {
           <div className='text-xl w-max font-bold text-[white] z-10 absolute top-2 left-0'>{title}</div>
         </div>
       </div>
-      {timer && (
+
+      {showTimer && (
         <div
           style={{
             ...style,
@@ -58,7 +66,10 @@ const StepTitle = ({ title, timeInSeconds, onSubmit }) => {
           }}
           className={warning ? 'flashing' : ''}
         >
-          <span className='text-xl w-max font-bold'>{timer === 0 ? 'HẾT GIỜ' : formattedTime}</span>
+          <span className='text-xl w-max font-bold flex items-center'>
+            <img width={'30px'} className='mr-3' src={warning ? warningImg : timer === 0 ? trophyImg : clockImg} />
+            {timer === 0 ? 'HẾT GIỜ' : formattedTime}
+          </span>
         </div>
       )}
     </>
