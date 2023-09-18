@@ -202,7 +202,7 @@ const Sidebar = () => {
                 </h4>
               )}
 
-              {MenuSideBar.slice(1, 2).map((item) => (
+              {MenuSideBar.slice(1, 3).map((item) => (
                 <SubMenu className='text-zinc-600' icon={item.icon} key={item.index} label={item.title}>
                   {item.subMenu.map((e) => (
                     <Item
@@ -217,7 +217,7 @@ const Sidebar = () => {
                 </SubMenu>
               ))}
 
-              {MenuSideBar.slice(2,4).map((item) => (
+              {MenuSideBar.slice(3,4).map((item) => (
                 <Item
                   key={item.index}
                   title={item.title}

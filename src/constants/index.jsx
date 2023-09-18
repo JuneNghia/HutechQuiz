@@ -1,26 +1,26 @@
-import CircleWithText from "../components/Icon/CircleWithText";
-import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined';
+import CircleWithText from '../components/Icon/CircleWithText'
+import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
+import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
+import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined'
 
-export const BASE_URL = "/dashboard";
-export const BASE_URL_SERVICE = "https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1";
+export const BASE_URL = '/dashboard'
+export const BASE_URL_SERVICE = 'https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1'
 
 // https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1
 // http://localhost:8080/api/v1
 
 export const MenuSideBar = [
   {
-    title: "Trang chủ",
-    to: "/",
+    title: 'Trang chủ',
+    to: '/',
     icon: <HomeOutlinedIcon />,
     index: 0,
     subMenu: []
   },
   {
-    title: "Module M1",
-    to: "/module-m1",
-    icon: <CircleWithText text="M1" />,
+    title: 'Module M1',
+    to: '/module-m1',
+    icon: <CircleWithText text='M1' />,
     subMenu: [
       // {
       //   title: "Word",
@@ -41,13 +41,13 @@ export const MenuSideBar = [
       //   icon: <HomeOutlinedIcon />,
       // },
       {
-        title: "Kiểm tra",
-        to: "/module-m1/exam",
+        title: 'Kiểm tra',
+        to: '/module-m1/exam',
         index: 14,
-        icon: <EmojiEventsOutlinedIcon />,
-      },
+        icon: <EmojiEventsOutlinedIcon />
+      }
     ],
-    index: 1,
+    index: 1
   },
   // {
   //   title: "Module M3",
@@ -108,17 +108,24 @@ export const MenuSideBar = [
   //   index: 3,
   // },
   {
-    title: "QPAN 1",
-    to: "/qpan_1/exam",
-    icon: <CircleWithText text="QP" />,
+    title: 'QPAN',
+    to: '/qpan_1',
+    icon: <CircleWithText text='QP' />,
     index: 2,
-    subMenu: []
+    subMenu: [
+      {
+        title: 'QPAN 1',
+        to: '/qpan_1/exam',
+        icon: <CircleWithText text='1' />,
+        index: 21,
+      }
+    ]
   },
   {
-    title: "Tài liệu ôn tập",
-    to: "/document",
+    title: 'Tài liệu ôn tập',
+    to: '/document',
     icon: <LocalLibraryOutlinedIcon />,
     index: 3,
     subMenu: []
-  },
-];
+  }
+]

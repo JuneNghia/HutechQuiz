@@ -30,7 +30,8 @@ const PracticeTest = ({ id, quantity, title, time }) => {
   const [isPaid, setIsPaid] = useState(false)
   const [data, setData] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [isReported, setIsReported] = useState(false)
+  const [reported, setReported] = useState({})
+  const [isReporting, setIsReporting] = useState({})
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [saved, setSaved] = useState(false)
 
@@ -42,6 +43,23 @@ const PracticeTest = ({ id, quantity, title, time }) => {
       }))
     }
   }
+
+  // const testData = [
+  //   {
+  //     id: '8288e6b7-0f9c-498b-a17e-ce6bf7a5269a',
+  //     question: 'Với MS-Word, có thể nhấn phím nào để hiện các Key Tips cho phép truy cập lệnh từ bàn phím',
+  //     answer: 'Alt',
+  //     choices: ['Ctrl', 'Alt', 'Shift', 'Esc'],
+  //     categoryId: 'b8a7db65-f25d-478d-9a7c-c85868737bad'
+  //   },
+  //   {
+  //     id: 'bb3f8905-5fde-4d42-9853-fcba4bce935c',
+  //     question: 'Với MS-Word, có bao nhiêu kiểu hiển thị tài liệu',
+  //     answer: 'Trên 3',
+  //     choices: ['1', '2', '3', 'Trên 3'],
+  //     categoryId: 'b8a7db65-f25d-478d-9a7c-c85868737bad'
+  //   }
+  // ]
 
   useEffect(() => {
     setIsLoading(true)
@@ -129,9 +147,14 @@ const PracticeTest = ({ id, quantity, title, time }) => {
     } catch (error) {}
   }
 
-  const handleReport = (id) => {
+  const handleReport = (quesId) => {
+    setIsReporting((prevReporting) => ({
+      ...prevReporting,
+      [quesId]: true
+    }))
+
     const data = {
-      id: id,
+      id: quesId,
       userId: user.id,
       userPhone: user.phone,
       userEmail: user.email,
@@ -139,14 +162,25 @@ const PracticeTest = ({ id, quantity, title, time }) => {
     }
     ReportService.question(data)
       .then(() => {
-        setIsReported(true)
+        const updatedReport = {
+          isReported: true,
+          id: quesId
+        }
+
+        setReported((prevReported) => ({
+          ...prevReported,
+          [quesId]: updatedReport
+        }))
+
+        setIsReporting((prevReporting) => ({
+          ...prevReporting,
+          [quesId]: false
+        }))
       })
       .catch(() => {
         Swal.fire('Thất bại', 'Đã xảy ra lỗi, vui lòng thử lại sau', 'error')
       })
   }
-
-  console.log(user)
 
   const handleTimeOut = () => {
     Swal.fire({
@@ -170,6 +204,7 @@ const PracticeTest = ({ id, quantity, title, time }) => {
           confirmButtonText: 'Xem đáp án'
         }).then((confirm) => {
           if (confirm.isConfirmed) {
+         
             setSaved(true)
           }
         })
@@ -206,6 +241,7 @@ const PracticeTest = ({ id, quantity, title, time }) => {
                 confirmButtonText: 'Xem đáp án'
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
+                  
                   setSaved(true)
                 }
               })
@@ -229,6 +265,22 @@ const PracticeTest = ({ id, quantity, title, time }) => {
   return (
     <>
       <StepTitle title={title} timeInSeconds={time} onSubmit={handleTimeOut} showTimer={true} isSubmitted={saved} />
+      {saved && (
+        <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
+          <span className=''>
+            <span className='font-bold'>Lời nhắc: </span>
+            <span>
+              Do hệ thống đang phát triển nên sẽ có sai sót khi hiển thị đáp án câu hỏi, với các câu hỏi không hiển thị
+              ra đáp án (được hightlight nền vàng), các bạn vui lòng nhấn vào nút <span className='font-bold'>Báo Cáo</span> tương ứng ở các câu
+              hỏi. Mỗi câu hỏi báo cáo thành công được ghi nhận hợp lệ sẽ được thưởng{' '}
+              <span className='font-bold'>500đ</span> vào tài khoản thưởng. Cám ơn các bạn đã ủng hộ{' '}
+            </span>
+
+            <span className='text-blue-700 font-bold'>Hutech</span>
+            <span className='text-red-700 font-bold'> Quiz</span>
+          </span>
+        </Typography>
+      )}
       {data.map((ques, index) => (
         <Card
           key={ques.id}
@@ -249,15 +301,15 @@ const PracticeTest = ({ id, quantity, title, time }) => {
                 </span>
                 {saved && (
                   <Button
-                    disabled={isReported}
+                    disabled={reported[ques.id]?.isReported || isReporting[ques.id]}
                     onClick={() => handleReport(ques.id)}
                     variant='contained'
                     className={`!ml-2 !p-0 !px-2 !text-[15px] ${
-                      isReported ? '!bg-green-600 !text-white' : '!bg-white'
+                      reported[ques.id]?.isReported ? '!bg-green-600 !text-white' : '!bg-white'
                     } !text-black hover:!bg-red-600 hover:!text-white`}
                   >
                     <img src={warningImg} width='15px' className='mr-2' />
-                    {isReported ? 'Đã báo cáo' : 'Báo cáo'}
+                    {isReporting[ques.id] ? 'Đang báo cáo' : reported[ques.id]?.isReported ? 'Đã báo cáo' : 'Báo cáo'}
                   </Button>
                 )}
               </div>

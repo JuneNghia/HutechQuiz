@@ -82,20 +82,13 @@ const router = createBrowserRouter([
       },
       {
         path: '/qpan_1/exam',
-        // element: (
-        //   <PracticeTestPage
-        //     quantity={60}
-        //     title='Kiểm tra QPAN 1'
-        //     id='15d57bbc-fb32-4c06-b0d8-1de3c4e8fd4b'
-        //     time={0.3 * 60}
-        //   />
-        // ),
         element: (
-          <div className='font-bold text-red-500'>
-            Đang tổng hợp đề thi...
-            <br />
-            Dự kiến ra mắt ngày 21-9-2023
-          </div>
+          <PracticeTestPage
+            quantity={60}
+            title='Kiểm tra QPAN 1'
+            id='15d57bbc-fb32-4c06-b0d8-1de3c4e8fd4b'
+            time={60 * 60}
+          />
         ),
         exact: true
       }

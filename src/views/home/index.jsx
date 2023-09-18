@@ -38,7 +38,7 @@ const Home = () => {
         <CardHeader
           title={
             <div>
-              <span>Kiểm tra QPAN 1</span> <Chip label='Sắp ra mắt' color='info' size='small' />
+              <span>Kiểm tra QPAN 1</span> <Chip label='Mới' color='error' size='small' />
             </div>
           }
         />
