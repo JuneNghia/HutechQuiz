@@ -11,8 +11,11 @@ const UserManagement = () => {
   const { user } = useAuth()
   const [isLoading, setIsLoading] = useState(true)
   const [totalRevenue, setTotalRevenue] = useState(0)
+  const [todayRes, setTodayRes] = useState(0)
   const [total, setTotal] = useState(0)
   const [rows, setRows] = useState([])
+  const currentDate = dayjs().format('DD-MM-YYYY')
+
   const columns = [
     {
       field: 'name',
@@ -85,25 +88,40 @@ const UserManagement = () => {
         if (listUser) {
           setIsLoading(false)
           setRows(listUser)
-          setTotal(rows.length)
+          setTotal(listUser.length)
+
+          const currentDate = new Date()
+          const totalRevenue = listUser.reduce((total = 0, user) => {
+            if (user.role === 'USER') {
+              return total + user.wallet.totalDeposit
+            }
+            return total
+          }, 0)
+
+          setTotalRevenue(totalRevenue)
+
+          const todayUserRes = listUser.reduce((total = 0, user) => {
+            const userCreatedAt = new Date(user.createdAt)
+
+            if (
+              userCreatedAt.getDate() === currentDate.getDate() &&
+              userCreatedAt.getMonth() === currentDate.getMonth() &&
+              userCreatedAt.getFullYear() === currentDate.getFullYear()
+            ) {
+              if (user.role === 'USER') {
+                total++
+              }
+            }
+            return total
+          }, 0)
+
+          setTodayRes(todayUserRes)
         }
-
-        const totalRevenue = listUser.reduce((total = 0, user) => {
-          if (user.role === 'USER') {
-            return total + user.wallet.totalDeposit
-          }
-          return total
-        }, 0)
-
-        setTotalRevenue(totalRevenue)
       })
       .catch(() => {
         setIsLoading(false)
       })
   }, [])
-
-  console.log(totalRevenue)
-  console.log(rows)
 
   return (
     <>
@@ -112,6 +130,11 @@ const UserManagement = () => {
       ) : (
         <>
           <div className='mb-3'>
+            Tổng số lượng tài khoản: <span className='font-bold'>{formattedValuePrice(total.toString())}</span>
+            <br />
+            Tổng tài khoản mới hôm nay ({currentDate}) :{' '}
+            <span className='font-bold'>{formattedValuePrice(todayRes.toString())}</span>
+            <br />
             Tổng doanh thu: <span className='font-bold'>{formattedValuePrice(totalRevenue.toString())}đ</span>
           </div>
           <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} paginationMode='client' />
