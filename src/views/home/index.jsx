@@ -1,9 +1,12 @@
-import { Badge, Card, CardContent, CardHeader, Chip, Typography } from '@mui/material'
+import { Badge, Button, Card, CardContent, CardHeader, Chip, Typography } from '@mui/material'
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import StepTitle from '../../components/StepTitle'
+import useAuth from '../../hooks/useAuth'
 
 const Home = () => {
+  const { user } = useAuth()
+  const navigate = useNavigate()
   return (
     <>
       <StepTitle title='Thông báo' />
@@ -17,6 +20,38 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
+      {user.role === 'ADMIN' && (
+        <>
+          <Card className='mt-3'>
+            <CardHeader
+              title={
+                <div>
+                  <span>Nạp tiền khách hàng</span> <Chip label='ADMIN' color='success' size='small' />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button variant='contained' onClick={() => navigate('/user-deposit')}>
+                Bấm dô đây
+              </Button>
+            </CardContent>
+          </Card>
+          <Card className='mt-3'>
+            <CardHeader
+              title={
+                <div>
+                  <span>Quản lý khách hàng / Doanh thu</span> <Chip label='ADMIN' color='success' size='small' />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button variant='contained' onClick={() => navigate('/user-management')}>
+                Bấm dô đây
+              </Button>
+            </CardContent>
+          </Card>
+        </>
+      )}
       <Card className='mt-3'>
         <CardHeader
           title={
