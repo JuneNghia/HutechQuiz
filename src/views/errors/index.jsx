@@ -1,9 +1,13 @@
 import { Box, Button, Container, Typography } from '@mui/material'
 import img404 from '../../assets/errors/error-404.png'
 import { HiArrowSmLeft } from 'react-icons/hi'
+import { Helmet } from 'react-helmet'
 
-const Error = ({minHeight}) => (
+const Error = ({ minHeight }) => (
   <>
+    <Helmet>
+      <title>Không tìm thấy trang</title>
+    </Helmet>
     <Box
       className=''
       component='main'

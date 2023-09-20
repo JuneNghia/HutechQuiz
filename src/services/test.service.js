@@ -1,7 +1,7 @@
 import axiosConfig from "../utils/axios"
 
 const TEST = {
-    GET_EXAM: (id) => `/test/get-exam/${id}`
+    GET_EXAM: (id) => `/test/get-exam/${id}`,
 }
 
 const TestService = {

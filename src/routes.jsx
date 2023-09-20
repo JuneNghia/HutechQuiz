@@ -14,6 +14,8 @@ const WalletPage = lazy(() => import('./views/wallet'))
 const UserManagementPage = lazy(() => import('./views/admin/usermanagement'))
 const UserDepositPage = lazy(() => import('./views/admin/userdeposit'))
 const DocumentPage = lazy(() => import('./views/document'))
+const AddQuestionPage = lazy(() => import('./views/admin/addquestion'))
+const AddSubjectPage = lazy(() => import('./views/admin/addsubject'))
 
 const router = createBrowserRouter([
   {
@@ -52,6 +54,16 @@ const router = createBrowserRouter([
         exact: true,
         path: '/user-deposit',
         element: <UserDepositPage />
+      },
+      {
+        exact: true,
+        path: '/add-question',
+        element: <AddQuestionPage />
+      },
+      {
+        exact: true,
+        path: '/add-subject',
+        element: <AddSubjectPage />
       },
       // {
       //   path: '/module-m1/word',

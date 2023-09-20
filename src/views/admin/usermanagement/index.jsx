@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Error from '../../errors'
 import useAuth from '../../../hooks/useAuth'
-import { Chip, Typography } from '@mui/material'
+import { Chip } from '@mui/material'
 import CustomDataGrid from '../../../components/Datagrid'
 import UserService from '../../../services/user.service'
 import dayjs from 'dayjs'

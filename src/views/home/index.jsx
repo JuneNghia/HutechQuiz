@@ -50,8 +50,53 @@ const Home = () => {
               </Button>
             </CardContent>
           </Card>
+          {/* <Card className='mt-3'>
+            <CardHeader
+              title={
+                <div>
+                  <span>Thêm học phần mới</span> <Chip label='ADMIN' color='success' size='small' />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button variant='contained' onClick={() => navigate('/add-subject')}>
+                Bấm dô đây
+              </Button>
+            </CardContent>
+          </Card> */}
+          <Card className='mt-3'>
+            <CardHeader
+              title={
+                <div>
+                  <span>Thêm câu hỏi mới</span> <Chip label='ADMIN' color='success' size='small' />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button variant='contained' onClick={() => navigate('/add-question')}>
+                Bấm dô đây
+              </Button>
+            </CardContent>
+          </Card>
         </>
       )}
+      <Card className='mt-3'>
+        <CardHeader
+          title={
+            <div>
+              <span>Kiểm tra Ví tiền</span> <Chip label='Hot' color='error' size='small' />
+            </div>
+          }
+        />
+        <CardContent>
+          <Typography>
+            Di chuyển nhanh tới trang Ví tiền tại{' '}
+            <Link className='text-blue-700' to='wallet'>
+              đây
+            </Link>
+          </Typography>
+        </CardContent>
+      </Card>
       <Card className='mt-3'>
         <CardHeader
           title={
