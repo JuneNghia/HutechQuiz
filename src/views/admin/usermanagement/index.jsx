@@ -13,6 +13,7 @@ const UserManagement = () => {
   const [totalRevenue, setTotalRevenue] = useState(0)
   const [todayRes, setTodayRes] = useState(0)
   const [total, setTotal] = useState(0)
+  const [totalUserNoDeposit, setTotalUserNoDeposit] = useState(0)
   const [rows, setRows] = useState([])
   const currentDate = dayjs().format('DD-MM-YYYY')
 
@@ -116,6 +117,15 @@ const UserManagement = () => {
           }, 0)
 
           setTodayRes(todayUserRes)
+
+          const totalNoDeposit = listUser.reduce((total = 0, user) => {
+            if (user.role === 'USER' && user.wallet.totalDeposit === 0) {
+              total++
+            }
+            return total
+          }, 0)
+
+          setTotalUserNoDeposit(totalNoDeposit)
         }
       })
       .catch(() => {
@@ -132,8 +142,11 @@ const UserManagement = () => {
           <div className='mb-3'>
             Tổng số lượng tài khoản: <span className='font-bold'>{formattedValuePrice(total.toString())}</span>
             <br />
-            Tổng tài khoản mới hôm nay ({currentDate}) :{' '}
-            <span className='font-bold'>{formattedValuePrice(todayRes.toString())}</span>
+            Tổng tài khoản mới hôm nay ({currentDate}):
+            <span className='font-bold'> {formattedValuePrice(todayRes.toString())}</span>
+            <br />
+            Tổng tài khoản đã tạo nhưng chưa nạp:
+            <span className='font-bold'> {formattedValuePrice(totalUserNoDeposit.toString())}</span>
             <br />
             Tổng doanh thu: <span className='font-bold'>{formattedValuePrice(totalRevenue.toString())}đ</span>
           </div>
