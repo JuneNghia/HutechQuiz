@@ -1,6 +1,6 @@
 import * as Yup from 'yup'
 
-const phoneRegExp = /^(0|\+84)(3[2-9]|5[6|8|9]|7[0|6-9]|8[1-5]|9[0|3|4|5|7|8])+([0-9]{7})$/
+const phoneRegExp = /(84|0[3|5|7|8|9])+([0-9]{8})\b/g;
 
 export const loginEmailValidationSchema = Yup.object({
   email: Yup.string().email('Địa chỉ email không hợp lệ').max(255).required('Địa chỉ Email không được để trống'),
