@@ -118,6 +118,12 @@ export const MenuSideBar = [
         to: '/qpan_1/exam',
         icon: <CircleWithText text='1' />,
         index: 21,
+      },
+      {
+        title: 'QPAN 2',
+        to: '/qpan_2/exam',
+        icon: <CircleWithText text='2' />,
+        index: 22,
       }
     ]
   },

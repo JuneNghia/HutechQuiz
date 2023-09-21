@@ -103,6 +103,18 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/qpan_2/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Kiểm tra QPAN 2'
+            id='6f1894e2-8888-4358-b8cc-14a80ee8782b'
+            time={60 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

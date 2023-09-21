@@ -131,6 +131,23 @@ const Home = () => {
           </Typography>
         </CardContent>
       </Card>
+      <Card className='mt-3'>
+        <CardHeader
+          title={
+            <div>
+              <span>Kiểm tra QPAN 2</span> <Chip label='Mới' color='error' size='small' />
+            </div>
+          }
+        />
+        <CardContent>
+          <Typography>
+            Di chuyển nhanh tới trang kiểm tra QPAN 2 tại{' '}
+            <Link className='text-blue-700' to='qpan_2/exam'>
+              đây
+            </Link>
+          </Typography>
+        </CardContent>
+      </Card>
     </>
   )
 }
