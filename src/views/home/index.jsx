@@ -50,11 +50,11 @@ const Home = () => {
               </Button>
             </CardContent>
           </Card>
-          {/* <Card className='mt-3'>
+          <Card className='mt-3'>
             <CardHeader
               title={
                 <div>
-                  <span>Thêm học phần mới</span> <Chip label='ADMIN' color='success' size='small' />
+                  <span>Thêm môn học / học phần mới</span> <Chip label='ADMIN' color='success' size='small' />
                 </div>
               }
             />
@@ -63,7 +63,7 @@ const Home = () => {
                 Bấm dô đây
               </Button>
             </CardContent>
-          </Card> */}
+          </Card>
           <Card className='mt-3'>
             <CardHeader
               title={
