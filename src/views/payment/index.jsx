@@ -25,9 +25,7 @@ const Payment = () => {
   const navigate = useNavigate()
 
   const dataBanking = [
-    '0933737 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa',
-    '000019122003 - Ngân hàng MB Bank - Lê Lan Nhi',
-    '0000028012001 - Ngân hàng MB Bank - Lê Kiều Lan'
+    '8889 8017 478 573 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa',
   ]
 
   const data = {
