@@ -58,7 +58,7 @@ export const paymentValidation = Yup.object({
 })
 
 export const depositUserValidation = Yup.object({
-  phone: Yup.string().matches(phoneDepositExp, 'Số điện thoại không hợp lệ').required('Số điện thoại không được để trống'),
+  phone: Yup.string().required('Số điện thoại không được để trống'),
   amount: Yup.string()
     .required('Vui lòng nhập số tiền cần nạp')
     .test('minAmount', 'Số tiền phải lớn hơn hoặc bằng 20.000', function (value) {

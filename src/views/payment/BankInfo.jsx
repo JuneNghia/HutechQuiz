@@ -1,4 +1,4 @@
-import { Button, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
@@ -26,7 +26,7 @@ const BankInfo = ({ data, type }) => {
   const handlePaid = () => {
     Swal.fire(
       '',
-      'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút và thực hiện tải lại trang để cập nhật số dư.<br/><br/><b>Hotline hỗ trợ : 055 9560 220</b>',
+      'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút và thực hiện tải lại trang để cập nhật số dư.<br/><br/><b>Hotline hỗ trợ : 0934 945 803</b>',
       'info'
     )
   }
@@ -45,17 +45,26 @@ const BankInfo = ({ data, type }) => {
         <>
           <CardHeader title='Thông tin chuyển khoản' />
           <CardContent component='div' className='mt-3'>
-            {type === 'bank'
-              ? infoBank.map((info) => (
-                  <Typography key={info} sx={{ marginTop: '5px' }}>
-                    {info}
-                  </Typography>
-                ))
-              : infoMomo.map((info) => (
-                  <Typography key={info} sx={{ marginTop: '5px' }}>
-                    {info}
-                  </Typography>
-                ))}
+            <Box className='p-2 border-dotted border-2 border-sky-500 w-fit'>
+              {type === 'bank'
+                ? infoBank.map((info) => (
+                    <Typography key={info} sx={{ marginTop: '5px' }}>
+                      {info}
+                    </Typography>
+                  ))
+                : infoMomo.map((info) => (
+                    <Typography key={info} sx={{ marginTop: '5px' }}>
+                      {info}
+                    </Typography>
+                  ))}
+            </Box>
+
+            <Typography className='!mt-3'>
+              <span className='font-bold text-red-600'>Lưu ý: </span>Trước khi xác nhận chuyển khoản, vui lòng 
+              <b> kiểm tra chính xác nội dung</b> chuyển khoản trước khi chuyển vì đây là thông tin được xác định để thực hiện yêu cầu
+              nạp tiền của bạn. Các giao dịch <b>không có nội dung</b> hoặc <b>nội dung không chính xác</b> sẽ không được hỗ trợ hoàn
+              tiền.
+            </Typography>
 
             <Button
               onClick={handlePaid}
