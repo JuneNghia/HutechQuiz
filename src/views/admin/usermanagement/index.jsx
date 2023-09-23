@@ -76,7 +76,7 @@ const UserManagement = () => {
       headerName: 'Thời gian khởi tạo',
       flex: 1,
       renderCell: (params) => {
-        return <span>{dayjs(params.value).format('DD-MM-YYYY HH:MM:ss')}</span>
+        return <span>{dayjs(params.value).format('DD-MM-YYYY HH:mm:ss')}</span>
       }
     }
   ]
