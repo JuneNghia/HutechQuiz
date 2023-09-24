@@ -63,6 +63,13 @@ const Payment = () => {
       <Button onClick={() => navigate('/wallet')} variant='outlined' sx={{ mb: 2 }}>
         <KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small' /> Quay lại ví tiền
       </Button>
+      <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
+        <span className=''>
+          <span className='font-bold'>Nếu sau 5 phút, các bạn tải lại trang vẫn không nhận tiền vui lòng liên hệ <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.</span>
+          
+         
+        </span>
+      </Typography>
       <Card className='!bg-white !mb-5'>
         <CardHeader title='Nạp tiền vào ví Hutech Quiz' />
         <CardContent>
