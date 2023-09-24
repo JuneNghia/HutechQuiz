@@ -7,9 +7,14 @@ import logoHutech from '../../../assets/logo-hutech.png'
 import { MenuSideBar } from '../../../constants'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
-const Item = ({ title, to, icon, selected }) => {
+const Item = ({ title, to, icon, selected, newBlank }) => {
   return (
-    <MenuItem active={selected === to} style={{ color: 'white' }} icon={icon} component={<Link to={to} />}>
+    <MenuItem
+      active={selected === to}
+      style={{ color: 'white' }}
+      icon={icon}
+      component={<Link to={to} target={newBlank && '_blank'} />}
+    >
       <Typography variant='h5'>{title}</Typography>
     </MenuItem>
   )
@@ -217,7 +222,7 @@ const Sidebar = () => {
                 </SubMenu>
               ))}
 
-              {MenuSideBar.slice(3,5).map((item) => (
+              {MenuSideBar.slice(3, 5).map((item) => (
                 <Item
                   key={item.index}
                   title={item.title}
@@ -225,6 +230,7 @@ const Sidebar = () => {
                   to={item.to}
                   selected={selected}
                   setSelected={setSelected}
+                  newBlank={item.newBlank}
                 />
               ))}
             </Menu>

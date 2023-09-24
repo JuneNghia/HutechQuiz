@@ -140,6 +140,7 @@ export const MenuSideBar = [
     to: 'https://www.facebook.com/groups/679595774098227',
     icon: <ShareOutlinedIcon />,
     index: 4,
+    newBlank: true,
     subMenu: []
   }
 ]
