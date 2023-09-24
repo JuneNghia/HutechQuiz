@@ -2,6 +2,7 @@ import CircleWithText from '../components/Icon/CircleWithText'
 import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined'
+import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 
 export const BASE_URL = '/dashboard'
 export const BASE_URL_SERVICE = 'https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1'
@@ -117,13 +118,13 @@ export const MenuSideBar = [
         title: 'QPAN 1',
         to: '/qpan_1/exam',
         icon: <CircleWithText text='1' />,
-        index: 21,
+        index: 21
       },
       {
         title: 'QPAN 2',
         to: '/qpan_2/exam',
         icon: <CircleWithText text='2' />,
-        index: 22,
+        index: 22
       }
     ]
   },
@@ -132,6 +133,13 @@ export const MenuSideBar = [
     to: '/document',
     icon: <LocalLibraryOutlinedIcon />,
     index: 3,
+    subMenu: []
+  },
+  {
+    title: 'Chia sẻ tài liệu',
+    to: 'https://www.facebook.com/groups/679595774098227',
+    icon: <ShareOutlinedIcon />,
+    index: 4,
     subMenu: []
   }
 ]

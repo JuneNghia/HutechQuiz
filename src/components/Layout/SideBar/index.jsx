@@ -217,7 +217,7 @@ const Sidebar = () => {
                 </SubMenu>
               ))}
 
-              {MenuSideBar.slice(3,4).map((item) => (
+              {MenuSideBar.slice(3,5).map((item) => (
                 <Item
                   key={item.index}
                   title={item.title}
