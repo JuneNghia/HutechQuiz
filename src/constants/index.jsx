@@ -44,7 +44,6 @@ export const MenuSideBar = [
       {
         title: 'Kiểm tra',
         to: '/module-m1/exam',
-        index: 14,
         icon: <EmojiEventsOutlinedIcon />
       }
     ],
@@ -118,28 +117,39 @@ export const MenuSideBar = [
         title: 'QPAN 1',
         to: '/qpan_1/exam',
         icon: <CircleWithText text='1' />,
-        index: 21
       },
       {
         title: 'QPAN 2',
         to: '/qpan_2/exam',
         icon: <CircleWithText text='2' />,
-        index: 22
       }
+    ]
+  },
+  {
+    title: 'Đại Cương',
+    to: '/qpan_1',
+    icon: <CircleWithText text='ĐC' />,
+    index: 3,
+    subMenu: [
+      {
+        title: 'KTCT MAC',
+        to: '/ktct_mac/exam',
+        icon: <CircleWithText text='1' />,
+      },
     ]
   },
   {
     title: 'Tài liệu ôn tập',
     to: '/document',
     icon: <LocalLibraryOutlinedIcon />,
-    index: 3,
+    index: 999,
     subMenu: []
   },
   {
     title: 'Chia sẻ tài liệu',
     to: 'https://www.facebook.com/groups/679595774098227',
     icon: <ShareOutlinedIcon />,
-    index: 4,
+    index: 1000,
     newBlank: true,
     subMenu: []
   }

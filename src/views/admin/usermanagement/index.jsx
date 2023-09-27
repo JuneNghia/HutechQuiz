@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import Error from '../../errors'
 import useAuth from '../../../hooks/useAuth'
-import { Chip } from '@mui/material'
+import { Chip, IconButton, TextField } from '@mui/material'
 import CustomDataGrid from '../../../components/Datagrid'
 import UserService from '../../../services/user.service'
+import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
 
 const UserManagement = () => {
   const { user } = useAuth()
+  const [searchKeyword, setSearchKeyword] = useState('')
   const [isLoading, setIsLoading] = useState(true)
   const [totalRevenue, setTotalRevenue] = useState(0)
   const [todayRes, setTodayRes] = useState(0)
@@ -133,6 +135,19 @@ const UserManagement = () => {
       })
   }, [])
 
+  const filteredData = rows.filter((user) => {
+    if (
+      user.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
+      user.phone.includes(searchKeyword) || 
+      user.email.toLowerCase().includes(searchKeyword.toLowerCase())
+    ) {
+      return true
+    }
+    return false
+  })
+
+  console.log(rows)
+
   return (
     <>
       {user.role === 'USER' ? (
@@ -150,7 +165,23 @@ const UserManagement = () => {
             <br />
             Tổng doanh thu: <span className='font-bold'>{formattedValuePrice(totalRevenue.toString())}đ</span>
           </div>
-          <CustomDataGrid columns={columns} rows={rows} isLoading={isLoading} paginationMode='client' />
+          <TextField
+            className=' w-full bg-white !mb-3'
+            inputProps={{ style: { padding: 0 } }}
+            placeholder='Tìm kiếm bằng tên, số điện thoại hoặc email'
+            size='small'
+            focused
+            InputProps={{
+              startAdornment: (
+                <IconButton>
+                  <SearchIcon />
+                </IconButton>
+              )
+            }}
+            value={searchKeyword}
+            onChange={(event) => setSearchKeyword(event.target.value)}
+          />
+          <CustomDataGrid columns={columns} rows={filteredData} isLoading={isLoading} paginationMode='client' />
         </>
       )}
     </>

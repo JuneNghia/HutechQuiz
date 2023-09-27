@@ -115,6 +115,18 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/ktct_mac/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Kiểm tra KTCT MAC'
+            id='bf304142-23ef-4d62-9575-fecf97723e16'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
