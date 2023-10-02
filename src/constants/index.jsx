@@ -12,14 +12,14 @@ export const BASE_URL_SERVICE = 'https://hutechquiz-api-64604df21b2f.herokuapp.c
 
 export const MenuSideBar = [
   {
-    title: 'Trang chủ',
+    title: 'Trang Chủ',
     to: '/',
     icon: <HomeOutlinedIcon />,
     index: 0,
     subMenu: []
   },
   {
-    title: 'Chứng chỉ',
+    title: 'Chứng Chỉ',
     to: '',
     icon: <CircleWithText text='CC' />,
     subMenu: [
@@ -43,8 +43,13 @@ export const MenuSideBar = [
       // },
       {
         title: 'Module M1',
-        to: '/module-m1/exam',
+        to: '/module_m1/exam',
         icon: <CircleWithText text='M1' />
+      },
+      {
+        title: 'Module M3',
+        to: '/module_m3/exam',
+        icon: <CircleWithText text='M3' />
       }
     ],
     index: 1

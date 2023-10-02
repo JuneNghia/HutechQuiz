@@ -66,13 +66,26 @@ const router = createBrowserRouter([
         element: <AddSubjectPage />
       },
       {
-        path: '/module-m1/exam',
+        path: '/module_m1/exam',
         element: (
           <PracticeTestPage
             quantity={30}
             subTitle='Module M1'
             title='Module M1'
             id='37901f73-7c4f-4cad-8074-1c2b4e99191d'
+            time={30 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/module_m3/exam',
+        element: (
+          <PracticeTestPage
+            quantity={30}
+            subTitle='Module M3'
+            title='Module M3'
+            id='5e340da3-96a7-4eb5-ab39-694c120d99b3'
             time={30 * 60}
           />
         ),

@@ -9,7 +9,13 @@ const dataNotify = [
         title: 'Kiểm tra M1' ,
         text: 'Di chuyển nhanh tới trang kiểm tra M1 tại',
         color: 'error',
-        link: 'module-m1/exam',
+        link: 'module_m1/exam',
+    },
+    {
+        title: 'Kiểm tra M3' ,
+        text: 'Di chuyển nhanh tới trang kiểm tra M3 tại',
+        color: 'error',
+        link: 'module_m3/exam',
     },
     {
         title: 'Kiểm tra QPAN 1' ,
