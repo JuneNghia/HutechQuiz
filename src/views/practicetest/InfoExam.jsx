@@ -2,11 +2,15 @@ import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/mat
 import React from 'react'
 import { formattedValuePrice } from '../../utils/common/formatValue'
 import { useNavigate } from 'react-router-dom'
+import { Helmet } from 'react-helmet'
 
 const InfoExam = ({ title, handleSubmit, quantity, price, time }) => {
   const navigate = useNavigate()
   return (
     <>
+     <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
         <span className=''>
           <span className='font-bold text-red-500'>Lưu ý: </span>

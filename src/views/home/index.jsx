@@ -4,12 +4,16 @@ import { Link, useNavigate } from 'react-router-dom'
 import StepTitle from '../../components/StepTitle'
 import useAuth from '../../hooks/useAuth'
 import dataNotify from './data'
+import { Helmet } from 'react-helmet'
 
 const Home = () => {
   const { user } = useAuth()
   const navigate = useNavigate()
   return (
     <>
+      <Helmet>
+        <title>Trang Chủ</title>
+      </Helmet>
       <StepTitle title='Thông báo' />
       <Card>
         <CardHeader title='Chào mừng bạn đến với Hutech Quiz' />

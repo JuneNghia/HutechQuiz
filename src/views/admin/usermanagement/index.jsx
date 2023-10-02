@@ -7,6 +7,7 @@ import UserService from '../../../services/user.service'
 import SearchIcon from '@mui/icons-material/Search'
 import dayjs from 'dayjs'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
+import { Helmet } from 'react-helmet'
 
 const UserManagement = () => {
   const { user } = useAuth()
@@ -154,6 +155,9 @@ const UserManagement = () => {
         <Error />
       ) : (
         <>
+         <Helmet>
+            <title>Quản lý tài khoản</title>
+          </Helmet>
           <div className='mb-3'>
             Tổng số lượng tài khoản: <span className='font-bold'>{formattedValuePrice(total.toString())}</span>
             <br />
