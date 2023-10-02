@@ -22,7 +22,7 @@ import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 import warningImg from '../../assets/warning.svg'
 import ReportService from '../../services/report.service'
 
-const PracticeTest = ({ id, quantity, title, time }) => {
+const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const location = useLocation()
 
   const { user } = useAuth()
@@ -204,7 +204,6 @@ const PracticeTest = ({ id, quantity, title, time }) => {
           confirmButtonText: 'Xem đáp án'
         }).then((confirm) => {
           if (confirm.isConfirmed) {
-         
             setSaved(true)
           }
         })
@@ -241,7 +240,6 @@ const PracticeTest = ({ id, quantity, title, time }) => {
                 confirmButtonText: 'Xem đáp án'
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
-                  
                   setSaved(true)
                 }
               })
@@ -264,16 +262,23 @@ const PracticeTest = ({ id, quantity, title, time }) => {
 
   return (
     <>
-      <StepTitle title={title} timeInSeconds={time} onSubmit={handleTimeOut} showTimer={true} isSubmitted={saved} />
+      <StepTitle
+        title={`Kiểm tra: ${subTitle}`}
+        timeInSeconds={time}
+        onSubmit={handleTimeOut}
+        showTimer={true}
+        isSubmitted={saved}
+      />
       {saved && (
         <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
           <span className=''>
             <span className='font-bold'>Lời nhắc: </span>
             <span>
               Do hệ thống đang phát triển nên sẽ có sai sót khi hiển thị đáp án câu hỏi, với các câu hỏi không hiển thị
-              ra đáp án (được hightlight nền vàng), các bạn vui lòng nhấn vào nút <span className='font-bold'>Báo Cáo</span> tương ứng ở các câu
-              hỏi. Mỗi câu hỏi báo cáo thành công được ghi nhận hợp lệ sẽ được thưởng{' '}
-              <span className='font-bold'>500đ</span> vào tài khoản thưởng. Cám ơn các bạn đã ủng hộ{' '}
+              ra đáp án (được hightlight nền vàng), các bạn vui lòng nhấn vào nút{' '}
+              <span className='font-bold'>Báo Cáo</span> tương ứng ở các câu hỏi. Mỗi câu hỏi báo cáo thành công được
+              ghi nhận hợp lệ sẽ được thưởng <span className='font-bold'>500đ</span> vào tài khoản thưởng. Cám ơn các
+              bạn đã ủng hộ{' '}
             </span>
 
             <span className='text-blue-700 font-bold'>Hutech</span>

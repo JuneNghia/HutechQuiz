@@ -3,6 +3,7 @@ import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import StepTitle from '../../components/StepTitle'
 import useAuth from '../../hooks/useAuth'
+import dataNotify from './data'
 
 const Home = () => {
   const { user } = useAuth()
@@ -50,7 +51,7 @@ const Home = () => {
               </Button>
             </CardContent>
           </Card>
-          <Card className='mt-3'>
+          {/* <Card className='mt-3'>
             <CardHeader
               title={
                 <div>
@@ -63,7 +64,7 @@ const Home = () => {
                 Bấm dô đây
               </Button>
             </CardContent>
-          </Card>
+          </Card> */}
           <Card className='mt-3'>
             <CardHeader
               title={
@@ -80,74 +81,26 @@ const Home = () => {
           </Card>
         </>
       )}
-      <Card className='mt-3'>
-        <CardHeader
-          title={
-            <div>
-              <span>Kiểm tra Ví tiền</span> <Chip label='Hot' color='error' size='small' />
-            </div>
-          }
-        />
-        <CardContent>
-          <Typography>
-            Di chuyển nhanh tới trang Ví tiền tại{' '}
-            <Link className='text-blue-700' to='wallet'>
-              đây
-            </Link>
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className='mt-3'>
-        <CardHeader
-          title={
-            <div>
-              <span>Kiểm tra M1</span> <Chip label='Mới' color='error' size='small' />
-            </div>
-          }
-        />
-        <CardContent>
-          <Typography>
-            Di chuyển nhanh tới trang kiểm tra M1 tại{' '}
-            <Link className='text-blue-700' to='module-m1/exam'>
-              đây
-            </Link>
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className='mt-3'>
-        <CardHeader
-          title={
-            <div>
-              <span>Kiểm tra QPAN 1</span> <Chip label='Mới' color='error' size='small' />
-            </div>
-          }
-        />
-        <CardContent>
-          <Typography>
-            Di chuyển nhanh tới trang kiểm tra QPAN 1 tại{' '}
-            <Link className='text-blue-700' to='qpan_1/exam'>
-              đây
-            </Link>
-          </Typography>
-        </CardContent>
-      </Card>
-      <Card className='mt-3'>
-        <CardHeader
-          title={
-            <div>
-              <span>Kiểm tra QPAN 2</span> <Chip label='Mới' color='error' size='small' />
-            </div>
-          }
-        />
-        <CardContent>
-          <Typography>
-            Di chuyển nhanh tới trang kiểm tra QPAN 2 tại{' '}
-            <Link className='text-blue-700' to='qpan_2/exam'>
-              đây
-            </Link>
-          </Typography>
-        </CardContent>
-      </Card>
+
+      {dataNotify.map((notify) => (
+        <Card key={`notify_${notify.title}`} className='mt-3'>
+          <CardHeader
+            title={
+              <div>
+                <span>{notify.title}</span> <Chip label='Hot' color={notify.color} size='small' />
+              </div>
+            }
+          />
+          <CardContent>
+            <Typography>
+              {notify.text}{' '}
+              <Link className='text-blue-700' to={notify.link}>
+                đây
+              </Link>
+            </Typography>
+          </CardContent>
+        </Card>
+      ))}
     </>
   )
 }

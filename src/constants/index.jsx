@@ -19,9 +19,9 @@ export const MenuSideBar = [
     subMenu: []
   },
   {
-    title: 'Module M1',
-    to: '/module-m1',
-    icon: <CircleWithText text='M1' />,
+    title: 'Chứng chỉ',
+    to: '',
+    icon: <CircleWithText text='CC' />,
     subMenu: [
       // {
       //   title: "Word",
@@ -42,9 +42,9 @@ export const MenuSideBar = [
       //   icon: <HomeOutlinedIcon />,
       // },
       {
-        title: 'Kiểm tra',
+        title: 'Module M1',
         to: '/module-m1/exam',
-        icon: <EmojiEventsOutlinedIcon />
+        icon: <CircleWithText text='M1' />
       }
     ],
     index: 1
@@ -109,7 +109,7 @@ export const MenuSideBar = [
   // },
   {
     title: 'QPAN',
-    to: '/qpan_1',
+    to: '',
     icon: <CircleWithText text='QP' />,
     index: 2,
     subMenu: [
@@ -127,7 +127,7 @@ export const MenuSideBar = [
   },
   {
     title: 'Đại Cương',
-    to: '/qpan_1',
+    to: '',
     icon: <CircleWithText text='ĐC' />,
     index: 3,
     subMenu: [
@@ -135,6 +135,11 @@ export const MenuSideBar = [
         title: 'KTCT MAC',
         to: '/ktct_mac/exam',
         icon: <CircleWithText text='1' />,
+      },
+      {
+        title: 'LSVMTG',
+        to: '/lsvmtg/exam',
+        icon: <CircleWithText text='2' />,
       },
     ]
   },

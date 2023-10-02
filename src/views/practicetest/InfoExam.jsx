@@ -17,11 +17,12 @@ const InfoExam = ({ title, handleSubmit, quantity, price, time }) => {
           <br />
           <span>Số câu hỏi của một đề thi thử tương ứng với số câu khi các bạn thi thực tế.</span>
           <br />
+          <span>Đây là đề thi thử <b>THAM KHẢO</b> để bổ sung kiến thức, các bạn nên ôn tập kèm theo các tài liệu khác nhau để đạt kết quả tốt nhất.</span>
          
         </span>
       </Typography>
       <Card>
-        <CardHeader title={title} />
+        <CardHeader title={`Kiểm tra: ${title}`} />
         <CardContent>
           <Box className='mt-2'>
             <Typography>

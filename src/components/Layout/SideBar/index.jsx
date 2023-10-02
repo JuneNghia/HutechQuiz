@@ -96,9 +96,7 @@ const Sidebar = () => {
           backgroundColor: '#fcd5a3 !important',
           transitionDuration: '300ms',
           borderRadius: '0 50px 50px 0',
-          '& span': {
-            color: '#ff6d00'
-          }
+          
         },
         '& .ps-menu-button.ps-open': {
           color: `black !important`

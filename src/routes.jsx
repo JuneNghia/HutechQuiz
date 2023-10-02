@@ -65,27 +65,13 @@ const router = createBrowserRouter([
         path: '/add-subject',
         element: <AddSubjectPage />
       },
-      // {
-      //   path: '/module-m1/word',
-      //   element: <PracticeTestPage />,
-      //   exact: true
-      // },
-      // {
-      //   path: '/module-m1/excel',
-      //   element: <PracticeTestPage />,
-      //   exact: true
-      // },
-      // {
-      //   path: '/module-m1/powerpoint',
-      //   element: <PracticeTestPage />,
-      //   exact: true
-      // },
       {
         path: '/module-m1/exam',
         element: (
           <PracticeTestPage
             quantity={30}
-            title='Kiểm tra Module M1'
+            subTitle='Module M1'
+            title='Module M1'
             id='37901f73-7c4f-4cad-8074-1c2b4e99191d'
             time={30 * 60}
           />
@@ -97,7 +83,8 @@ const router = createBrowserRouter([
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Kiểm tra QPAN 1'
+            title='Quốc Phòng An Ninh 1'
+            subTitle='QPAN 1'
             id='15d57bbc-fb32-4c06-b0d8-1de3c4e8fd4b'
             time={60 * 60}
           />
@@ -109,7 +96,8 @@ const router = createBrowserRouter([
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Kiểm tra QPAN 2'
+            title='Quốc Phòng An Ninh 2'
+            subTitle='QPAN 2'
             id='6f1894e2-8888-4358-b8cc-14a80ee8782b'
             time={60 * 60}
           />
@@ -121,8 +109,22 @@ const router = createBrowserRouter([
         element: (
           <PracticeTestPage
             quantity={45}
-            title='Kiểm tra KTCT MAC'
+            title='Kinh Tế Chính Trị Mác - Lênin'
+            subTitle='KTCT MAC'
             id='bf304142-23ef-4d62-9575-fecf97723e16'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/lsvmtg/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Lịch Sử Văn Minh Thế Giới'
+            subTitle='LSVMTG'
+            id='d7116012-04b5-47b8-9e6d-8f9d9d48eff0'
             time={45 * 60}
           />
         ),
