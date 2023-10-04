@@ -21,7 +21,6 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 import warningImg from '../../assets/warning.svg'
 import ReportService from '../../services/report.service'
-import { Helmet } from 'react-helmet'
 
 const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const location = useLocation()
@@ -263,9 +262,6 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
 
   return (
     <>
-      <Helmet>
-        <title>KIỂM TRA</title>
-      </Helmet>
       <StepTitle
         title={`Kiểm tra: ${subTitle}`}
         timeInSeconds={time}

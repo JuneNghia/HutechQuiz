@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import warningImg from '../../assets/warning.svg'
 import trophyImg from '../../assets/trophy.png'
 import clockImg from '../../assets/clock.svg'
+import { Helmet } from 'react-helmet'
 
 const style = {
   position: 'fixed',
@@ -51,6 +52,12 @@ const StepTitle = ({ title, timeInSeconds, onSubmit, showTimer, isSubmitted }) =
 
   return (
     <>
+      {showTimer && (
+        <Helmet>
+          <title>KIỂM TRA - {formattedTime.toString()}</title>
+        </Helmet>
+      )}
+
       <div className='relative' style={{ zIndex: 999 }}>
         <div className='fixed top-[12px]'>
           <div className='text-xl w-max font-bold text-[white] z-10 absolute top-2 left-0'>{title}</div>

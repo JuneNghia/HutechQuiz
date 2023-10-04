@@ -146,6 +146,11 @@ export const MenuSideBar = [
         to: '/lsvmtg/exam',
         icon: <CircleWithText text='2' />,
       },
+      {
+        title: 'Quản Trị Học',
+        to: '/quan_tri_hoc/exam',
+        icon: <CircleWithText text='3' />,
+      },
     ]
   },
   {

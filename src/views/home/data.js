@@ -41,6 +41,12 @@ const dataNotify = [
         color: 'error',
         link: 'lsvmtg/exam',
     },
+    {
+        title: 'Kiểm tra Quản trị học' ,
+        text: 'Di chuyển nhanh tới trang kiểm tra Quản trị học tại',
+        color: 'error',
+        link: 'quan_tri_hoc/exam',
+    },
 ]
 
 export default dataNotify

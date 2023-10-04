@@ -142,6 +142,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/quan_tri_hoc/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Quản Trị Học'
+            subTitle='Quản Trị Học'
+            id='69990dfd-aa32-4843-aced-ef181ba4917a'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
