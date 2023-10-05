@@ -269,7 +269,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
         showTimer={true}
         isSubmitted={saved}
       />
-      {saved && (
+      {/* {saved && (
         <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
           <span className=''>
             <span className='font-bold'>Lời nhắc: </span>
@@ -285,7 +285,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             <span className='text-red-700 font-bold'> Quiz</span>
           </span>
         </Typography>
-      )}
+      )} */}
       {data.map((ques, index) => (
         <Card
           key={ques.id}
@@ -296,27 +296,27 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                 ? '!bg-green-100 outline-green-500 outline-2'
                 : '!bg-red-100 outline-red-500 outline-2'
               : 'bg-white outline-1'
-          } outline mb-4`}
+          } outline mb-4 relative`}
         >
+          {/* {saved && (
+            <Button
+              disabled={reported[ques.id]?.isReported || isReporting[ques.id]}
+              onClick={() => handleReport(ques.id)}
+              variant='contained'
+              className={`!ml-2 !p-0 !px-2 !text-[15px] ${
+                reported[ques.id]?.isReported ? '!bg-green-600 !text-white' : '!bg-white'
+              } !text-black hover:!bg-red-600 hover:!text-white !absolute top-3 right-5`}
+            >
+              <img src={warningImg} width='15px' className='mr-2' />
+              {isReporting[ques.id] ? 'Đang báo cáo' : reported[ques.id]?.isReported ? 'Đã báo cáo' : 'Báo cáo'}
+            </Button>
+          )} */}
           <CardHeader
             title={
               <div className='flex justify-between items-center'>
-                <span>
+                <span style={{ lineHeight: 1.5 }}>
                   Câu {index + 1}: {ques.question}
                 </span>
-                {saved && (
-                  <Button
-                    disabled={reported[ques.id]?.isReported || isReporting[ques.id]}
-                    onClick={() => handleReport(ques.id)}
-                    variant='contained'
-                    className={`!ml-2 !p-0 !px-2 !text-[15px] ${
-                      reported[ques.id]?.isReported ? '!bg-green-600 !text-white' : '!bg-white'
-                    } !text-black hover:!bg-red-600 hover:!text-white`}
-                  >
-                    <img src={warningImg} width='15px' className='mr-2' />
-                    {isReporting[ques.id] ? 'Đang báo cáo' : reported[ques.id]?.isReported ? 'Đã báo cáo' : 'Báo cáo'}
-                  </Button>
-                )}
               </div>
             }
             titleTypographyProps={{ fontSize: '1rem' }}
@@ -329,17 +329,19 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             >
               <Grid container>
                 {ques.choices.map((choice) => (
-                  <Grid className='xs:mb-3 xs:first:mt-1 lg:mb-0 last:mb-0' key={choice} lg={6} xs={12}>
+                  <Grid className='xs:mb-2 xs:first:mt-1 lg:mb-0 last:mb-0' key={choice} lg={6} xs={12}>
                     <FormControlLabel
+                      className='!items-start px-3 py-3'
                       value={choice}
                       control={
                         <Radio
+                          className='!p-0 xs:!mt-[2px] !mt-[1px]'
                           checked={selectedAnswers[ques.id] === choice}
                           onChange={() => handleAnswerChange(ques.id, choice)}
                           id={`radio-${ques.id}-${choice}`}
                         />
                       }
-                      label={<Typography>{choice}</Typography>}
+                      label={<Typography className='!ml-2'>{choice}</Typography>}
                       htmlFor={`radio-${ques.id}-${choice}`}
                       style={{
                         paddingRight: '10px',

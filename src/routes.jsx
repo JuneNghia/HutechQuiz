@@ -155,6 +155,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/triet_hoc_mac/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Triết học Mac - Lênin'
+            subTitle='Triết học Mac'
+            id='7f373105-05a6-4fe2-934a-7c00d2f491c1'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

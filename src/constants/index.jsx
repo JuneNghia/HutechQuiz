@@ -137,19 +137,24 @@ export const MenuSideBar = [
     index: 3,
     subMenu: [
       {
+        title: 'Triết Học Mac',
+        to: '/triet_hoc_mac/exam',
+        icon: <CircleWithText text='1' />,
+      },
+      {
         title: 'KTCT MAC',
         to: '/ktct_mac/exam',
-        icon: <CircleWithText text='1' />,
+        icon: <CircleWithText text='2' />,
       },
       {
         title: 'LSVMTG',
         to: '/lsvmtg/exam',
-        icon: <CircleWithText text='2' />,
+        icon: <CircleWithText text='3' />,
       },
       {
         title: 'Quản Trị Học',
         to: '/quan_tri_hoc/exam',
-        icon: <CircleWithText text='3' />,
+        icon: <CircleWithText text='4' />,
       },
     ]
   },
