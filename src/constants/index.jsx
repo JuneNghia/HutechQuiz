@@ -142,12 +142,12 @@ export const MenuSideBar = [
         icon: <CircleWithText text='1' />,
       },
       {
-        title: 'KTCT MAC',
+        title: 'Kinh Tế Chính Trị Mac - Lênin',
         to: '/ktct_mac/exam',
         icon: <CircleWithText text='2' />,
       },
       {
-        title: 'LSVMTG',
+        title: 'Lịch Sử Văn Minh Thế Giới',
         to: '/lsvmtg/exam',
         icon: <CircleWithText text='3' />,
       },
