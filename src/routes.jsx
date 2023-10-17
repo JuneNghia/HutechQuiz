@@ -168,6 +168,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/cnxhkh/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Chủ Nghĩa Xã Hội Khoa Học'
+            subTitle='CNXHKH'
+            id='2e80c4da-0392-4236-966c-f7c17903fcf7'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

@@ -91,7 +91,7 @@ const Home = () => {
           <CardHeader
             title={
               <div>
-                <span>{notify.title}</span> <Chip label='Hot' color={notify.color} size='small' />
+                <span>{notify.title}</span> <Chip label={notify.label} color={notify.color} size='small' />
               </div>
             }
           />

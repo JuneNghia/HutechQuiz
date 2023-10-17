@@ -156,6 +156,11 @@ export const MenuSideBar = [
         to: '/quan_tri_hoc/exam',
         icon: <CircleWithText text='4' />,
       },
+      {
+        title: 'Chủ Nghĩa Xã Hội Khoa Học',
+        to: '/cnxhkh/exam',
+        icon: <CircleWithText text='5' />,
+      },
     ]
   },
   {
