@@ -10,7 +10,7 @@ const dataNotify = [
         title: 'Chủ Nghĩa Xã Hội Khoa Học' ,
         text: 'Di chuyển nhanh tới trang kiểm tra Chủ Nghĩa Xã Hội Khoa Học tại',
         color: 'error',
-        link: 'qpan_2/exam',
+        link: 'cnxhkh/exam',
         label: 'Mới',
     },
 ]
