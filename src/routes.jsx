@@ -181,6 +181,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/lich_su_dang/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Lịch Sử Đảng Cộng Sản Việt Nam'
+            subTitle='Lịch Sử Đảng'
+            id='20a375f8-9c79-4183-b328-e77ae7b3b121'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

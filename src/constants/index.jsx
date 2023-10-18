@@ -161,6 +161,11 @@ export const MenuSideBar = [
         to: '/cnxhkh/exam',
         icon: <CircleWithText text='5' />,
       },
+      {
+        title: 'Lịch Sử Đảng Cộng Sản Việt Nam',
+        to: '/lich_su_dang/exam',
+        icon: <CircleWithText text='6' />,
+      },
     ]
   },
   {
