@@ -166,6 +166,11 @@ export const MenuSideBar = [
         to: '/lich_su_dang/exam',
         icon: <CircleWithText text='6' />,
       },
+      {
+        title: 'Tư Tưởng Hồ Chí Minh',
+        to: '/tthcm/exam',
+        icon: <CircleWithText text='7' />,
+      },
     ]
   },
   {

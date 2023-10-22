@@ -194,6 +194,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/tthcm/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Tư Tưởng Hồ Chí Minh'
+            subTitle='TTHCM'
+            id='787d3fe7-292c-4e32-a5e0-c84f1d575772'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
