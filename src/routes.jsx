@@ -234,6 +234,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      {
+        path: '/csvhvn/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Cơ Sở Văn Hoá Việt Nam'
+            subTitle='CSVHVN'
+            id='209d2bce-ddb8-49e1-b506-1214e9538b42'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
     ]
   },
   {

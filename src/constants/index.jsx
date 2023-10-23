@@ -171,6 +171,11 @@ export const MenuSideBar = [
         to: '/tthcm/exam',
         icon: <CircleWithText text='7' />,
       },
+      {
+        title: 'Cơ Sở Văn Hoá Việt Nam',
+        to: '/csvhvn/exam',
+        icon: <CircleWithText text='8' />,
+      },
     ]
   },
   {
