@@ -174,6 +174,33 @@ export const MenuSideBar = [
     ]
   },
   {
+    title: 'Anh Ngữ',
+    to: '',
+    icon: <CircleWithText text='AN' />,
+    index: 4,
+    subMenu: [
+      {
+        title: 'Anh Ngữ 1',
+        to: '/anh_ngu_1/exam',
+        icon: <CircleWithText text='1' />,
+      },
+    ]
+  },
+  {
+    title: 'Tiếng Anh',
+    to: '',
+    icon: <CircleWithText text='TA' />,
+    index: 5,
+    subMenu: [
+      {
+        title: 'Tiếng Anh 3',
+        to: '/tieng_anh_3/exam',
+        icon: <CircleWithText text='3' />,
+      },
+    
+    ]
+  },
+  {
     title: 'Tài liệu ôn tập',
     to: '/document',
     icon: <LocalLibraryOutlinedIcon />,

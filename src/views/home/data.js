@@ -7,15 +7,15 @@ const dataNotify = [
         label: 'Tính năng'
     },
     {
-        title: 'Chủ Nghĩa Xã Hội Khoa Học' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Chủ Nghĩa Xã Hội Khoa Học tại',
+        title: 'Anh Ngữ 1 - Ngữ Pháp' ,
+        text: 'Di chuyển nhanh tới trang kiểm tra Anh Ngữ 1 - Ngữ Pháp tại',
         color: 'error',
         link: 'cnxhkh/exam',
         label: 'Mới',
     },
     {
-        title: 'Lịch Sử Đảng Cộng Sản Việt Nam' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Lịch Sử Đảng Cộng Sản Việt Nam tại',
+        title: 'Tiếng Anh 3 - Ngữ Pháp' ,
+        text: 'Di chuyển nhanh tới trang kiểm tra Tiếng Anh 3 - Ngữ Pháp tại',
         color: 'error',
         link: 'lich_su_dang/exam',
         label: 'Mới',
