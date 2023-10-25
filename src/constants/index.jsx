@@ -189,6 +189,11 @@ export const MenuSideBar = [
         to: '/anh_ngu_1/exam',
         icon: <CircleWithText text='1' />,
       },
+      {
+        title: 'Anh Ngữ 2',
+        to: '/anh_ngu_2/exam',
+        icon: <CircleWithText text='2' />,
+      },
     ]
   },
   {
@@ -201,6 +206,11 @@ export const MenuSideBar = [
         title: 'Tiếng Anh 3',
         to: '/tieng_anh_3/exam',
         icon: <CircleWithText text='3' />,
+      },
+      {
+        title: 'Tiếng Anh 4',
+        to: '/tieng_anh_4/exam',
+        icon: <CircleWithText text='4' />,
       },
     
     ]

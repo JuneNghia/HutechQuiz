@@ -222,6 +222,19 @@ const router = createBrowserRouter([
         exact: true
       },
       {
+        path: '/anh_ngu_2/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Anh Ngữ 2 ( Ngữ Pháp )'
+            subTitle='AN2 - NGỮ PHÁP'
+            id='38919d62-bc66-4e28-bbda-e1e1ecca6f6d'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
         path: '/tieng_anh_3/exam',
         element: (
           <PracticeTestPage
@@ -229,6 +242,19 @@ const router = createBrowserRouter([
             title='Tiếng Anh 3 ( Ngữ Pháp )'
             subTitle='TA3 - NGỮ PHÁP'
             id='208addd4-2b66-4724-a40d-163b94e79c9a'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/tieng_anh_4/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Tiếng Anh 4 ( Ngữ Pháp )'
+            subTitle='TA4 - NGỮ PHÁP'
+            id='ccafe41c-3802-4a7c-9a13-aa8f63e29382'
             time={60 * 60}
           />
         ),
