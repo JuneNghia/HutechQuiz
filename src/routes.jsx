@@ -208,39 +208,39 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      // {
+      //   path: '/anh_ngu_1/exam',
+      //   element: (
+      //     <PracticeTestPage
+      //       quantity={60}
+      //       title='Anh Ngữ 1 ( Ngữ Pháp )'
+      //       subTitle='AN1 - NGỮ PHÁP'
+      //       id='10ee56df-1a4b-49eb-b843-4f0211a14ce9'
+      //       time={60 * 60}
+      //     />
+      //   ),
+      //   exact: true
+      // },
+      // {
+      //   path: '/anh_ngu_2/exam',
+      //   element: (
+      //     <PracticeTestPage
+      //       quantity={60}
+      //       title='Anh Ngữ 2 ( Ngữ Pháp )'
+      //       subTitle='AN2 - NGỮ PHÁP'
+      //       id='38919d62-bc66-4e28-bbda-e1e1ecca6f6d'
+      //       time={60 * 60}
+      //     />
+      //   ),
+      //   exact: true
+      // },
       {
-        path: '/anh_ngu_1/exam',
+        path: '/tieng_anh_sach_3a/exam',
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Anh Ngữ 1 ( Ngữ Pháp )'
-            subTitle='AN1 - NGỮ PHÁP'
-            id='10ee56df-1a4b-49eb-b843-4f0211a14ce9'
-            time={60 * 60}
-          />
-        ),
-        exact: true
-      },
-      {
-        path: '/anh_ngu_2/exam',
-        element: (
-          <PracticeTestPage
-            quantity={60}
-            title='Anh Ngữ 2 ( Ngữ Pháp )'
-            subTitle='AN2 - NGỮ PHÁP'
-            id='38919d62-bc66-4e28-bbda-e1e1ecca6f6d'
-            time={60 * 60}
-          />
-        ),
-        exact: true
-      },
-      {
-        path: '/tieng_anh_3/exam',
-        element: (
-          <PracticeTestPage
-            quantity={60}
-            title='Tiếng Anh 3 ( Ngữ Pháp )'
-            subTitle='TA3 - NGỮ PHÁP'
+            title='Tiếng Anh Sách 3A ( Ngữ Pháp )'
+            subTitle='SÁCH TA 3A - NGỮ PHÁP'
             id='208addd4-2b66-4724-a40d-163b94e79c9a'
             time={60 * 60}
           />
@@ -248,12 +248,12 @@ const router = createBrowserRouter([
         exact: true
       },
       {
-        path: '/tieng_anh_4/exam',
+        path: '/tieng_anh_sach_3b/exam',
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Tiếng Anh 4 ( Ngữ Pháp )'
-            subTitle='TA4 - NGỮ PHÁP'
+            title='Tiếng Anh Sách 3B ( Ngữ Pháp )'
+            subTitle='SÁCH TA 3B - NGỮ PHÁP'
             id='ccafe41c-3802-4a7c-9a13-aa8f63e29382'
             time={60 * 60}
           />

@@ -31,6 +31,9 @@ const Sidebar = () => {
   useEffect(() => {
     if (location.pathname) {
       setSelected(location.pathname)
+      if(isMobile) { 
+        setIsCollapsed(true)
+      }
     }
   }, [location.pathname])
 
@@ -41,23 +44,24 @@ const Sidebar = () => {
   return (
     <Box
       sx={{
-        position: 'relative',
+        position: `${isMobile ? 'absolute' : 'relative'}`,
         '& .ps-sidebar-container.css-dip3t8': {
           position: 'fixed',
-          width: `${isCollapsed ? '75px' : '250px'}`,
+          zIndex: 9999,
+          width: `${isMobile ? (isCollapsed ? '0' : '250px') : isCollapsed ? '75px' : '250px'}`,
           transitionDuration: '300ms',
           backgroundColor: 'white',
           boxShadow: 'rgba(0, 0, 0, 0.3) 0px 16px 30px, rgba(0, 0, 0, 0.22) 0px 8px 8px'
         },
         '& .css-1wvake5.ps-collapsed': {
-          width: '75px',
-          minWidth: '75px'
+          width: `${isMobile ? '0px' : '75px'}`,
+          minWidth: `${isMobile ? '0px' : '75px'}`
         },
         '& .ps-menu-root.css-vj11vy': {
           width: `${isCollapsed ? '75px' : '250px'}`
         },
         '& .ps-menu-root.css-vj11vy li': {
-          margin: '4px 0',
+          margin: `${isMobile ? '10px 0px 0px' : '4px 0px 0px'}`,
           width: '95%'
         },
         // "& .ps-menu-root.css-vj11vy li:hover": {
@@ -75,7 +79,8 @@ const Sidebar = () => {
           fontWeight: '500',
           paddingLeft: '8px !important',
           paddingRight: '15px !important',
-          transitionDuration: '300ms'
+          transitionDuration: '300ms',
+          position: 'relative'
         },
         '& .ps-menu-button:hover': {
           backgroundColor: '#fdfd96 !important',
@@ -89,14 +94,21 @@ const Sidebar = () => {
         '& .ps-menu-icon.ps-open.css-wx7wi4': {
           color: '#800000'
         },
+        '& .ps-submenu-expand-icon.css-1cuxlhl': {
+          position: 'absolute',
+          top: '8px',
+          right: '7px'
+        },
         '& .ps-submenu-expand-icon.ps-open.css-1cuxlhl': {
-          color: '#ff6d00'
+          color: '#ff6d00',
+          position: 'absolute',
+          top: '8px',
+          right: '7px'
         },
         '& .ps-menu-button.ps-active': {
           backgroundColor: '#fcd5a3 !important',
           transitionDuration: '300ms',
-          borderRadius: '0 50px 50px 0',
-          
+          borderRadius: '0 50px 50px 0'
         },
         '& .ps-menu-button.ps-open': {
           color: `black !important`
@@ -205,7 +217,7 @@ const Sidebar = () => {
                 </h4>
               )}
 
-              {MenuSideBar.slice(1, 6).map((item) => (
+              {MenuSideBar.slice(1, 5).map((item) => (
                 <SubMenu className='text-zinc-600' icon={item.icon} key={item.index} label={item.title}>
                   {item.subMenu.map((e) => (
                     <Item
@@ -220,7 +232,7 @@ const Sidebar = () => {
                 </SubMenu>
               ))}
 
-              {MenuSideBar.slice(6, 8).map((item) => (
+              {MenuSideBar.slice(5, 7).map((item) => (
                 <Item
                   key={item.title}
                   title={item.title}
@@ -239,19 +251,14 @@ const Sidebar = () => {
         sx={{
           position: 'fixed',
           zIndex: '9999',
-          top: '21px',
-          left: `${isCollapsed ? '20px' : '200px'}`,
+          top: `${isMobile ? (isCollapsed ? '20px' : '23px') : isCollapsed ? '20px' : '24px'}`,
+          left: `${isMobile ? (isCollapsed ? '8px' : '200px') : isCollapsed ? '21px' : '200px'}`,
           transitionDuration: '200ms'
           // right: `${isCollapsed ? "26%" : "-7.5%"}`,
         }}
       >
-        <IconButton
-          sx={{
-            backgroundColor: 'transparent'
-          }}
-          onClick={() => setIsCollapsed(!isCollapsed)}
-        >
-          <MenuOutlinedIcon sx={{ color: `black` }} />
+        <IconButton className='!hover:bg-slate-200 !bg-white !p-[4px]' onClick={() => setIsCollapsed(!isCollapsed)}>
+          <MenuOutlinedIcon sx={{ color: 'black' }} />
         </IconButton>
       </Box>
     </Box>

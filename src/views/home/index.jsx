@@ -15,16 +15,7 @@ const Home = () => {
         <title>Trang Chủ</title>
       </Helmet>
       <StepTitle title='Thông báo' />
-      <Card>
-        <CardHeader title='Chào mừng bạn đến với Hutech Quiz' />
-        <CardContent>
-          <Typography>
-            <span className='text-red-500'>
-              Hiện tại trang web chỉ được tối ưu cho máy tính, xin vui lòng sử dụng máy tính để đạt trải nghiệm cao nhất
-            </span>
-          </Typography>
-        </CardContent>
-      </Card>
+      
       {user.role === 'ADMIN' && (
         <>
           <Card className='mt-3'>
@@ -90,17 +81,21 @@ const Home = () => {
         <Card key={`notify_${notify.title}`} className='mt-3'>
           <CardHeader
             title={
-              <div>
-                <span>{notify.title}</span> <Chip label={notify.label} color={notify.color} size='small' />
+              <div className='flex items-center'>
+                <Chip label={notify.label} color={notify.color} size='small' />{' '}
+                <span className='h-[19px] ml-2'>{notify.title}</span>
               </div>
             }
           />
           <CardContent>
             <Typography>
               {notify.text}{' '}
-              <Link className='text-blue-700' to={notify.link}>
-                đây
-              </Link>
+              {notify.html && <div dangerouslySetInnerHTML={{ __html: notify.html }} />}
+              {notify.link && (
+                <Link className='text-blue-700 underline' to={notify.link}>
+                  tại đây
+                </Link>
+              )}
             </Typography>
           </CardContent>
         </Card>

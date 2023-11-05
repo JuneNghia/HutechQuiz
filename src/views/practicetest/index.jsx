@@ -7,7 +7,9 @@ import {
   Grid,
   Radio,
   RadioGroup,
-  Typography
+  Typography,
+  useMediaQuery,
+  useTheme
 } from '@mui/material'
 import React, { useEffect, useState } from 'react'
 import TestService from '../../services/test.service'
@@ -24,6 +26,8 @@ import ReportService from '../../services/report.service'
 
 const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const location = useLocation()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
   const { user } = useAuth()
   const navigate = useNavigate()
@@ -263,7 +267,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   return (
     <>
       <StepTitle
-        title={`Kiểm tra: ${subTitle}`}
+        title={`${!isMobile ? `Kiểm tra: ${subTitle}` : ''}`}
         timeInSeconds={time}
         onSubmit={handleTimeOut}
         showTimer={true}

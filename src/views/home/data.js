@@ -1,39 +1,18 @@
 const dataNotify = [
-    {
-        title: 'Kiểm tra Ví tiền' ,
-        text: 'Di chuyển nhanh tới trang Ví tiền tại',
-        color: 'warning',
-        link: 'wallet',
-        label: 'Tính năng'
-    },
-    {
-        title: 'Anh Ngữ 1 - Ngữ Pháp' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Anh Ngữ 1 - Ngữ Pháp tại',
-        color: 'error',
-        link: '/anh_ngu_1/exam',
-        label: 'Mới',
-    },
-    {
-        title: 'Anh Ngữ 2 - Ngữ Pháp' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Anh Ngữ 1 - Ngữ Pháp tại',
-        color: 'error',
-        link: '/anh_ngu_2/exam',
-        label: 'Mới',
-    },
-    {
-        title: 'Tiếng Anh 3 - Ngữ Pháp' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Tiếng Anh 3 - Ngữ Pháp tại',
-        color: 'error',
-        link: '/tieng_anh_3/exam',
-        label: 'Mới',
-    },
-    {
-        title: 'Tiếng Anh 4 - Ngữ Pháp' ,
-        text: 'Di chuyển nhanh tới trang kiểm tra Tiếng Anh 4 - Ngữ Pháp tại',
-        color: 'error',
-        link: '/tieng_anh_4/exam',
-        label: 'Mới',
-    },
+  {
+    title: 'Anh Ngữ / Tiếng Anh',
+    html: 'Hiện tại Hutech Quiz đã cập nhập các môn học như Anh Ngữ / Tiếng Anh theo hình thức sách mà các bạn đang học.<br/><br/>Ví dụ, bạn học <b class="text-red-600">Anh Ngữ 1</b> và sử dụng giáo trình <b class="text-red-600">Sách 3A</b>, thì sẽ thi thử bằng cách nhấn vào <b class="text-blue-600">Anh Ngữ / Tiếng Anh → chọn sách 3A</b> để thi thử.',
+    color: 'error',
+    link: null,
+    label: 'Thông báo'
+  },
+  {
+    title: 'Kiểm tra Ví tiền',
+    text: 'Di chuyển nhanh tới trang Ví tiền tại',
+    color: 'warning',
+    link: 'wallet',
+    label: 'Tính năng'
+  }
 ]
 
 export default dataNotify

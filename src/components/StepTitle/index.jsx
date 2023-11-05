@@ -3,6 +3,7 @@ import warningImg from '../../assets/warning.svg'
 import trophyImg from '../../assets/trophy.png'
 import clockImg from '../../assets/clock.svg'
 import { Helmet } from 'react-helmet'
+import { useMediaQuery, useTheme } from '@mui/material'
 
 const style = {
   position: 'fixed',
@@ -17,6 +18,10 @@ const style = {
 const StepTitle = ({ title, timeInSeconds, onSubmit, showTimer, isSubmitted }) => {
   const [timer, setTimer] = useState(timeInSeconds)
   const [warning, setWarning] = useState(false)
+  const theme = useTheme()
+
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
+  
 
   useEffect(() => {
     if (isSubmitted) {
@@ -58,7 +63,7 @@ const StepTitle = ({ title, timeInSeconds, onSubmit, showTimer, isSubmitted }) =
         </Helmet>
       )}
 
-      <div className='relative' style={{ zIndex: 999 }}>
+      <div className={`${isMobile && 'ml-10'} relative`} style={{ zIndex: 999 }}>
         <div className='fixed top-[12px]'>
           <div className='text-xl w-max font-bold text-[white] z-10 absolute top-2 left-0'>{title}</div>
         </div>

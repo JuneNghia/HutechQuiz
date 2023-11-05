@@ -179,38 +179,20 @@ export const MenuSideBar = [
     ]
   },
   {
-    title: 'Anh Ngữ',
-    to: '',
-    icon: <CircleWithText text='AN' />,
-    index: 4,
-    subMenu: [
-      {
-        title: 'Anh Ngữ 1',
-        to: '/anh_ngu_1/exam',
-        icon: <CircleWithText text='1' />,
-      },
-      {
-        title: 'Anh Ngữ 2',
-        to: '/anh_ngu_2/exam',
-        icon: <CircleWithText text='2' />,
-      },
-    ]
-  },
-  {
-    title: 'Tiếng Anh',
+    title: 'Anh Ngữ / Tiếng Anh',
     to: '',
     icon: <CircleWithText text='TA' />,
     index: 5,
     subMenu: [
       {
-        title: 'Tiếng Anh 3',
-        to: '/tieng_anh_3/exam',
-        icon: <CircleWithText text='3' />,
+        title: 'Sách 3A',
+        to: '/tieng_anh_sach_3a/exam',
+        icon: <CircleWithText text='3A' />,
       },
       {
-        title: 'Tiếng Anh 4',
-        to: '/tieng_anh_4/exam',
-        icon: <CircleWithText text='4' />,
+        title: 'Sách 3B',
+        to: '/tieng_anh_sach_3b/exam',
+        icon: <CircleWithText text='3B' />,
       },
     
     ]
