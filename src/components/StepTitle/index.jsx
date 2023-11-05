@@ -63,8 +63,8 @@ const StepTitle = ({ title, timeInSeconds, onSubmit, showTimer, isSubmitted }) =
         </Helmet>
       )}
 
-      <div className={`${isMobile && 'ml-10'} relative`} style={{ zIndex: 999 }}>
-        <div className='fixed top-[12px]'>
+      <div className={`${isMobile && 'ml-12'} relative`} style={{ zIndex: 999 }}>
+        <div className='fixed top-[14px]'>
           <div className='text-xl w-max font-bold text-[white] z-10 absolute top-2 left-0'>{title}</div>
         </div>
       </div>

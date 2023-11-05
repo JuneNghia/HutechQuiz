@@ -252,12 +252,12 @@ const Sidebar = () => {
           position: 'fixed',
           zIndex: '9999',
           top: `${isMobile ? (isCollapsed ? '20px' : '23px') : isCollapsed ? '20px' : '24px'}`,
-          left: `${isMobile ? (isCollapsed ? '8px' : '200px') : isCollapsed ? '21px' : '200px'}`,
+          left: `${isMobile ? (isCollapsed ? '15px' : '200px') : isCollapsed ? '21px' : '200px'}`,
           transitionDuration: '200ms'
           // right: `${isCollapsed ? "26%" : "-7.5%"}`,
         }}
       >
-        <IconButton className='!hover:bg-slate-200 !bg-white !p-[4px]' onClick={() => setIsCollapsed(!isCollapsed)}>
+        <IconButton sx={{outline: 3}} className='!hover:bg-slate-200 !bg-white !p-[5px] !outline !outline-cyan-500' onClick={() => setIsCollapsed(!isCollapsed)}>
           <MenuOutlinedIcon sx={{ color: 'black' }} />
         </IconButton>
       </Box>
