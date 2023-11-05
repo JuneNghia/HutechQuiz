@@ -1,4 +1,4 @@
-import { Box, Button, Card, CardContent, CardHeader, Typography } from '@mui/material'
+import { Box, Button, Card, CardContent, CardHeader, Typography, useMediaQuery, useTheme } from '@mui/material'
 import React, { Fragment, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
@@ -8,6 +8,8 @@ import qrBank from '../../assets/bank-qr.png'
 
 const BankInfo = ({ data, type }) => {
   const { user } = useAuth()
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
   const [isLoading, setIsLoading] = useState(true)
   const [accountNo, bankName, accountOwner] = data.info.split(' - ')
 
@@ -36,7 +38,7 @@ const BankInfo = ({ data, type }) => {
         <>
           <CardHeader title='Thông tin chuyển khoản' />
           <CardContent component='div' className='mt-3'>
-            <div className='flex items-center gap-6'>
+            <div className={`${isMobile ? 'flex flex-col items-center gap-5' : 'flex items-center gap-6'} `}>
               <Box className='p-2 border-dotted border-2 border-sky-500 w-fit'>
                 {type === 'bank'
                   ? infoBank.map((info) => (
@@ -56,12 +58,12 @@ const BankInfo = ({ data, type }) => {
               </Box>
 
               <img src={type === 'bank' ? qrBank : qrMomo} width={'150px'} />
-              <div className='flex flex-col'>
+              <div className={`${isMobile ? 'text-center' : 'flex flex-col'}`}>
                 <div className='font-bold'>
-                  Số tiền : <span className='text-[24px] text-red-500'>{data.amount}</span>
+                  <p>Số tiền</p><span className='text-[24px]  text-red-500 md:mb-2'>{data.amount}</span>
                 </div>
-                <div className='font-bold'>
-                  Nội dung : <span className='text-[24px] text-red-500'>hutechquiz {user.phone}</span>
+                <div className='font-bold mt-2 xs:mb-2'>
+                  <p>Nội dung</p><span className='text-[24px] text-red-500 md:mb-2'>hutechquiz_{user.phone}</span>
                 </div>
               </div>
             </div>

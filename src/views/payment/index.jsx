@@ -9,7 +9,8 @@ import {
   MenuItem,
   Select,
   TextField,
-  Typography
+  Typography,
+  useTheme
 } from '@mui/material'
 import React, { useState } from 'react'
 import { Helmet } from 'react-helmet'
@@ -23,6 +24,7 @@ import { formattedValuePrice } from '../../utils/common/formatValue'
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const navigate = useNavigate()
+
 
   const dataBanking = [
     '8889 8017 478 573 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa',
@@ -113,7 +115,7 @@ const Payment = () => {
                 </Typography>
               )}
 
-              {formik.values.method === 'bank' && (
+              {/* {formik.values.method === 'bank' && (
                 <FormControl margin='normal'>
                   <InputLabel id='label-select-bank'>Chọn ngân hàng chuyển khoản</InputLabel>
                   <Select
@@ -129,7 +131,7 @@ const Payment = () => {
                     ))}
                   </Select>
                 </FormControl>
-              )}
+              )} */}
             </FormGroup>
             {formik.values.method && (
               <Button type='submit' sx={{ marginTop: '15px', textTransform: 'uppercase' }} variant='contained'>

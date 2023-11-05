@@ -112,3 +112,7 @@ body {
 .flashing {
   animation: flash 1s infinite;
 }
+
+.swal2-container {
+  z-index: 999999; 
+}
