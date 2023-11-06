@@ -1,13 +1,27 @@
 import { Button, Card, CardContent, CardHeader, Divider, Typography } from '@mui/material'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import { Helmet } from 'react-helmet'
 import { formattedValuePrice } from '../../utils/common/formatValue'
+import { useQuery } from 'react-query'
 
 const Wallet = () => {
-  const { user } = useAuth()
-  const wallet = user.wallet
+  const { data } = useQuery(
+    'me',
+    async () => {
+      return await axiosConfig.get('/me')
+    },
+    { refetchInterval: 5000 }
+  )
+  const [wallet, setWallet] = useState({
+    balance: 0,
+    bonus: 0,
+    totalBalanceUsed: 0,
+    totalBonusUsed: 0,
+    totalBonusReceived: 0,
+    totalDeposit: 0
+  })
   const navigate = useNavigate()
   const formatValue = (value) => formattedValuePrice(value)
 
@@ -43,6 +57,22 @@ const Wallet = () => {
       value: wallet.totalDeposit
     }
   ]
+
+  useEffect(() => {
+    if (data) {
+      const dataUser = data.data.data
+      if (dataUser) {
+        setWallet({
+          balance: dataUser.wallet.balance,
+          bonus: dataUser.wallet.bonus,
+          totalBalanceUsed: dataUser.wallet.totalBalanceUsed,
+          totalBonusUsed: dataUser.wallet.totalBonusUsed,
+          totalBonusReceived: dataUser.wallet.totalBonusReceived,
+          totalDeposit: dataUser.wallet.totalDeposit
+        })
+      }
+    }
+  }, [data])
 
   return (
     <>
