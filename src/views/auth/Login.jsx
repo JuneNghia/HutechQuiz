@@ -49,6 +49,8 @@ const Login = () => {
           helpers.setSubmitting(false)
           if (errCode === 404) {
             helpers.setErrors({ submit: 'Địa chỉ email hoặc mật khẩu không chính xác' })
+          } else if (errCode === 403) {
+            helpers.setErrors({ submit: 'Tài khoản của bạn đã bị khoá. Hotline hỗ trợ : 0934 945 803' })
           } else {
             helpers.setErrors({ submit: `Lỗi kết nối máy chủ (Mã lỗi: ${errCode}) ` })
           }
@@ -81,6 +83,8 @@ const Login = () => {
           helpers.setSubmitting(false)
           if (errCode === 404) {
             helpers.setErrors({ submit: 'Số điện thoại hoặc mật khẩu không chính xác' })
+          } else if (errCode === 403) {
+            helpers.setErrors({ submit: 'Tài khoản của bạn đã bị khoá. Hotline hỗ trợ : 0934 945 803' })
           } else {
             helpers.setErrors({ submit: `Lỗi kết nối máy chủ (Mã lỗi: ${errCode}) ` })
           }

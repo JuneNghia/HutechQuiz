@@ -67,7 +67,7 @@ const Payment = () => {
       </Button>
       <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
         <span className=''>
-          <span className='font-bold'>Nếu sau 5 phút, các bạn tải lại trang vẫn không nhận tiền vui lòng liên hệ <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.</span>
+          <span className='font-bold'>Nếu sau 5 phút, số dư vẫn không được cập nhật vui lòng liên hệ <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.</span>
           
          
         </span>
@@ -97,6 +97,7 @@ const Payment = () => {
                     name='amount'
                     value={formik.values.amount}
                     onChange={handleAmountChange}
+                    onBlur={formik.handleBlur}
                     label={
                       <span>
                         Số tiền cần nạp <span className='text-red-500'>*</span>

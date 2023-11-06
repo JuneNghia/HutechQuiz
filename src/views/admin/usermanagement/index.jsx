@@ -139,7 +139,7 @@ const UserManagement = () => {
   const filteredData = rows.filter((user) => {
     if (
       user.name.toLowerCase().includes(searchKeyword.toLowerCase()) ||
-      user.phone.includes(searchKeyword) || 
+      user.phone.includes(searchKeyword) ||
       user.email.toLowerCase().includes(searchKeyword.toLowerCase())
     ) {
       return true
@@ -147,15 +147,13 @@ const UserManagement = () => {
     return false
   })
 
-  console.log(rows)
-
   return (
     <>
       {user.role === 'USER' ? (
         <Error />
       ) : (
         <>
-         <Helmet>
+          <Helmet>
             <title>Quản lý tài khoản</title>
           </Helmet>
           <div className='mb-3'>

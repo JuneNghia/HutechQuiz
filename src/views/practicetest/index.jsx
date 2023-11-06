@@ -273,7 +273,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
         showTimer={true}
         isSubmitted={saved}
       />
-      {/* {saved && (
+      {saved && (
         <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
           <span className=''>
             <span className='font-bold'>Lời nhắc: </span>
@@ -289,7 +289,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             <span className='text-red-700 font-bold'> Quiz</span>
           </span>
         </Typography>
-      )} */}
+      )}
       {data.map((ques, index) => (
         <Card
           key={ques.id}
@@ -302,7 +302,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
               : 'bg-white outline-1'
           } outline mb-4 relative`}
         >
-          {/* {saved && (
+          {saved && (
             <Button
               disabled={reported[ques.id]?.isReported || isReporting[ques.id]}
               onClick={() => handleReport(ques.id)}
@@ -314,7 +314,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
               <img src={warningImg} width='15px' className='mr-2' />
               {isReporting[ques.id] ? 'Đang báo cáo' : reported[ques.id]?.isReported ? 'Đã báo cáo' : 'Báo cáo'}
             </Button>
-          )} */}
+          )}
           <CardHeader
             title={
               <div className='flex justify-between items-center'>

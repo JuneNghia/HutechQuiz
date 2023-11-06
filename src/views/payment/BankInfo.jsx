@@ -19,7 +19,7 @@ const BankInfo = ({ data, type }) => {
   const handlePaid = () => {
     Swal.fire(
       '',
-      'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút và thực hiện tải lại trang để cập nhật số dư.<br/><br/><b>Hotline hỗ trợ : 0934 945 803</b>',
+      'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút số dư sẽ tự động cập nhật lại.<br/><br/><b>Hotline hỗ trợ : 0934 945 803</b>',
       'info'
     )
   }

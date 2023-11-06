@@ -1,14 +1,21 @@
 import { Box, Typography, useMediaQuery, useTheme } from '@mui/material'
 import { useState, useEffect } from 'react'
 import AccountMenu from '../../AccountMenu'
-import useAuth from '../../../hooks/useAuth'
 import { formattedValuePrice } from '../../../utils/common/formatValue'
+import { useQuery } from 'react-query'
+import axiosConfig from '../../../utils/axios'
 
 const Topbar = () => {
+  const { data } = useQuery(
+    'me',
+    async () => {
+      return await axiosConfig.get('/me')
+    },
+    { refetchInterval: 5000 }
+  )
   const [scrolled, setScrolled] = useState(false)
-  const { user } = useAuth()
-  const [balance, setBalance] = useState(user?.wallet?.balance || 0)
-  const [bonus, setBonus] = useState(user?.wallet?.bonus || 0)
+  const [balance, setBalance] = useState(0)
+  const [bonus, setBonus] = useState(0)
 
   const theme = useTheme()
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
@@ -28,9 +35,14 @@ const Topbar = () => {
   }, [])
 
   useEffect(() => {
-    setBalance(user?.wallet?.balance || 0)
-    setBonus(user?.wallet?.bonus || 0)
-  }, [user?.wallet])
+    if (data) {
+      const dataUser = data.data.data
+      if (dataUser) {
+        setBalance(dataUser.wallet.balance)
+        setBonus(dataUser.wallet.bonus)
+      }
+    }
+  }, [data])
 
   return (
     <Box
@@ -59,9 +71,7 @@ const Topbar = () => {
             <Typography className='text-white pr-12'>
               Số dư : <span>{formattedValuePrice(balance.toString())}đ</span>
             </Typography>
-            <Typography className='text-white'>
-              Thưởng : {formattedValuePrice(bonus.toString())}đ
-            </Typography>
+            <Typography className='text-white'>Thưởng : {formattedValuePrice(bonus.toString())}đ</Typography>
           </div>
         )}
 
