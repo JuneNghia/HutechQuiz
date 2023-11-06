@@ -10,9 +10,10 @@ import {
   Select,
   TextField,
   Typography,
+  useMediaQuery,
   useTheme
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import BankInfo from './BankInfo'
 import { useFormik } from 'formik'
@@ -20,15 +21,25 @@ import { paymentValidation } from '../../hooks/useValidation'
 import KeyboardBackspaceOutlinedIcon from '@mui/icons-material/KeyboardBackspaceOutlined'
 import { useNavigate } from 'react-router-dom'
 import { formattedValuePrice } from '../../utils/common/formatValue'
+import StepTitle from '../../components/StepTitle'
+import { useQuery } from 'react-query'
 
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState(false)
   const navigate = useNavigate()
+  const [balance, setBalance] = useState(0)
+  const theme = useTheme()
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'))
 
+  const { data: dataUser } = useQuery(
+    'me',
+    async () => {
+      return await axiosConfig.get('/me')
+    },
+    { refetchInterval: 5000 }
+  )
 
-  const dataBanking = [
-    '8889 8017 478 573 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa',
-  ]
+  const dataBanking = ['8889 8017 478 573 - Ngân hàng Maritime Bank (MSB) - Nguyễn Minh Trung Nghĩa']
 
   const data = {
     method: '',
@@ -57,19 +68,27 @@ const Payment = () => {
     formik.handleChange('amount')(formattedValuePrice(value))
   }
 
+  useEffect(() => {
+    if(dataUser) {
+      setBalance(dataUser.data.data.wallet.balance)
+    }
+  }, [dataUser])
+
   return (
     <>
       <Helmet>
         <title>Nạp tiền vào ví</title>
       </Helmet>
+      {isMobile && <StepTitle title={`Số dư : ${formattedValuePrice(balance.toString())}đ`}/>} 
       <Button onClick={() => navigate('/wallet')} variant='outlined' sx={{ mb: 2 }}>
         <KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small' /> Quay lại ví tiền
       </Button>
       <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
         <span className=''>
-          <span className='font-bold'>Nếu sau 5 phút, số dư vẫn không được cập nhật vui lòng liên hệ <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.</span>
-          
-         
+          <span className='font-bold'>
+            Nếu sau 5 phút, số dư vẫn không được cập nhật vui lòng liên hệ{' '}
+            <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.
+          </span>
         </span>
       </Typography>
       <Card className='!bg-white !mb-5'>
