@@ -273,6 +273,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      {
+        path: '/marketing_can_ban/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Marketing Căn Bản'
+            subTitle='MCB'
+            id='35d6819c-bf6e-4fef-ba6c-8af92a9af596'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
     ]
   },
   {

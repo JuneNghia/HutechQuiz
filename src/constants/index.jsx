@@ -198,6 +198,19 @@ export const MenuSideBar = [
     ]
   },
   {
+    title: 'Quản Trị Kinh Doanh',
+    to: '',
+    icon: <CircleWithText text='KD' />,
+    index: 6,
+    subMenu: [
+      {
+        title: 'Marketing Căn Bản',
+        to: '/marketing_can_ban/exam',
+        icon: <CircleWithText text='1' />,
+      }, 
+    ]
+  },
+  {
     title: 'Tài liệu ôn tập',
     to: '/document',
     icon: <LocalLibraryOutlinedIcon />,

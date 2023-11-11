@@ -44,7 +44,7 @@ const Document = () => {
 
       <TextField
         className='w-full bg-white !mb-3'
-        placeholder='Nhập từ khoá để tìm kiếm ( VD: Đại cương hoặc Cơ sở văn hoá Việt Nam )'
+        placeholder='Nhập lĩnh vực hoặc tên môn học'
         size='small'
         focused
         InputProps={{
