@@ -102,7 +102,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
 
           const data = {
             phone: user.phone,
-            amount: 1000
+            amount: 1500
           }
 
           WalletService.pay(data)
@@ -257,7 +257,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   }
 
   if (!isPaid) {
-    return <InfoExam title={title} quantity={quantity} price={1000} handleSubmit={handlePaid} time={time} />
+    return <InfoExam title={title} quantity={quantity} price={1500} handleSubmit={handlePaid} time={time} />
   }
 
   if (isLoading) {

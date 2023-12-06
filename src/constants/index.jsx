@@ -5,9 +5,8 @@ import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined'
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 
 export const BASE_URL = '/dashboard'
-export const BASE_URL_SERVICE = 'https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1'
+export const BASE_URL_SERVICE = 'https://hutechquiz-api.onrender.com/api/v1'
 
-// https://hutechquiz-api-64604df21b2f.herokuapp.com/api/v1
 // http://localhost:8080/api/v1
 
 export const MenuSideBar = [
