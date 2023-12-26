@@ -286,6 +286,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      {
+        path: '/am_vi_hoc/exam',
+        element: (
+          <PracticeTestPage
+            quantity={20}
+            title='Âm Vị Học'
+            subTitle='Âm Vị Học'
+            id='e882633c-e429-4ff2-8aa2-89fdc3236881'
+            time={40 * 60}
+          />
+        ),
+        exact: true
+      },
     ]
   },
   {

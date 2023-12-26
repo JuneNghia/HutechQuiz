@@ -88,11 +88,11 @@ const Home = () => {
             }
           />
           <CardContent>
-            <Typography>
+            <Typography className='flex'>
               {notify.text}{' '}
               {notify.html && <div dangerouslySetInnerHTML={{ __html: notify.html }} />}
               {notify.link && (
-                <Link className='text-blue-700 underline' to={notify.link}>
+                <Link className='text-blue-700 underline ml-1' to={notify.link}>
                   tại đây
                 </Link>
               )}

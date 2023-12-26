@@ -196,6 +196,20 @@ export const MenuSideBar = [
     ]
   },
   {
+    title: 'Ngôn Ngữ Hàn',
+    to: '',
+    icon: <CircleWithText text='HQ' />,
+    index: 7,
+    subMenu: [
+      {
+        title: 'Âm Vị Học',
+        to: '/am_vi_hoc/exam',
+        icon: <CircleWithText text='1' />
+      },
+      
+    ]
+  },
+  {
     title: 'Quản Trị Kinh Doanh',
     to: '',
     icon: <CircleWithText text='KD' />,
