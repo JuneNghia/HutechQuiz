@@ -116,3 +116,23 @@ body {
 .swal2-container {
   z-index: 999999; 
 }
+
+.ql-container {
+  box-sizing: border-box;
+  font-family: Helvetica, Arial, sans-serif;
+  /* font-size: 13px; */
+  font-size: 18px !important;
+  height: 100%;
+  margin: 0px;
+  position: relative;
+}
+
+.ql-editor .ql-size-small {
+  /* font-size: 0.75em; */
+  font-size: 10px;
+}
+
+.ql-editor .ql-size-large {
+  /* font-size: 1.5em; */
+  font-size: 14px;
+}

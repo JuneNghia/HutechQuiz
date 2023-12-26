@@ -120,12 +120,12 @@ export const MenuSideBar = [
       {
         title: 'QPAN 1',
         to: '/qpan_1/exam',
-        icon: <CircleWithText text='1' />,
+        icon: <CircleWithText text='1' />
       },
       {
         title: 'QPAN 2',
         to: '/qpan_2/exam',
-        icon: <CircleWithText text='2' />,
+        icon: <CircleWithText text='2' />
       }
     ]
   },
@@ -138,43 +138,43 @@ export const MenuSideBar = [
       {
         title: 'Triết Học Mac',
         to: '/triet_hoc_mac/exam',
-        icon: <CircleWithText text='1' />,
+        icon: <CircleWithText text='1' />
       },
       {
         title: 'Kinh Tế Chính Trị Mac - Lênin',
         to: '/ktct_mac/exam',
-        icon: <CircleWithText text='2' />,
+        icon: <CircleWithText text='2' />
       },
       {
         title: 'Lịch Sử Văn Minh Thế Giới',
         to: '/lsvmtg/exam',
-        icon: <CircleWithText text='3' />,
+        icon: <CircleWithText text='3' />
       },
       {
         title: 'Quản Trị Học',
         to: '/quan_tri_hoc/exam',
-        icon: <CircleWithText text='4' />,
+        icon: <CircleWithText text='4' />
       },
       {
         title: 'Chủ Nghĩa Xã Hội Khoa Học',
         to: '/cnxhkh/exam',
-        icon: <CircleWithText text='5' />,
+        icon: <CircleWithText text='5' />
       },
       {
         title: 'Lịch Sử Đảng Cộng Sản Việt Nam',
         to: '/lich_su_dang/exam',
-        icon: <CircleWithText text='6' />,
+        icon: <CircleWithText text='6' />
       },
       {
         title: 'Tư Tưởng Hồ Chí Minh',
         to: '/tthcm/exam',
-        icon: <CircleWithText text='7' />,
+        icon: <CircleWithText text='7' />
       },
       {
         title: 'Cơ Sở Văn Hoá Việt Nam',
         to: '/csvhvn/exam',
-        icon: <CircleWithText text='8' />,
-      },
+        icon: <CircleWithText text='8' />
+      }
     ]
   },
   {
@@ -186,14 +186,13 @@ export const MenuSideBar = [
       {
         title: 'Sách 3A',
         to: '/tieng_anh_sach_3a/exam',
-        icon: <CircleWithText text='3A' />,
+        icon: <CircleWithText text='3A' />
       },
       {
         title: 'Sách 3B',
         to: '/tieng_anh_sach_3b/exam',
-        icon: <CircleWithText text='3B' />,
-      },
-    
+        icon: <CircleWithText text='3B' />
+      }
     ]
   },
   {
@@ -205,10 +204,11 @@ export const MenuSideBar = [
       {
         title: 'Marketing Căn Bản',
         to: '/marketing_can_ban/exam',
-        icon: <CircleWithText text='1' />,
-      }, 
+        icon: <CircleWithText text='1' />
+      }
     ]
   },
+
   {
     title: 'Tài liệu ôn tập',
     to: '/document',

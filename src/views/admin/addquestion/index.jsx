@@ -22,6 +22,7 @@ import CategoryService from '../../../services/category.service'
 import useAuth from '../../../hooks/useAuth'
 import Error from '../../errors'
 import StepTitle from '../../../components/StepTitle'
+import InputEditor from '../../../components/Input/ReactQuill'
 
 export const textFieldStyle = {
   '& .MuiInputBase-root': {
@@ -179,7 +180,13 @@ const AddQuestion = () => {
                   labelId='label-select-method'
                   id='select-method'
                   onChange={handleSubjectChange}
+                  onLoad={() => <div>Đang tải dữ liệu</div>}
                   label='Chọn môn học'
+                  MenuProps={{
+                    style: {
+                      height: '500px'
+                    }
+                  }}
                 >
                   {listSubject.map((subject) => (
                     <MenuItem key={subject.id} defaultValue={subject} value={subject}>
@@ -197,7 +204,13 @@ const AddQuestion = () => {
                     onChange={handleCategoryChange}
                     labelId='label-select-subject'
                     id='select-subject'
+                    onLoad={() => <div>Đang tải dữ liệu</div>}
                     label='Chọn phần'
+                    MenuProps={{
+                      style: {
+                        height: '500px'
+                      }
+                    }}
                   >
                     {listCategory.map((category) => (
                       <MenuItem key={category.id} defaultValue={category} value={category}>
@@ -227,41 +240,27 @@ const AddQuestion = () => {
                             <DeleteOutlineOutlinedIcon className='mr-2' /> Xoá câu hỏi
                           </Button>
                         </div>
-                        <div className='flex items-center'>
-                          <div className='!pr-12'>Câu {quesIndex + 1}: </div>
-                          <TextField
-                            value={dataQues.question}
-                            className='flex-1'
-                            sx={textFieldStyle}
-                            onChange={(e) => handleQuestionChange(quesIndex, e.target.value)}
-                            size='small'
-                          />
-                        </div>
                       </>
                     }
                   />
                   <CardContent>
+                    <div className='flex items-center mb-3'>
+                      <div className='md:w-[8%] xs:w-[10%] font-bold'>CÂU {quesIndex + 1}: </div>
+
+                      <InputEditor value={dataQues.question} handleChange={(e) => handleQuestionChange(quesIndex, e)} />
+                    </div>
                     <div className='flex items-center'>
-                      <div className='pr-11 font-bold'>Đáp án: </div>{' '}
-                      <TextField
-                        sx={textFieldStyle}
-                        value={dataQues.answer}
-                        onChange={(e) => handleAnswerChange(quesIndex, e.target.value)}
-                        className='flex-1'
-                        size='small'
-                      />
+                      <div className='md:w-[8%] xs:w-[10%]  font-bold'>Đáp án: </div>{' '}
+                      <InputEditor value={dataQues.answer} handleChange={(e) => handleAnswerChange(quesIndex, e)} />
                     </div>
 
                     {dataQues.choices.map((choice, choiceIndex) => (
                       <div key={`$dataQues_${quesIndex}_choices_${choiceIndex}`}>
                         <div className='flex items-center mt-3'>
-                          <div className='pr-5'>Lựa chọn {choiceIndex + 1}: </div>{' '}
-                          <TextField
-                            sx={textFieldStyle}
+                          <div className='md:w-[8%] xs:w-[10%]'>Lựa chọn {choiceIndex + 1}: </div>{' '}
+                          <InputEditor
                             value={choice}
-                            onChange={(e) => handleChoiceChange(quesIndex, choiceIndex, e.target.value)}
-                            className='flex-1'
-                            size='small'
+                            handleChange={(e) => handleChoiceChange(quesIndex, choiceIndex, e)}
                           />
                         </div>
                       </div>

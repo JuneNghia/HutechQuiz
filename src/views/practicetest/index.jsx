@@ -319,7 +319,8 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             title={
               <div className='flex justify-between items-center'>
                 <span style={{ lineHeight: 1.5 }}>
-                  Câu {index + 1}: {ques.question}
+                  Câu {index + 1}:{' '}
+                  <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: ques.question }}></span>
                 </span>
               </div>
             }
@@ -345,7 +346,11 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                           id={`radio-${ques.id}-${choice}`}
                         />
                       }
-                      label={<Typography className='!ml-2'>{choice}</Typography>}
+                      label={
+                        <Typography className='!ml-2'>
+                          <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: choice }}></span>
+                        </Typography>
+                      }
                       htmlFor={`radio-${ques.id}-${choice}`}
                       style={{
                         paddingRight: '10px',
