@@ -317,9 +317,9 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
           )}
           <CardHeader
             title={
-              <div className='flex justify-between items-center'>
+              <div className='flex justify-between items-center !font-normal'>
                 <span style={{ lineHeight: 1.5 }}>
-                  Câu {index + 1}:{' '}
+                  <span className='font-bold'>Câu {index + 1}:{' '}</span>
                   <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: ques.question }}></span>
                 </span>
               </div>
@@ -347,9 +347,9 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                         />
                       }
                       label={
-                        <Typography className='!ml-2'>
+                        <p className='!ml-2'>
                           <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: choice }}></span>
-                        </Typography>
+                        </p>
                       }
                       htmlFor={`radio-${ques.id}-${choice}`}
                       style={{
