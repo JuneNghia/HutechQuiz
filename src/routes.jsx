@@ -16,6 +16,7 @@ const UserDepositPage = lazy(() => import('./views/admin/userdeposit'))
 const DocumentPage = lazy(() => import('./views/document'))
 const AddQuestionPage = lazy(() => import('./views/admin/addquestion'))
 const AddSubjectPage = lazy(() => import('./views/admin/addsubject'))
+const QuestionManagePage = lazy(() => import('./views/admin/questionmanagement'))
 
 const router = createBrowserRouter([
   {
@@ -64,6 +65,11 @@ const router = createBrowserRouter([
         exact: true,
         path: '/add-subject',
         element: <AddSubjectPage />
+      },
+      {
+        exact: true,
+        path: '/question-management',
+        element: <QuestionManagePage />
       },
       {
         path: '/module_m1/exam',

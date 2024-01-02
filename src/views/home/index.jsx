@@ -46,6 +46,20 @@ const Home = () => {
               </Button>
             </CardContent>
           </Card>
+          <Card className='mt-3'>
+            <CardHeader
+              title={
+                <div>
+                  <span>Quản lý câu hỏi</span> <Chip label='ADMIN' color='success' size='small' />
+                </div>
+              }
+            />
+            <CardContent>
+              <Button variant='contained' onClick={() => navigate('/question-management')}>
+                Bấm dô đây
+              </Button>
+            </CardContent>
+          </Card>
           {/* <Card className='mt-3'>
             <CardHeader
               title={
