@@ -17,6 +17,10 @@
   -webkit-text-size-adjust: 100%;
 }
 
+html, body {
+  touch-action: none;
+}
+
 body {
   margin: 0;
   box-sizing: border-box;

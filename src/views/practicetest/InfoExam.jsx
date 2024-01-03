@@ -19,8 +19,7 @@ const InfoExam = ({ title, handleSubmit, quantity, price, time }) => {
           <span className='text-blue-700 font-bold'>Hutech</span>
           <span className='text-red-700 font-bold'> Quiz </span>
           <br />
-          <span>Số câu hỏi của một đề thi thử tương ứng với số câu khi các bạn thi thực tế.</span>
-          <br />
+          
           <span>Đây là đề thi thử <b>THAM KHẢO</b> để bổ sung kiến thức, các bạn nên ôn tập kèm theo các tài liệu khác nhau để đạt kết quả tốt nhất.</span>
          
         </span>

@@ -171,6 +171,7 @@ const AddQuestion = () => {
           <Helmet>
             <title>Thêm câu hỏi</title>
           </Helmet>
+          <StepTitle title={'Thêm câu hỏi mới'}/>
           <Paper className='mb-4 p-4'>
             <FormGroup>
               <FormControl margin='normal'>

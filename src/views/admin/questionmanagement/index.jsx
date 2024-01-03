@@ -19,6 +19,7 @@ import SubjectService from '../../../services/subject.service'
 import CategoryService from '../../../services/category.service'
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
 import InputEditor from '../../../components/Input/ReactQuill'
+import StepTitle from '../../../components/StepTitle'
 
 const QuesManage = () => {
   const { user } = useAuth()
@@ -85,6 +86,7 @@ const QuesManage = () => {
           <Helmet>
             <title>Quản lý câu hỏi</title>
           </Helmet>
+          <StepTitle title={'Quản lý câu hỏi'}/>
           <Paper className='mb-4 p-4'>
             <FormGroup>
               <FormControl margin='normal'>
@@ -155,6 +157,7 @@ const QuesManage = () => {
                               color='error'
                               variant='contained'
                               size='small'
+                              disabled
                               // onClick={() => handleDeleteQuestion(quesIndex)}
                             >
                               <DeleteOutlineOutlinedIcon className='mr-2' /> Xoá câu hỏi
@@ -166,22 +169,24 @@ const QuesManage = () => {
                     <CardContent>
                       <div className='flex items-center mb-3'>
                         <div className='md:w-[8%] xs:w-[10%] font-bold'>CÂU {quesIndex + 1}: </div>
-
-                        <InputEditor
+                      <p dangerouslySetInnerHTML={{__html: dataQues.question}}/>
+                        {/* <InputEditor
                           value={dataQues.question}
                           handleChange={(e) => handleQuestionChange(dataQues.id, e)}
-                        />
+                        /> */}
                       </div>
                       <div className='flex items-center'>
                         <div className='md:w-[8%] xs:w-[10%]  font-bold'>Đáp án: </div>{' '}
-                        <InputEditor value={dataQues.answer} handleChange={(e) => handleAnswerChange(dataQues.id, e)}/>
+                        <p dangerouslySetInnerHTML={{__html: dataQues.answer}}/>
+                        {/* <InputEditor value={dataQues.answer} handleChange={(e) => handleAnswerChange(dataQues.id, e)}/> */}
                       </div>
 
                       {dataQues.choices.map((choice, choiceIndex) => (
                         <div key={`$dataQues_${quesIndex}_choices_${choiceIndex}`}>
                           <div className='flex items-center mt-3'>
                             <div className='md:w-[8%] xs:w-[10%]'>Lựa chọn {choiceIndex + 1}: </div>{' '}
-                            <InputEditor value={choice} handleChange={(e) => handleAnswerChange(dataQues.id, e)}/>
+                            <p dangerouslySetInnerHTML={{__html: choice}}/>
+                            {/* <InputEditor value={choice} handleChange={(e) => handleAnswerChange(dataQues.id, e)}/> */}
                           </div>
                         </div>
                       ))}
@@ -215,7 +220,7 @@ const QuesManage = () => {
             </>
           )}
           {!isFetching && selectedCategoryID && (
-            <div className='fixed top-[20px] left-[270px] z-[1000] flex items-center justify-center'>
+            <div className='fixed top-[1.5%] left-[50%] z-[1000] flex items-center justify-center'>
               <Button variant='contained' color='success'>
                 Hoàn thành
               </Button>

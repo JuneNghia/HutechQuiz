@@ -214,6 +214,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      {
+        path: '/nghiep_vu_ngoai_thuong/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Nghiệp Vụ Ngoại Thương'
+            subTitle='Nghiệp Vụ Ngoại Thương'
+            id='8ff808ca-eb1f-439e-8d9c-1b6d3dfe6feb'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
       // {
       //   path: '/anh_ngu_1/exam',
       //   element: (

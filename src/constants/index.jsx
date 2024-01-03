@@ -219,6 +219,11 @@ export const MenuSideBar = [
         title: 'Marketing Căn Bản',
         to: '/marketing_can_ban/exam',
         icon: <CircleWithText text='1' />
+      },
+      {
+        title: 'Nghiệp Vụ Ngoại Thương',
+        to: '/nghiep_vu_ngoai_thuong/exam',
+        icon: <CircleWithText text='2' />
       }
     ]
   },
