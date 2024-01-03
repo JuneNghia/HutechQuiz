@@ -227,19 +227,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
-      // {
-      //   path: '/anh_ngu_1/exam',
-      //   element: (
-      //     <PracticeTestPage
-      //       quantity={60}
-      //       title='Anh Ngữ 1 ( Ngữ Pháp )'
-      //       subTitle='AN1 - NGỮ PHÁP'
-      //       id='10ee56df-1a4b-49eb-b843-4f0211a14ce9'
-      //       time={60 * 60}
-      //     />
-      //   ),
-      //   exact: true
-      // },
+      {
+        path: '/anh_ngu_1/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Anh Ngữ 1 ( Ngữ pháp - Đọc hiểu)'
+            subTitle='Anh Ngữ 1'
+            id='10ee56df-1a4b-49eb-b843-4f0211a14ce9'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
       // {
       //   path: '/anh_ngu_2/exam',
       //   element: (

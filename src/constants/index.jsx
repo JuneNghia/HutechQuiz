@@ -184,6 +184,11 @@ export const MenuSideBar = [
     index: 5,
     subMenu: [
       {
+        title: 'Anh Ngữ 1',
+        to: '/anh_ngu_1/exam',
+        icon: <CircleWithText text='A1' />
+      },
+      {
         title: 'Sách 3A',
         to: '/tieng_anh_sach_3a/exam',
         icon: <CircleWithText text='3A' />
