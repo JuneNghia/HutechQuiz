@@ -232,7 +232,7 @@ const router = createBrowserRouter([
         element: (
           <PracticeTestPage
             quantity={45}
-            title='Anh Ngữ 1 ( Ngữ pháp - Đọc hiểu)'
+            title='Anh Ngữ 1 ( Ngữ pháp - Đọc hiểu )'
             subTitle='Anh Ngữ 1'
             id='10ee56df-1a4b-49eb-b843-4f0211a14ce9'
             time={45 * 60}
