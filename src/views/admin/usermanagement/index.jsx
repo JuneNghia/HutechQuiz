@@ -102,7 +102,7 @@ const UserManagement = () => {
             return total
           }, 0)
 
-          setTotalRevenue(totalRevenue - 320000)
+          setTotalRevenue(totalRevenue - 500000)
 
           const todayUserRes = listUser.reduce((total = 0, user) => {
             const userCreatedAt = new Date(user.createdAt)
