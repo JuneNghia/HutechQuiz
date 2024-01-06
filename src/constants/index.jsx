@@ -174,6 +174,11 @@ export const MenuSideBar = [
         title: 'Cơ Sở Văn Hoá Việt Nam',
         to: '/csvhvn/exam',
         icon: <CircleWithText text='8' />
+      },
+      {
+        title: 'Pháp Luật Đại Cương',
+        to: '/phap_luat_dai_cuong/exam',
+        icon: <CircleWithText text='9' />
       }
     ]
   },

@@ -228,6 +228,19 @@ const router = createBrowserRouter([
         exact: true
       },
       {
+        path: '/phap_luat_dai_cuong/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Pháp Luật Đại Cương'
+            subTitle='Pháp Luật Đại Cương'
+            id='13d49f2c-9ace-492a-b8a1-4eecc8f826ac'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
         path: '/anh_ngu_1/exam',
         element: (
           <PracticeTestPage

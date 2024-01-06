@@ -275,7 +275,7 @@ const AddQuestion = () => {
             </>
           )}
           {selectedCategory && (
-            <div className='fixed top-[20px] left-[270px] z-[1000] flex items-center justify-center'>
+            <div className='fixed top-[1.5%] left-[50%] z-[1000] flex items-center justify-center'>
               <Button variant='contained' color='success' onClick={handleSubmit}>
                 Hoàn thành
               </Button>
