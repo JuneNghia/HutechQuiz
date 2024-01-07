@@ -23,6 +23,9 @@ import useAuth from '../../../hooks/useAuth'
 import Error from '../../errors'
 import StepTitle from '../../../components/StepTitle'
 import InputEditor from '../../../components/Input/ReactQuill'
+import Radio from '@mui/material/Radio'
+import CheckBoxOutlinedIcon from '@mui/icons-material/CheckBoxOutlined'
+import Tooltip from '@mui/material/Tooltip'
 
 export const textFieldStyle = {
   '& .MuiInputBase-root': {
@@ -38,14 +41,19 @@ const AddQuestion = () => {
   const [selectedSubject, setSelectedSubject] = useState()
   const [selectedCategory, setSelectedCategory] = useState()
   const [listCategory, setListCategory] = useState()
-
-  const [data, setData] = useState([
+  const [isNotSelectedAnswer, setIsNotSelectedAnswer] = useState(false)
+  const [listNotAnswer, setListNotAnswer] = useState([])
+  const defaultData = [
     {
       question: '',
       answer: '',
       choices: ['', '', '', '']
     }
-  ])
+  ]
+  const dataLocal = localStorage.getItem('questionData') ? JSON.parse(localStorage.getItem('questionData')) : undefined
+  const [hasLocalData, setHasLocalData] = useState(false)
+
+  const [data, setData] = useState()
 
   useEffect(() => {
     SubjectService.getAllSubject().then((res) => {
@@ -114,13 +122,35 @@ const AddQuestion = () => {
     })
   }
 
+  const handleAddChoice = (quesIndex) => {
+    setData((prevData) => {
+      const newData = [...prevData]
+      newData[quesIndex].choices.push('')
+      return newData
+    })
+  }
+
+  const handleDeleteChoice = (quesIndex, choiceIndex) => {
+    setData((prevData) => {
+      const newData = [...prevData]
+      newData[quesIndex].choices = newData[quesIndex].choices.filter((_, index) => index !== choiceIndex)
+      return newData
+    })
+  }
+
   const handleSubmit = () => {
-    if (data.length === 0) {
+    if (isNotSelectedAnswer) {
+      Swal.fire(
+        'LẠY MẸ',
+        `Câu hỏi <b>${listNotAnswer.map((data) => (data + 1).toString().split(', '))}</b> chưa chọn đáp án`,
+        'warning'
+      )
+    } else if (data.length === 0) {
       Swal.fire('', 'Vui lòng thêm ít nhất 1 câu hỏi', 'error')
     } else {
       Swal.fire({
         icon: 'warning',
-        html: `Pé có chắc chắn muốn thêm <b>${data.length}</b> câu hỏi cho <br/><b>${selectedCategory.title}</b> của môn học <b>${selectedSubject.title}</b>?`,
+        html: `Bạn có chắc chắn muốn thêm <b>${data.length}</b> câu hỏi cho <br/><b>${selectedCategory.title}</b> của môn học <b>${selectedSubject.title}</b>?`,
         showCancelButton: true,
         cancelButtonText: 'Huỷ',
         confirmButtonText: 'Thêm',
@@ -162,6 +192,50 @@ const AddQuestion = () => {
     }
   }
 
+  useEffect(() => {
+    if (data) {
+      const questionsWithoutAnswerIndexes = data
+        .map((question, index) => (!question.answer || question.answer === '' ? index : -1))
+        .filter((index) => index !== -1)
+      setListNotAnswer(questionsWithoutAnswerIndexes)
+
+      const isNotSelectedAnswerValue = questionsWithoutAnswerIndexes.length > 0
+      setIsNotSelectedAnswer(isNotSelectedAnswerValue)
+
+      localStorage.setItem('questionData', JSON.stringify(data))
+    }
+  }, [data])
+
+  useEffect(() => {
+    if (dataLocal !== undefined && JSON.stringify(dataLocal) !== JSON.stringify(defaultData)) {
+      setHasLocalData(true)
+    } else {
+      setHasLocalData(false)
+      setData(defaultData)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (hasLocalData) {
+      Swal.fire({
+        title: 'Khôi phục dữ liệu',
+        html: `Bạn có muốn khôi phục dữ liệu câu hỏi trước đó không ?<br/>Nếu chọn không, toàn bộ dữ liệu trước đó sẽ bị xoá`,
+        icon: 'question',
+        cancelButtonText: 'Huỷ',
+        showCancelButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText: 'Khôi phục',
+        cancelButtonColor: 'red'
+      }).then((confirm) => {
+        if (confirm.isConfirmed) {
+          setData(dataLocal)
+        } else {
+          setData(defaultData)
+        }
+      })
+    }
+  }, [hasLocalData])
+
   return (
     <>
       {user.role === 'USER' ? (
@@ -171,7 +245,7 @@ const AddQuestion = () => {
           <Helmet>
             <title>Thêm câu hỏi</title>
           </Helmet>
-          <StepTitle title={'Thêm câu hỏi mới'}/>
+          <StepTitle title={'Thêm câu hỏi mới'} />
           <Paper className='mb-4 p-4'>
             <FormGroup>
               <FormControl margin='normal'>
@@ -226,12 +300,20 @@ const AddQuestion = () => {
 
           {selectedCategory && (
             <>
-              {data.map((dataQues, quesIndex) => (
+              {data?.map((dataQues, quesIndex) => (
                 <Card key={`dataQues_${quesIndex}`} className='mb-4'>
                   <CardHeader
                     title={
                       <>
-                        <div className='flex justify-end mb-3'>
+                        <div className='flex justify-end mb-3 gap-3'>
+                          <Button
+                            color='info'
+                            variant='contained'
+                            size='small'
+                            onClick={() => handleAddChoice(quesIndex)}
+                          >
+                            <CheckBoxOutlinedIcon className='mr-2' /> Thêm lựa chọn
+                          </Button>
                           <Button
                             color='error'
                             variant='contained'
@@ -246,20 +328,40 @@ const AddQuestion = () => {
                   />
                   <CardContent>
                     <div className='flex items-center mb-3'>
-                      <div className='md:w-[8%] xs:w-[10%] font-bold'>CÂU {quesIndex + 1}: </div>
-
-                      <InputEditor value={dataQues.question} handleChange={(e) => handleQuestionChange(quesIndex, e)} />
-                    </div>
-                    <div className='flex items-center'>
-                      <div className='md:w-[8%] xs:w-[10%]  font-bold'>Đáp án: </div>{' '}
-                      <InputEditor value={dataQues.answer} handleChange={(e) => handleAnswerChange(quesIndex, e)} />
+                      <div className='md:w-[6%] xs:w-[12%] font-bold'>CÂU {quesIndex + 1}: </div>
+                      <div className='w-[45px] h-[43px]'></div>
+                      <InputEditor
+                        placeholder={'Chưa có nội dung'}
+                        value={dataQues.question}
+                        handleChange={(e) => handleQuestionChange(quesIndex, e)}
+                      />
                     </div>
 
                     {dataQues.choices.map((choice, choiceIndex) => (
                       <div key={`$dataQues_${quesIndex}_choices_${choiceIndex}`}>
                         <div className='flex items-center mt-3'>
-                          <div className='md:w-[8%] xs:w-[10%]'>Lựa chọn {choiceIndex + 1}: </div>{' '}
+                          <div className='md:w-[6%] xs:w-[12%] flex flex-col'>
+                            Chọn {choiceIndex + 1}:{' '}
+                            <Button
+                              className='!m-0 !p-0 w-fit'
+                              color='error'
+                              variant='contained'
+                              size='small'
+                              onClick={() => handleDeleteChoice(quesIndex, choiceIndex)}
+                            >
+                              Xoá
+                            </Button>
+                          </div>{' '}
+                          <Tooltip title={!choice ? 'Nhập nội dung đáp án trước' : undefined}>
+                            <Radio
+                              checked={choice && dataQues.answer === choice}
+                              name='choice'
+                              onChange={(e) => handleAnswerChange(quesIndex, e.target.value)}
+                              value={choice}
+                            />
+                          </Tooltip>
                           <InputEditor
+                            placeholder='Chưa có đáp án'
                             value={choice}
                             handleChange={(e) => handleChoiceChange(quesIndex, choiceIndex, e)}
                           />

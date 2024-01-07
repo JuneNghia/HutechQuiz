@@ -32,7 +32,7 @@ const InputEditor = ({ value, handleChange, className, placeholder }) => {
 
   return (
     <ReactQuill
-      className={`w-full border rounded border-slate-400 ${className}`}
+      className={`w-full border rounded ${value ? 'border-slate-400' : 'border-2 border-red-600'} ${className}`}
       value={value}
       onChange={(e) => handleChange(e)}
       theme='snow'
