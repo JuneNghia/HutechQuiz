@@ -131,11 +131,15 @@ const AddQuestion = () => {
   }
 
   const handleDeleteChoice = (quesIndex, choiceIndex) => {
-    setData((prevData) => {
-      const newData = [...prevData]
-      newData[quesIndex].choices = newData[quesIndex].choices.filter((_, index) => index !== choiceIndex)
-      return newData
-    })
+    if (data[quesIndex].choices.length === 1) {
+      Swal.fire('Lỗi', 'Các câu hỏi phải có ít nhất 1 lựa chọn', 'error')
+    } else {
+      setData((prevData) => {
+        const newData = [...prevData]
+        newData[quesIndex].choices = newData[quesIndex].choices.filter((_, index) => index !== choiceIndex)
+        return newData
+      })
+    }
   }
 
   const handleSubmit = () => {
@@ -215,11 +219,13 @@ const AddQuestion = () => {
     }
   }, [])
 
+  console.log(data)
+
   useEffect(() => {
     if (hasLocalData) {
       Swal.fire({
         title: 'Khôi phục dữ liệu',
-        html: `Bạn có muốn khôi phục dữ liệu câu hỏi trước đó không ?<br/>Nếu chọn không, toàn bộ dữ liệu trước đó sẽ bị xoá`,
+        html: `Bạn có muốn khôi phục dữ liệu câu hỏi trước đó không ?<br/>Nếu chọn <b class='text-red-500'>Huỷ</b>, toàn bộ dữ liệu trước đó sẽ bị xoá`,
         icon: 'question',
         cancelButtonText: 'Huỷ',
         showCancelButton: true,
