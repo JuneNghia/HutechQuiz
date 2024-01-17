@@ -60,12 +60,12 @@ const AccountMenu = () => {
   }
 
   const listMenu = [
-    {
-      title: 'Thông tin cá nhân',
-      icon: <PersonOutlineIcon fontSize='small' />,
-      onClick: () => navigate('/'),
-      onlyAdmin: false
-    },
+    // {
+    //   title: 'Thông tin cá nhân',
+    //   icon: <PersonOutlineIcon fontSize='small' />,
+    //   onClick: () => navigate('/'),
+    //   onlyAdmin: false
+    // },
     {
       title: 'Ví tiền',
       icon: <AccountBalanceWalletOutlinedIcon fontSize='small' />,
@@ -84,12 +84,12 @@ const AccountMenu = () => {
       onClick: () => navigate('/user-deposit'),
       onlyAdmin: true
     },
-    {
-      title: 'Cài đặt',
-      icon: <Settings fontSize='small' />,
-      onClick: () => navigate('/settings'),
-      onlyAdmin: false
-    },
+    // {
+    //   title: 'Cài đặt',
+    //   icon: <Settings fontSize='small' />,
+    //   onClick: () => navigate('/settings'),
+    //   onlyAdmin: false
+    // },
     {
       title: 'Đăng xuất',
       icon: <Logout fontSize='small' />,

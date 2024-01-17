@@ -7,20 +7,6 @@ const dataNotify = [
   //   label: 'THÔNG BÁO'
   // },
   {
-    title: 'Môn học mới',
-    html: 'Đã có môn học <b>Pháp Luật Đại Cương</b>, di chuyển nhanh tới trang thi thử',
-    color: 'error',
-    link: 'phap_luat_dai_cuong/exam',
-    label: 'MỚI'
-  },
-  {
-    title: 'Môn học mới',
-    html: 'Đã có môn học <b>Nghiệp Vụ Ngoại Thương</b>, di chuyển nhanh tới trang thi thử',
-    color: 'error',
-    link: 'nghiep_vu_ngoai_thuong/exam',
-    label: 'MỚI'
-  },
-  {
     title: 'Kiểm tra Ví tiền',
     text: 'Di chuyển nhanh tới trang Ví tiền tại',
     color: 'warning',

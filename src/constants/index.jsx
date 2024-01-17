@@ -3,6 +3,7 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined'
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 
 export const BASE_URL = '/dashboard'
 export const BASE_URL_SERVICE = 'https://hutechquiz-api.onrender.com/api/v1'
@@ -15,6 +16,13 @@ export const MenuSideBar = [
     to: '/',
     icon: <HomeOutlinedIcon />,
     index: 0,
+    subMenu: []
+  },
+  {
+    title: 'Ví tiền',
+    to: '/wallet',
+    icon: <AccountBalanceWalletOutlinedIcon />,
+    index: 7,
     subMenu: []
   },
   {

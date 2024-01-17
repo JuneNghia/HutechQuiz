@@ -200,7 +200,7 @@ const Sidebar = () => {
 
           <Box paddingLeft={isCollapsed ? undefined : '0%'}>
             <Menu>
-              {MenuSideBar.slice(0, 1).map((item) => (
+              {MenuSideBar.slice(0, 2).map((item) => (
                 <Item
                   key={item.index}
                   title={item.title}
@@ -217,7 +217,7 @@ const Sidebar = () => {
                 </h4>
               )}
 
-              {MenuSideBar.slice(1, 7).map((item) => (
+              {MenuSideBar.slice(2, 8).map((item) => (
                 <SubMenu className='text-zinc-600' icon={item.icon} key={item.index} label={item.title}>
                   {item.subMenu.map((e) => (
                     <Item
@@ -232,7 +232,7 @@ const Sidebar = () => {
                 </SubMenu>
               ))}
 
-              {MenuSideBar.slice(7, 8).map((item) => (
+              {MenuSideBar.slice(8, 10).map((item) => (
                 <Item
                   key={item.title}
                   title={item.title}

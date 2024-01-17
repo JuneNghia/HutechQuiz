@@ -24,6 +24,8 @@ import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 import warningImg from '../../assets/warning.svg'
 import ReportService from '../../services/report.service'
 
+const alphabet = ['A','B','C','D','E','F','G','H','I']
+
 const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const location = useLocation()
   const theme = useTheme()
@@ -36,6 +38,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const [isLoading, setIsLoading] = useState(true)
   const [reported, setReported] = useState({})
   const [isReporting, setIsReporting] = useState({})
+  const [isSuccess, setIsSuccess] = useState(false)
   const [selectedAnswers, setSelectedAnswers] = useState({})
   const [saved, setSaved] = useState(false)
 
@@ -48,28 +51,12 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
     }
   }
 
-  // const testData = [
-  //   {
-  //     id: '8288e6b7-0f9c-498b-a17e-ce6bf7a5269a',
-  //     question: 'Với MS-Word, có thể nhấn phím nào để hiện các Key Tips cho phép truy cập lệnh từ bàn phím',
-  //     answer: 'Alt',
-  //     choices: ['Ctrl', 'Alt', 'Shift', 'Esc'],
-  //     categoryId: 'b8a7db65-f25d-478d-9a7c-c85868737bad'
-  //   },
-  //   {
-  //     id: 'bb3f8905-5fde-4d42-9853-fcba4bce935c',
-  //     question: 'Với MS-Word, có bao nhiêu kiểu hiển thị tài liệu',
-  //     answer: 'Trên 3',
-  //     choices: ['1', '2', '3', 'Trên 3'],
-  //     categoryId: 'b8a7db65-f25d-478d-9a7c-c85868737bad'
-  //   }
-  // ]
-
   useEffect(() => {
     setIsLoading(true)
     setIsPaid(false)
     setSaved(false)
   }, [location.pathname])
+
 
   const handleTryAgain = () => {
     handleAlertConfirm({
@@ -116,13 +103,39 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                 if (confirm.isConfirmed) {
                   setIsPaid(true)
                   TestService.getExam(id)
-                    .then((res) => {
+                    .then(async (res) => {
+                      const questionIds = await res.data.data.map((question) => question.id)
+
+                      const initialReported = {}
+                      await questionIds.forEach((questionId) => {
+                        initialReported[questionId] = { isReported: false }
+                      })
+
+                      ReportService.reported().then((res) => {
+                        if (res && res.data.data) {
+                          const reportedMap = {}
+
+                          res.data.data.forEach((id) => {
+                            if (initialReported[id]) {
+                              reportedMap[id] = { isReported: true }
+                            }
+                          })
+
+                          setReported((prevReported) => ({
+                            ...prevReported,
+                            ...reportedMap
+                          }))
+                        }
+                        setIsSuccess(true)
+                      })
+
                       setData(res.data.data)
                       setIsLoading(false)
                     })
                     .catch((error) => {
                       console.log(error)
                       setIsLoading(false)
+                      setIsSuccess(false)
                     })
                 }
               })
@@ -302,7 +315,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
               : 'bg-white outline-1'
           } outline mb-4 relative`}
         >
-          {saved && (
+          {saved && isSuccess && (
             <Button
               disabled={reported[ques.id]?.isReported || isReporting[ques.id]}
               onClick={() => handleReport(ques.id)}
@@ -319,7 +332,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             title={
               <div className='flex justify-between items-center !font-normal'>
                 <span style={{ lineHeight: 1.5 }}>
-                  <span className='font-bold'>Câu {index + 1}:{' '}</span>
+                  <span className='font-bold'>Câu {index + 1}: </span>
                   <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: ques.question }}></span>
                 </span>
               </div>
@@ -333,7 +346,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
               name={`row-radio-buttons-group-${ques.id}`}
             >
               <Grid container>
-                {ques.choices.map((choice) => (
+                {ques.choices.map((choice, index) => (
                   <Grid className='xs:mb-2 xs:first:mt-1 lg:mb-0 last:mb-0' key={choice} lg={6} xs={12}>
                     <FormControlLabel
                       className='!items-start px-3 py-3'
@@ -348,7 +361,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                       }
                       label={
                         <p className='!ml-2'>
-                          <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: choice }}></span>
+                          <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: `${alphabet[index]}. ${choice}` }}></span>
                         </p>
                       }
                       htmlFor={`radio-${ques.id}-${choice}`}
