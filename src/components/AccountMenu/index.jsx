@@ -11,7 +11,9 @@ import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalance
 import ManageAccountsOutlinedIcon from '@mui/icons-material/ManageAccountsOutlined'
 import AccountBalanceOutlinedIcon from '@mui/icons-material/AccountBalanceOutlined'
 import Tooltip from '@mui/material/Tooltip'
+import StorageOutlinedIcon from '@mui/icons-material/StorageOutlined';
 import Settings from '@mui/icons-material/Settings'
+import PlaylistAddOutlinedIcon from '@mui/icons-material/PlaylistAddOutlined';
 import Logout from '@mui/icons-material/Logout'
 import useAuth from '../../hooks/useAuth'
 import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
@@ -82,6 +84,18 @@ const AccountMenu = () => {
       title: 'Nạp tiền khách',
       icon: <AccountBalanceOutlinedIcon fontSize='small' />,
       onClick: () => navigate('/user-deposit'),
+      onlyAdmin: true
+    },
+    {
+      title: 'Quản lý câu hỏi',
+      icon: <StorageOutlinedIcon fontSize='small' />,
+      onClick: () => navigate('/question-management'),
+      onlyAdmin: true
+    },
+    {
+      title: 'Thêm câu hỏi',
+      icon: <PlaylistAddOutlinedIcon fontSize='small' />,
+      onClick: () => navigate('/add-question'),
       onlyAdmin: true
     },
     // {
