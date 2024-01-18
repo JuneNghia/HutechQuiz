@@ -361,7 +361,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
                       }
                       label={
                         <p className='!ml-2'>
-                          <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: `${alphabet[index]}. ${choice}` }}></span>
+                          <span className='underline-offset-4' dangerouslySetInnerHTML={{ __html: `${choice}` }}></span>
                         </p>
                       }
                       htmlFor={`radio-${ques.id}-${choice}`}
