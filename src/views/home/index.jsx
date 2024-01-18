@@ -10,16 +10,10 @@ import {
   Typography,
   Grid
 } from '@mui/material'
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import StepTitle from '../../components/StepTitle'
-import useAuth from '../../hooks/useAuth'
-import dataNotify from './data'
 import { Helmet } from 'react-helmet'
-import slide1 from '../../assets/slide-1.png'
-import { Carousel } from 'react-responsive-carousel'
-import SubjectService from '../../services/subject.service'
-import { MenuSideBar } from '../../constants'
 import SearchIcon from '@mui/icons-material/Search'
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined'
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined'
@@ -157,7 +151,6 @@ const textFieldStyle = {
 }
 
 const Home = () => {
-  const { user } = useAuth()
   const [searchKeyword, setSearchKeyword] = useState('')
   const navigate = useNavigate()
 
