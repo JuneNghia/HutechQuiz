@@ -24,7 +24,7 @@ import { handleAlertConfirm } from '../../utils/common/handleAlertConfirm'
 import warningImg from '../../assets/warning.svg'
 import ReportService from '../../services/report.service'
 
-const alphabet = ['A','B','C','D','E','F','G','H','I']
+// const alphabet = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
 
 const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
   const location = useLocation()
@@ -56,7 +56,6 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
     setIsPaid(false)
     setSaved(false)
   }, [location.pathname])
-
 
   const handleTryAgain = () => {
     handleAlertConfirm({
@@ -214,10 +213,17 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
       if (selectedAnswers[ques.id] === ques.answer) {
         correctCount++
       }
+      const point = (10 / data.length) * correctCount
       setTimeout(() => {
         Swal.fire({
           icon: 'success',
-          html: `Nộp bài thành công<br/>Số câu làm đúng : <b>${correctCount} / ${data.length}</b>`,
+          html: `Nộp bài thành công<br/>Số câu làm đúng : <b>${correctCount} / ${data.length}</b><br/>${
+            point <= 5
+              ? 'Hmm... Không sao mà, chỉ cần cố 1 xíu nữa hoi là được 🥰'
+              : point > 5 && point <= 8
+              ? 'Wow cũng zất zì và này nọ đuấy!!! 😁'
+              : 'Uiii ngưỡng mộ bạn quá, cùng nhau xem đáp án thôi nào! 🥳'
+          }`,
           confirmButtonText: 'Xem đáp án'
         }).then((confirm) => {
           if (confirm.isConfirmed) {
@@ -250,10 +256,21 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
             if (selectedAnswers[ques.id] === ques.answer) {
               correctCount++
             }
+            const point = (10 / data.length) * correctCount
+            const formattedPoint = point % 1 !== 0 ? point.toFixed(2) : point;
             setTimeout(() => {
               Swal.fire({
+                title: 'Nộp bài thành công',
                 icon: 'success',
-                html: `Nộp bài thành công<br/>Số câu làm đúng : <b>${correctCount} / ${data.length}</b>`,
+                html: `Số câu làm đúng : <b>${correctCount} / ${
+                  data.length
+                }</b><br/>Số điểm: <b>${formattedPoint} / 10</b><br/><br/> <b class='text-[16px]'>${
+                  point <= 5
+                    ? 'Hmm... Không sao mà, chỉ cần cố 1 xíu nữa hoi là được 🥰'
+                    : point > 5 && point <= 8
+                    ? 'Wow cũng zất zì và này nọ đuấy!!! 😁'
+                    : 'Uiii ngưỡng mộ bạn quá, cùng nhau xem đáp án thôi nào! 🥳'
+                }</b>`,
                 confirmButtonText: 'Xem đáp án'
               }).then((confirm) => {
                 if (confirm.isConfirmed) {
