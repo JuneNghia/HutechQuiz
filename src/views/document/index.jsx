@@ -40,7 +40,7 @@ const Document = () => {
         <title>Tài liệu ôn tập</title>
       </Helmet>
 
-      <StepTitle title='Tài liệu ôn tập Hutech' />
+      <StepTitle title='Tài liệu ôn tập' />
 
       <TextField
         className='w-full bg-white !mb-3'

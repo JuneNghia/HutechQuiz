@@ -6,7 +6,7 @@ import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
 import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
 
 export const BASE_URL = '/dashboard'
-export const BASE_URL_SERVICE = 'https://hutechquiz-api.onrender.com/api/v1'
+export const BASE_URL_SERVICE = 'https://api.uniquiz.online/api/v1'
 
 // http://localhost:8080/api/v1
 

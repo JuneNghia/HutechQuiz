@@ -1,5 +1,5 @@
 import { Box, Typography, Unstable_Grid2 as Grid } from '@mui/material'
-import logo from '../../assets/hutech.png'
+import logo from '../../assets/h.png'
 
 export const AuthLayout = (props) => {
   const { children } = props
@@ -47,16 +47,17 @@ export const AuthLayout = (props) => {
               }}
               variant='h1'
             >
-              <span className='xs:hidden md:inline-block'>Chào mừng bạn đến với</span>
-              <Box component='a' sx={{ color: '#15B79E' }} target='_blank'>
+              
+              <Box component='a' sx={{ color: '#15B79E', fontSize: '64px' }} target='_blank'>
                 {' '}
-                Hutech Quiz
+                <span className='text-blue-600'>Uni</span>
+                <span className='text-red-600'> Quiz</span>
               </Box>
             </Typography>
-            <Typography align='center' sx={{ mb: 3 }} className='xs:hidden md:block' variant='subtitle1'>
-              Công cụ giúp ôn tập chứng chỉ M1, M3, B1 và hơn thế nữa
+            <Typography align='center' sx={{ mb: 3, mt: 1, fontSize: '20px' }} className='xs:hidden md:block' variant='subtitle1'>
+              Công cụ mô phỏng thi thử trắc nghiệm trực tuyến
             </Typography>
-            <img src={logo} alt='logo' className='xl:w-full lg:w-[80%] xs:w-[40%] md:w-[60%] ' />
+            <img src={logo} alt='logo' className='xl:w-[70%] lg:w-[80%] xs:w-[40%] md:w-[60%] ' />
           </Box>
         </Grid>
         <Grid

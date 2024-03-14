@@ -19,6 +19,7 @@ import { useNavigate } from 'react-router-dom'
 import useAuth from '../../hooks/useAuth'
 import { Helmet } from 'react-helmet'
 import PageLoader from '../../components/Loader/PageLoader'
+import Swal from 'sweetalert2'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -37,9 +38,10 @@ const Login = () => {
       setShowLoader(true)
       try {
         await auth.login(values.email, values.password).then(() => {
-          setIsSuccess(true)
-          navigate('/', { replace: true })
-          window.location.reload()
+          setTimeout(() => {
+            setIsSuccess(true)
+            location.pathname = '/'
+          }, 1000)
         })
       } catch (err) {
         setTimeout(() => {
@@ -92,6 +94,10 @@ const Login = () => {
       }
     }
   })
+
+  const handleForgot = useCallback(() => {
+    Swal.fire("Thông báo", "Chức năng đang được xây dựng, để lấy lại mật khẩu vui lòng liên hệ <b>093 4945 803 (Zalo)</b><br/><br/>Xin cảm ơn !", "info")
+  }, [])
 
   const handleMethodChange = useCallback((event, value) => {
     setMethod(value)
@@ -188,7 +194,7 @@ const Login = () => {
                       }
                     />
 
-                    <Link href='/forgot' underline='hover' variant='subtitle2'>
+                    <Link onClick={handleForgot}  href='#' underline='hover' variant='subtitle2'>
                       Quên mật khẩu?
                     </Link>
                   </Grid>
@@ -244,7 +250,7 @@ const Login = () => {
                       }
                     />
 
-                    <Link href='/forgot' underline='hover' variant='subtitle2'>
+                    <Link href='#' onClick={handleForgot}  underline='hover' variant='subtitle2'>
                       Quên mật khẩu?
                     </Link>
                   </Grid>

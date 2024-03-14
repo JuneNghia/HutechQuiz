@@ -32,7 +32,7 @@ const Register = () => {
         }).then(() => {
           setTimeout(() => {
             handleAlertConfirm({
-              html: `Chúc mừng <b>${values.name}</b> đã tạo tài khoản thành công <br/>Bạn sẽ hài lòng khi đến với <span class='text-red-500 font-bold'>Hutech</span><span class='text-blue-500 font-bold'>Quiz</span>`,
+              html: `Chúc mừng <b>${values.name}</b> đã tạo tài khoản thành công <br/>Bạn sẽ hài lòng khi đến với <span class='text-red-500 font-bold'>Uni</span><span class='text-blue-500 font-bold'>Quiz</span>`,
               icon: 'success',
               confirmText: 'Đăng nhập ngay',
               handleConfirmed: () => navigate('/login', { replace: true })

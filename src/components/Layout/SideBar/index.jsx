@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 import { Sidebar as ProSidebar, Menu, MenuItem, SubMenu } from 'react-pro-sidebar'
 import { Box, IconButton, Typography, useTheme } from '@mui/material'
 import MenuOutlinedIcon from '@mui/icons-material/MenuOutlined'
-import logoHutech from '../../../assets/logo-hutech.png'
+import logoHutech from '../../../assets/h.png'
 import { MenuSideBar } from '../../../constants'
 import useMediaQuery from '@mui/material/useMediaQuery'
 
@@ -164,10 +164,10 @@ const Sidebar = () => {
           {!isCollapsed ? (
             <div className='w-[90%] h-[200px] mx-auto relative mt-3.5'>
               <span
-                className={`absolute z-10 left-0 right-0 top-2.5 m-auto flex justify-start items-center text-xl font-bold`}
+                className={`absolute z-10 -left-10 right-0 top-2.5 m-auto flex justify-center items-center text-xl font-bold`}
               >
-                <div className='max-h-[30%] text-[28px]'>
-                  <span style={{ color: '#0063cc' }}>Hutech </span>
+                <div className='max-h-[30%] text-[35px]'>
+                  <span style={{ color: '#0063cc' }}>Uni </span>
                   <span className='text-red-800'>Quiz</span>
                 </div>
               </span>
@@ -186,7 +186,7 @@ const Sidebar = () => {
                     }}
                   >
                     <Link>
-                      <img className='mt-[75px]' width={170} src={logoHutech} alt='logo-hutech' />
+                      <img className='mt-[75px]' width={90} src={logoHutech} alt='logo-uni-quiz' />
                     </Link>
                   </Box>
                 </div>
@@ -194,7 +194,7 @@ const Sidebar = () => {
             </div>
           ) : (
             <div className='flex justify-center items-center mt-20'>
-              <img src={logoHutech} alt='logo-hutech' />
+              <img src={logoHutech} alt='logo-uni-quiz' />
             </div>
           )}
 
