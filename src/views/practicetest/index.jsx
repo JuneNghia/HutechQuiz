@@ -96,7 +96,7 @@ const PracticeTest = ({ id, quantity, title, time, subTitle }) => {
               Swal.fire({
                 icon: 'success',
                 title: 'Thanh toán thành công',
-                html: `Khi nhấn nút làm bài dưới đây, vui lòng không tải lại trang hoặc tắt trình duyệt`,
+                html: `Khi nhấn nút làm bài dưới đây, vui lòng không rời khỏi trang hoặc tắt trình duyệt`,
                 confirmButtonText: 'Làm bài ngay'
               }).then((confirm) => {
                 if (confirm.isConfirmed) {

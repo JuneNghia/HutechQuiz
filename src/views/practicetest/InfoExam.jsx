@@ -21,7 +21,7 @@ const InfoExam = ({ title, handleSubmit, quantity, price, time }) => {
           <span className='font-bold text-red-500'>Lưu ý: </span>
           <span>Mỗi lần thi sẽ chọn ngẫu nhiên các câu hỏi khác nhau trong tài liệu ôn tập của </span>
 
-          <span className='text-blue-700 font-bold'>Hutech</span>
+          <span className='text-blue-700 font-bold'>Uni</span>
           <span className='text-red-700 font-bold'> Quiz </span>
           <br />
 
