@@ -63,7 +63,7 @@ const BankInfo = ({ data, type }) => {
                   <p>Số tiền</p><span className='text-[24px]  text-red-500 md:mb-2'>{data.amount}</span>
                 </div>
                 <div className='font-bold mt-2 xs:mb-2'>
-                  <p>Nội dung</p><span className='text-[24px] text-red-500 md:mb-2'>hutechquiz_{user.phone}</span>
+                  <p>Nội dung</p><span className='text-[24px] text-red-500 md:mb-2'>uniquiz_{user.phone}</span>
                 </div>
               </div>
             </div>
