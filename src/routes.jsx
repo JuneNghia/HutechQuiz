@@ -331,6 +331,19 @@ const router = createBrowserRouter([
         ),
         exact: true
       },
+      {
+        path: '/kt_vi_mo/exam',
+        element: (
+          <PracticeTestPage
+            quantity={40}
+            title='Kinh tế vi mô'
+            subTitle='KT Vi Mô'
+            id='8801ec8a-0bfe-45c9-9b00-d8beeba43097'
+            time={40 * 60}
+          />
+        ),
+        exact: true
+      }
     ]
   },
   {

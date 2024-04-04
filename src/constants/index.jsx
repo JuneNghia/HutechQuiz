@@ -3,7 +3,7 @@ import EmojiEventsOutlinedIcon from '@mui/icons-material/EmojiEventsOutlined'
 import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined'
 import LocalLibraryOutlinedIcon from '@mui/icons-material/LocalLibraryOutlined'
 import ShareOutlinedIcon from '@mui/icons-material/ShareOutlined'
-import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined';
+import AccountBalanceWalletOutlinedIcon from '@mui/icons-material/AccountBalanceWalletOutlined'
 
 export const BASE_URL = '/dashboard'
 export const BASE_URL_SERVICE = 'https://api.uniquiz.online/api/v1'
@@ -223,8 +223,7 @@ export const MenuSideBar = [
         title: 'Âm Vị Học',
         to: '/am_vi_hoc/exam',
         icon: <CircleWithText text='1' />
-      },
-      
+      }
     ]
   },
   {
@@ -242,6 +241,19 @@ export const MenuSideBar = [
         title: 'Nghiệp Vụ Ngoại Thương',
         to: '/nghiep_vu_ngoai_thuong/exam',
         icon: <CircleWithText text='2' />
+      }
+    ]
+  },
+  {
+    title: 'Các môn Kinh tế',
+    to: '',
+    icon: <CircleWithText text='KT' />,
+    index: 7,
+    subMenu: [
+      {
+        title: 'Kinh tế vi mô',
+        to: '/kt_vi_mo/exam',
+        icon: <CircleWithText text='1' />
       }
     ]
   },
