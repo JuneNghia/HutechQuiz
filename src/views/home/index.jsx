@@ -139,6 +139,12 @@ const listSubject = [
     quantity: 20,
     title: 'Âm Vị Học',
     time: 40
+  },
+  {
+    path: '/kt_vi_mo/exam',
+    quantity: 40,
+    title: 'Kinh tế vi mô',
+    time: 40
   }
 ]
 
