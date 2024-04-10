@@ -145,6 +145,18 @@ const listSubject = [
     quantity: 40,
     title: 'Kinh tế vi mô',
     time: 40
+  },
+  {
+    path: '/kt_vi~_mo/exam',
+    quantity: 45,
+    title: 'Kinh tế vĩ mô',
+    time: 45
+  },
+  {
+    path: '/quan_tri_chien_luoc/exam',
+    quantity: 45,
+    title: 'Quản trị chiến lược',
+    time: 45
   }
 ]
 

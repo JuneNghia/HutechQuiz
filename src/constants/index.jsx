@@ -241,7 +241,12 @@ export const MenuSideBar = [
         title: 'Nghiệp Vụ Ngoại Thương',
         to: '/nghiep_vu_ngoai_thuong/exam',
         icon: <CircleWithText text='2' />
-      }
+      },
+      {
+        title: 'Quản trị chiến lược',
+        to: '/quan_tri_chien_luoc/exam',
+        icon: <CircleWithText text='3' />
+      },
     ]
   },
   {
@@ -254,7 +259,12 @@ export const MenuSideBar = [
         title: 'Kinh tế vi mô',
         to: '/kt_vi_mo/exam',
         icon: <CircleWithText text='1' />
-      }
+      },
+      {
+        title: 'Kinh tế vĩ mô',
+        to: '/kt_vi~_mo/exam',
+        icon: <CircleWithText text='2' />
+      },
     ]
   },
 

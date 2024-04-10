@@ -343,6 +343,32 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/kt_vi~_mo/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Kinh tế vĩ mô'
+            subTitle='KT Vĩ Mô'
+            id='4cc47d99-c88b-48c4-8a9f-92e4c08ef9f9'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/quan_tri_chien_luoc/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Quản trị chiến lược'
+            subTitle='Quản trị chiến lược'
+            id='3ef2749f-cefd-4aa0-8a4c-9a31022e5e12'
+            time={45 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
