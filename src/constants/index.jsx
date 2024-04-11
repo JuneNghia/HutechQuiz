@@ -210,7 +210,12 @@ export const MenuSideBar = [
         title: 'Sách 3B',
         to: '/tieng_anh_sach_3b/exam',
         icon: <CircleWithText text='3B' />
-      }
+      },
+      {
+        title: 'Tiếng Anh 6',
+        to: '/tieng_anh_6/exam',
+        icon: <CircleWithText text='T6' />
+      },
     ]
   },
   {

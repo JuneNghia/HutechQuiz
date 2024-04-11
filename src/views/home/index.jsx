@@ -104,6 +104,12 @@ const listSubject = [
     title: 'Anh Ngữ 1 ( Ngữ pháp - Đọc hiểu )',
     time: 45
   },
+  {
+    path: '/tieng_anh_6/exam',
+    quantity: 60,
+    title: 'Tiếng Anh 6',
+    time: 60
+  },
   // {
   //   path: '/anh_ngu_2/exam',
   //   quantity: 60,

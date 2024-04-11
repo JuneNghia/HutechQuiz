@@ -369,6 +369,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/tieng_anh_6/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Tiếng Anh 6'
+            subTitle='Tiếng Anh 6'
+            id='cb6477bf-edc8-4602-9530-5759d9ffa5e8'
+            time={60 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
