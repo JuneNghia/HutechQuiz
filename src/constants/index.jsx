@@ -202,6 +202,11 @@ export const MenuSideBar = [
         icon: <CircleWithText text='A1' />
       },
       {
+        title: 'Anh Ngữ 2',
+        to: '/anh_ngu_2/exam',
+        icon: <CircleWithText text='A2' />
+      },
+      {
         title: 'Sách 3A',
         to: '/tieng_anh_sach_3a/exam',
         icon: <CircleWithText text='3A' />
@@ -250,6 +255,11 @@ export const MenuSideBar = [
       {
         title: 'Quản trị chiến lược',
         to: '/quan_tri_chien_luoc/exam',
+        icon: <CircleWithText text='3' />
+      },
+      {
+        title: 'QTKD quốc tế',
+        to: '/qtkd_quoc_te/exam',
         icon: <CircleWithText text='3' />
       },
     ]

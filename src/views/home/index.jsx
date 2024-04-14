@@ -105,17 +105,18 @@ const listSubject = [
     time: 45
   },
   {
+    path: '/anh_ngu_2/exam',
+    quantity: 60,
+    title: 'Anh Ngữ 2 ( Ngữ Pháp )',
+    time: 60
+  },
+  {
     path: '/tieng_anh_6/exam',
     quantity: 60,
     title: 'Tiếng Anh 6',
     time: 60
   },
-  // {
-  //   path: '/anh_ngu_2/exam',
-  //   quantity: 60,
-  //   title: 'Anh Ngữ 2 ( Ngữ Pháp )',
-  //   time: 60
-  // },
+
   {
     path: '/tieng_anh_sach_3a/exam',
     quantity: 60,
@@ -162,6 +163,12 @@ const listSubject = [
     path: '/quan_tri_chien_luoc/exam',
     quantity: 45,
     title: 'Quản trị chiến lược',
+    time: 45
+  },
+  {
+    path: '/qtkd_quoc_te/exam',
+    quantity: 45,
+    title: 'Quản trị kinh doanh quốc tế',
     time: 45
   }
 ]

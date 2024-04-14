@@ -382,6 +382,32 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/qtkd_quoc_te/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Quản trị kinh doanh quốc tế'
+            subTitle='QTKD Quốc Tế'
+            id='17f7eea3-8e1d-45fa-84f0-c786178cf435'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/anh_ngu_2/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Anh Ngữ 2'
+            subTitle='Anh Ngữ 2'
+            id='38919d62-bc66-4e28-bbda-e1e1ecca6f6d'
+            time={60 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },
