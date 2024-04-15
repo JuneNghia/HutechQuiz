@@ -102,7 +102,7 @@ const UserManagement = () => {
             return total
           }, 0)
 
-          setTotalRevenue(totalRevenue)
+          setTotalRevenue(totalRevenue - 200000)
 
           const todayUserRes = listUser.reduce((total = 0, user) => {
             const userCreatedAt = new Date(user.createdAt)
@@ -165,7 +165,7 @@ const UserManagement = () => {
             Tổng tài khoản đã tạo nhưng chưa nạp:
             <span className='font-bold'> {formattedValuePrice(totalUserNoDeposit.toString())}</span>
             <br />
-            Tổng doanh thu: <span className='font-bold'>{formattedValuePrice((totalRevenue - 200000).toString())}đ</span>
+            Tổng doanh thu: <span className='font-bold'>{formattedValuePrice(totalRevenue.toString())}đ</span>
           </div>
           <TextField
             className=' w-full bg-white !mb-3'
