@@ -182,6 +182,12 @@ const listSubject = [
     quantity: 45,
     title: 'Quản trị kinh doanh quốc tế',
     time: 45
+  },
+  {
+    path: '/lap_trinh_huong_doi_tuong/exam',
+    quantity: 60,
+    title: 'Lập trình hướng đối tượng',
+    time: 60
   }
 ]
 
@@ -215,7 +221,7 @@ const Home = () => {
             <span className='text-red-500'> 0934 945 803 {'(Zalo)'}</span>
           </span>
           <p className='font-bold'>
-            Thời gian hoạt động:
+            Thời gian hỗ trợ:
             <span className='text-red-500'> 07:00 - 23:00</span>
           </p>
         </span>

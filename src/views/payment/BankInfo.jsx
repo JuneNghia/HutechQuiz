@@ -39,6 +39,19 @@ const BankInfo = ({ data, type }) => {
           <CardHeader title='Thông tin chuyển khoản' />
           <CardContent component='div' className='mt-3'>
             <div className={`${isMobile ? 'flex flex-col items-center gap-5' : 'flex items-center gap-6'} `}>
+              <div className={`${isMobile ? 'text-center' : 'flex flex-col'}`}>
+                <div className='font-bold'>
+                  <p>Số tiền</p>
+                  <span className='text-[24px]  text-red-500 md:mb-2'>{data.amount}</span>
+                </div>
+                <div className='font-bold mt-2 xs:mb-2'>
+                  <p>Nội dung</p>
+                  <span className='text-[24px] text-red-500 md:mb-2'>uniquiz_{user.phone}</span>
+                </div>
+              </div>
+
+              <img src={type === 'bank' ? qrBank : qrMomo} width={'150px'} />
+
               <Box className='p-2 border-dotted border-2 border-sky-500 w-fit'>
                 {type === 'bank'
                   ? infoBank.map((info) => (
@@ -56,19 +69,9 @@ const BankInfo = ({ data, type }) => {
                       </Fragment>
                     ))}
               </Box>
-
-              <img src={type === 'bank' ? qrBank : qrMomo} width={'150px'} />
-              <div className={`${isMobile ? 'text-center' : 'flex flex-col'}`}>
-                <div className='font-bold'>
-                  <p>Số tiền</p><span className='text-[24px]  text-red-500 md:mb-2'>{data.amount}</span>
-                </div>
-                <div className='font-bold mt-2 xs:mb-2'>
-                  <p>Nội dung</p><span className='text-[24px] text-red-500 md:mb-2'>uniquiz_{user.phone}</span>
-                </div>
-              </div>
             </div>
 
-            <Typography className='!mt-3'>
+            <Typography className='!mt-5'>
               <span className='font-bold text-red-600'>Lưu ý: </span>Trước khi xác nhận chuyển khoản, vui lòng
               <b> kiểm tra chính xác nội dung</b> chuyển khoản trước khi chuyển vì đây là thông tin được xác định để
               thực hiện yêu cầu nạp tiền của bạn. Các giao dịch <b>không có nội dung</b> hoặc{' '}

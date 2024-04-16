@@ -434,6 +434,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/lap_trinh_huong_doi_tuong/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Lập Trình Hướng Đối Tượng'
+            subTitle='LTHĐT'
+            id='8b1db622-55eb-41fa-b19e-a2f40bdd1c6a'
+            time={60 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

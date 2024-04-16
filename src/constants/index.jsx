@@ -238,7 +238,7 @@ export const MenuSideBar = [
     title: 'Ngôn Ngữ Hàn',
     to: '',
     icon: <CircleWithText text='HQ' />,
-    index: 7,
+    index: 6,
     subMenu: [
       {
         title: 'Âm Vị Học',
@@ -248,10 +248,23 @@ export const MenuSideBar = [
     ]
   },
   {
+    title: 'Công Nghệ Thông Tin',
+    to: '',
+    icon: <CircleWithText text='IT' />,
+    index: 7,
+    subMenu: [
+      {
+        title: 'LTHĐT',
+        to: '/lap_trinh_huong_doi_tuong/exam',
+        icon: <CircleWithText text='1' />
+      }
+    ]
+  },
+  {
     title: 'Quản Trị Kinh Doanh',
     to: '',
     icon: <CircleWithText text='KD' />,
-    index: 6,
+    index: 8,
     subMenu: [
       {
         title: 'Marketing Căn Bản',
@@ -279,7 +292,7 @@ export const MenuSideBar = [
     title: 'Các môn Kinh tế',
     to: '',
     icon: <CircleWithText text='KT' />,
-    index: 7,
+    index: 9,
     subMenu: [
       {
         title: 'Kinh tế vi mô',
