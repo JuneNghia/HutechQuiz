@@ -267,12 +267,12 @@ const router = createBrowserRouter([
       //   exact: true
       // },
       {
-        path: '/tieng_anh_sach_3a/exam',
+        path: '/tieng_anh_1_sach_3a/exam',
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Tiếng Anh Sách 3A ( Ngữ Pháp )'
-            subTitle='SÁCH TA 3A - NGỮ PHÁP'
+            title='Tiếng Anh 1 - Sách 3A ( Ngữ Pháp )'
+            subTitle='TA1 - 3A - NGỮ PHÁP'
             id='208addd4-2b66-4724-a40d-163b94e79c9a'
             time={60 * 60}
           />
@@ -280,12 +280,38 @@ const router = createBrowserRouter([
         exact: true
       },
       {
-        path: '/tieng_anh_sach_3b/exam',
+        path: '/tieng_anh_2_sach_3b/exam',
         element: (
           <PracticeTestPage
             quantity={60}
-            title='Tiếng Anh Sách 3B ( Ngữ Pháp )'
-            subTitle='SÁCH TA 3B - NGỮ PHÁP'
+            title='Tiếng Anh 2 - Sách 3B ( Ngữ Pháp )'
+            subTitle='TA2 - 3B - NGỮ PHÁP'
+            id='ccafe41c-3802-4a7c-9a13-aa8f63e29382'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/tieng_anh_3_sach_3a/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Tiếng Anh 3 - Sách 3A ( Ngữ Pháp )'
+            subTitle='TA3 - 3A - NGỮ PHÁP'
+            id='208addd4-2b66-4724-a40d-163b94e79c9a'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/tieng_anh_4_sach_3b/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Tiếng Anh 4 - Sách 3B ( Ngữ Pháp )'
+            subTitle='TA4 - 3B - NGỮ PHÁP'
             id='ccafe41c-3802-4a7c-9a13-aa8f63e29382'
             time={60 * 60}
           />

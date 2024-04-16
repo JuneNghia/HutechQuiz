@@ -118,15 +118,27 @@ const listSubject = [
   },
 
   {
-    path: '/tieng_anh_sach_3a/exam',
+    path: '/tieng_anh_1_sach_3a/exam',
     quantity: 60,
-    title: 'Tiếng Anh Sách 3A ( Ngữ Pháp )',
+    title: 'Tiếng Anh 1 - Sách 3A ( Ngữ Pháp )',
     time: 60
   },
   {
-    path: '/tieng_anh_sach_3b/exam',
+    path: '/tieng_anh_2_sach_3b/exam',
     quantity: 60,
-    title: 'Tiếng Anh Sách 3B ( Ngữ Pháp )',
+    title: 'Tiếng Anh 2 - Sách 3B ( Ngữ Pháp )',
+    time: 60
+  },
+  {
+    path: '/tieng_anh_3_sach_3a/exam',
+    quantity: 60,
+    title: 'Tiếng Anh 3 - Sách 3A ( Ngữ Pháp )',
+    time: 60
+  },
+  {
+    path: '/tieng_anh_4_sach_3b/exam',
+    quantity: 60,
+    title: 'Tiếng Anh 4 - Sách 3B ( Ngữ Pháp )',
     time: 60
   },
   {

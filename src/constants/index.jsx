@@ -207,15 +207,26 @@ export const MenuSideBar = [
         icon: <CircleWithText text='A2' />
       },
       {
-        title: 'Sách 3A',
-        to: '/tieng_anh_sach_3a/exam',
-        icon: <CircleWithText text='3A' />
+        title: 'Tiếng Anh 1 (Sách 3A)',
+        to: '/tieng_anh_1_sach_3a/exam',
+        icon: <CircleWithText text='T1' />
       },
       {
-        title: 'Sách 3B',
-        to: '/tieng_anh_sach_3b/exam',
-        icon: <CircleWithText text='3B' />
+        title: 'Tiếng Anh 2 (Sách 3B)',
+        to: '/tieng_anh_2_sach_3b/exam',
+        icon: <CircleWithText text='T2' />
       },
+      {
+        title: 'Tiếng Anh 3 (Sách 3A)',
+        to: '/tieng_anh_3_sach_3a/exam',
+        icon: <CircleWithText text='T3' />
+      },
+      {
+        title: 'Tiếng Anh 4 (Sách 3B)',
+        to: '/tieng_anh_4_sach_3b/exam',
+        icon: <CircleWithText text='T4' />
+      },
+     
       {
         title: 'Tiếng Anh 6',
         to: '/tieng_anh_6/exam',
