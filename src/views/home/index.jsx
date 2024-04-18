@@ -45,6 +45,12 @@ const listSubject = [
     time: 60
   },
   {
+    path: '/qpan_3/exam',
+    quantity: 60,
+    title: 'Quốc Phòng An Ninh 3',
+    time: 60
+  },
+  {
     path: '/ktct_mac/exam',
     quantity: 45,
     title: 'Kinh Tế Chính Trị Mác - Lênin',
@@ -188,7 +194,25 @@ const listSubject = [
     quantity: 60,
     title: 'Lập trình hướng đối tượng',
     time: 60
-  }
+  },
+  {
+    path: '/dai_so_tuyen_tinh/exam',
+    quantity: 60,
+    title: 'Đại số tuyến tính',
+    time: 60
+  },
+  {
+    path: '/giai_tich/exam',
+    quantity: 45,
+    title: 'Giải tích',
+    time: 45
+  },
+  {
+    path: '/thanh_toan_quoc_TE/exam',
+    quantity: 45,
+    title: 'Thanh toán quốc tế',
+    time: 45
+  },
 ]
 
 const textFieldStyle = {

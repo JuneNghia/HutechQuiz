@@ -124,6 +124,19 @@ const router = createBrowserRouter([
         exact: true
       },
       {
+        path: '/qpan_3/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Quốc Phòng An Ninh 3'
+            subTitle='QPAN 2'
+            id='da9c5fae-1fe4-42fd-bfff-fad456ef4d08'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
         path: '/ktct_mac/exam',
         element: (
           <PracticeTestPage
@@ -131,6 +144,58 @@ const router = createBrowserRouter([
             title='Kinh Tế Chính Trị Mác - Lênin'
             subTitle='KTCT MAC'
             id='bf304142-23ef-4d62-9575-fecf97723e16'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/thanh_toan_quoc_te/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Thanh Toán Quốc Tế'
+            subTitle='Thanh Toán Quốc Tế'
+            id='5fdd563a-72ee-4be2-9f28-0ee01c57ea6d'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/giai_tich/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Giải Tích'
+            subTitle='Giải Tích'
+            id='55d35639-42a4-40d6-b28d-f82d1c4ef393'
+            time={45 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/dai_so_tuyen_tinh/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Đại Số Tuyến Tính'
+            subTitle='Đại Số Tuyến Tính'
+            id='650eeeaf-bbc6-4ec0-8a7f-6cdb600da37f'
+            time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/thanh_toan_quoc_te/exam',
+        element: (
+          <PracticeTestPage
+            quantity={45}
+            title='Thanh Toán Quốc Tế'
+            subTitle='Thanh Toán Quốc Tế'
+            id='5fdd563a-72ee-4be2-9f28-0ee01c57ea6d'
             time={45 * 60}
           />
         ),

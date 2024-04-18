@@ -134,6 +134,11 @@ export const MenuSideBar = [
         title: 'QPAN 2',
         to: '/qpan_2/exam',
         icon: <CircleWithText text='2' />
+      },
+      {
+        title: 'QPAN 3',
+        to: '/qpan_3/exam',
+        icon: <CircleWithText text='3' />
       }
     ]
   },
@@ -284,7 +289,12 @@ export const MenuSideBar = [
       {
         title: 'QTKD quốc tế',
         to: '/qtkd_quoc_te/exam',
-        icon: <CircleWithText text='3' />
+        icon: <CircleWithText text='4' />
+      },
+      {
+        title: 'Thanh toán quốc tế',
+        to: '/thanh_toan_quoc_te/exam',
+        icon: <CircleWithText text='5' />
       },
     ]
   },
@@ -302,6 +312,24 @@ export const MenuSideBar = [
       {
         title: 'Kinh tế vĩ mô',
         to: '/kt_vi~_mo/exam',
+        icon: <CircleWithText text='2' />
+      },
+    ]
+  },
+  {
+    title: 'Các môn Đại Số',
+    to: '',
+    icon: <CircleWithText text='ĐS' />,
+    index: 10,
+    subMenu: [
+      {
+        title: 'Giải tích',
+        to: '/giai_tich/exam',
+        icon: <CircleWithText text='1' />
+      },
+      {
+        title: 'Đại số tuyến tính',
+        to: '/dai_so_tuyen_tinh/exam',
         icon: <CircleWithText text='2' />
       },
     ]
