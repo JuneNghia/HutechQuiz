@@ -314,6 +314,11 @@ export const MenuSideBar = [
         to: '/kt_vi~_mo/exam',
         icon: <CircleWithText text='2' />
       },
+      {
+        title: 'Nguyên lý thống kê kinh tế',
+        to: '/nguyen_ly_thong_ke_kinh_te/exam',
+        icon: <CircleWithText text='3' />
+      },
     ]
   },
   {

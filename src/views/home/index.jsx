@@ -208,10 +208,16 @@ const listSubject = [
     time: 45
   },
   {
-    path: '/thanh_toan_quoc_TE/exam',
+    path: '/thanh_toan_quoc_te/exam',
     quantity: 45,
     title: 'Thanh toán quốc tế',
     time: 45
+  },
+  {
+    path: '/nguyen_ly_thong_ke_kinh_te/exam',
+    quantity: 60,
+    title: 'Nguyên lý thống kê kinh tế',
+    time: 60
   },
 ]
 

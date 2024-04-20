@@ -512,6 +512,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/nguyen_ly_thong_ke_kinh_te/exam',
+        element: (
+          <PracticeTestPage
+            quantity={60}
+            title='Nguyên Lý Thống Kê Kinh Tế'
+            subTitle='NLTTKT'
+            id='338ea2ec-1763-463e-9f71-6e302b08b5bf'
+            time={60 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

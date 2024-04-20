@@ -15,7 +15,9 @@ const Item = ({ title, to, icon, selected, newBlank }) => {
       icon={icon}
       component={<Link to={to} target={newBlank && '_blank'} />}
     >
-      <Typography variant='h5'>{title}</Typography>
+      <Typography variant='h5'>
+        {title}
+      </Typography>
     </MenuItem>
   )
 }
@@ -31,7 +33,7 @@ const Sidebar = () => {
   useEffect(() => {
     if (location.pathname) {
       setSelected(location.pathname)
-      if(isMobile) { 
+      if (isMobile) {
         setIsCollapsed(true)
       }
     }
@@ -145,13 +147,13 @@ const Sidebar = () => {
         },
         '& .ps-menu-label': {
           fontFamily: "'Plus Jakarta Sans', sans-serif",
-          fontSize: '1rem',
+          fontSize: '0.95rem',
           lineHeight: 1.2,
           color: 'black',
           '& h5': {
             fontFamily: "'Plus Jakarta Sans', sans-serif",
             fontWeight: 500,
-            fontSize: '1rem',
+            fontSize: '0.95rem',
             lineHeight: 1.2,
             color: 'black'
           }
@@ -257,7 +259,11 @@ const Sidebar = () => {
           // right: `${isCollapsed ? "26%" : "-7.5%"}`,
         }}
       >
-        <IconButton sx={{outline: 3}} className='!hover:bg-slate-200 !bg-white !p-[5px] !outline !outline-cyan-500' onClick={() => setIsCollapsed(!isCollapsed)}>
+        <IconButton
+          sx={{ outline: 3 }}
+          className='!hover:bg-slate-200 !bg-white !p-[5px] !outline !outline-cyan-500'
+          onClick={() => setIsCollapsed(!isCollapsed)}
+        >
           <MenuOutlinedIcon sx={{ color: 'black' }} />
         </IconButton>
       </Box>
