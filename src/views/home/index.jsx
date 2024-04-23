@@ -166,6 +166,12 @@ const listSubject = [
     time: 40
   },
   {
+    path: '/nhap_mon_ngon_ngu_han/exam',
+    quantity: 20,
+    title: 'Nhập Môn Ngôn Ngữ Hàn',
+    time: 40
+  },
+  {
     path: '/kt_vi_mo/exam',
     quantity: 40,
     title: 'Kinh tế vi mô',

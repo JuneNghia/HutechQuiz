@@ -246,10 +246,15 @@ export const MenuSideBar = [
     index: 6,
     subMenu: [
       {
+        title: 'Nhập môn ngôn ngữ Hàn',
+        to: '/nhap_mon_ngon_ngu_han/exam',
+        icon: <CircleWithText text='1' />
+      },
+      {
         title: 'Âm Vị Học',
         to: '/am_vi_hoc/exam',
-        icon: <CircleWithText text='1' />
-      }
+        icon: <CircleWithText text='2' />
+      },
     ]
   },
   {

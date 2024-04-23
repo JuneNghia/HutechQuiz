@@ -519,9 +519,22 @@ const router = createBrowserRouter([
           <PracticeTestPage
             quantity={60}
             title='Nguyên Lý Thống Kê Kinh Tế'
-            subTitle='NLTTKT'
+            subTitle='NLTK Kinh Tế'
             id='338ea2ec-1763-463e-9f71-6e302b08b5bf'
             time={60 * 60}
+          />
+        ),
+        exact: true
+      },
+      {
+        path: '/nhap_mon_ngon_ngu_han/exam',
+        element: (
+          <PracticeTestPage
+            quantity={20}
+            title='Nhập Môn Ngôn Ngữ Hàn'
+            subTitle='Nhập Môn Ngôn Ngữ Hàn'
+            id='8bdcf63a-3a99-42fe-addb-8e0ebe7f6d17'
+            time={40 * 60}
           />
         ),
         exact: true
