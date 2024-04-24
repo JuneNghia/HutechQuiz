@@ -538,6 +538,19 @@ const router = createBrowserRouter([
           />
         ),
         exact: true
+      },
+      {
+        path: '/van_hoa_xa_hoi_han_quoc/exam',
+        element: (
+          <PracticeTestPage
+            quantity={25}
+            title='Văn Hoá - Xã Hội Hàn Quốc'
+            subTitle='VH - XH Hàn Quốc'
+            id='23a3aafd-fe1b-42a8-b296-b42ab4456525'
+            time={25 * 60}
+          />
+        ),
+        exact: true
       }
     ]
   },

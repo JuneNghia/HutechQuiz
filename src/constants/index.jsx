@@ -255,6 +255,11 @@ export const MenuSideBar = [
         to: '/am_vi_hoc/exam',
         icon: <CircleWithText text='2' />
       },
+      {
+        title: 'Văn Hoá - Xã Hội Hàn Quốc',
+        to: '/van_hoa_xa_hoi_han_quoc/exam',
+        icon: <CircleWithText text='3' />
+      },
     ]
   },
   {

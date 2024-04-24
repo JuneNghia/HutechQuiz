@@ -225,6 +225,12 @@ const listSubject = [
     title: 'Nguyên lý thống kê kinh tế',
     time: 60
   },
+  {
+    path: '/van_hoa_xa_hoi_han_quoc/exam',
+    quantity: 25,
+    title: 'Văn hoá - xã hội Hàn Quốc',
+    time: 60
+  }
 ]
 
 const textFieldStyle = {
