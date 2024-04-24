@@ -547,7 +547,7 @@ const router = createBrowserRouter([
             title='Văn Hoá - Xã Hội Hàn Quốc'
             subTitle='VH - XH Hàn Quốc'
             id='23a3aafd-fe1b-42a8-b296-b42ab4456525'
-            time={25 * 60}
+            time={50 * 60}
           />
         ),
         exact: true
