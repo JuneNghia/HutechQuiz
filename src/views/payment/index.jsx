@@ -92,7 +92,7 @@ const Payment = () => {
         </span>
       </Typography>
       <Card className='!bg-white !mb-5'>
-        <CardHeader title='Nạp tiền vào ví Hutech Quiz' />
+        <CardHeader title='Nạp tiền vào ví Uni Quiz' />
         <CardContent>
           <form noValidate onSubmit={formik.handleSubmit}>
             <FormGroup>
