@@ -20,6 +20,7 @@ import useAuth from '../../hooks/useAuth'
 import { Helmet } from 'react-helmet'
 import PageLoader from '../../components/Loader/PageLoader'
 import Swal from 'sweetalert2'
+import zaloQrImg from '../../assets/zalo-qr.png'
 
 const Login = () => {
   const navigate = useNavigate()
@@ -96,7 +97,11 @@ const Login = () => {
   })
 
   const handleForgot = useCallback(() => {
-    Swal.fire("Thông báo", "Chức năng đang được xây dựng, để lấy lại mật khẩu vui lòng liên hệ <b>093 4945 803 (Zalo)</b><br/><br/>Xin cảm ơn !", "info")
+    Swal.fire({
+      html: `<div class='flex items-center flex-col justify-center'>
+      <h5 class='mb-4'>Mở ứng dụng Zalo và quét mã dưới đây</h5><img src='${zaloQrImg}' width='200'></div>`,
+      confirmButtonText: 'Xong'
+    })
   }, [])
 
   const handleMethodChange = useCallback((event, value) => {
@@ -163,6 +168,7 @@ const Login = () => {
                       onChange={formik1.handleChange}
                       type='email'
                       value={formik1.values.email}
+                      autoComplete='username'
                     />
                     <TextField
                       error={!!(formik1.touched.password && formik1.errors.password)}
@@ -176,6 +182,7 @@ const Login = () => {
                       name='password'
                       onChange={formik1.handleChange}
                       type='password'
+                      autoComplete='current-password'
                       value={formik1.values.password}
                     />
                   </Stack>
@@ -194,7 +201,7 @@ const Login = () => {
                       }
                     />
 
-                    <Link onClick={handleForgot}  href='#' underline='hover' variant='subtitle2'>
+                    <Link onClick={handleForgot} href='#' underline='hover' variant='subtitle2'>
                       Quên mật khẩu?
                     </Link>
                   </Grid>
@@ -232,6 +239,7 @@ const Login = () => {
                       name='password'
                       onChange={formik2.handleChange}
                       type='password'
+                      autoComplete='current-password'
                       value={formik2.values.password}
                     />
                   </Stack>
@@ -250,7 +258,7 @@ const Login = () => {
                       }
                     />
 
-                    <Link href='#' onClick={handleForgot}  underline='hover' variant='subtitle2'>
+                    <Link href='#' onClick={handleForgot} underline='hover' variant='subtitle2'>
                       Quên mật khẩu?
                     </Link>
                   </Grid>
