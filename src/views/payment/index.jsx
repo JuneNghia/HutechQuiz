@@ -13,7 +13,7 @@ import {
   useMediaQuery,
   useTheme
 } from '@mui/material'
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import BankInfo from './BankInfo'
 import { useFormik } from 'formik'
@@ -23,6 +23,8 @@ import { useNavigate } from 'react-router-dom'
 import { formattedValuePrice } from '../../utils/common/formatValue'
 import StepTitle from '../../components/StepTitle'
 import { useQuery } from 'react-query'
+import zaloQrImg from '../../assets/zalo-qr.png'
+import Swal from 'sweetalert2'
 
 const Payment = () => {
   const [isSuccess, setIsSuccess] = useState(false)
@@ -62,6 +64,14 @@ const Payment = () => {
     formik.handleChange(e)
   }
 
+  const handleShowSupportInfo = useCallback(() => {
+    Swal.fire({
+      html: `<div class='flex items-center flex-col justify-center'>
+      <h5 class='mb-4'>Mở ứng dụng Zalo và quét mã dưới đây</h5><img src='${zaloQrImg}' width='200'></div>`,
+      confirmButtonText: 'Xong'
+    })
+  }, [])
+
   const handleAmountChange = (event) => {
     setIsSuccess(false)
     const { value } = event.target
@@ -69,7 +79,7 @@ const Payment = () => {
   }
 
   useEffect(() => {
-    if(dataUser) {
+    if (dataUser) {
       setBalance(dataUser.data.data.wallet.balance)
     }
   }, [dataUser])
@@ -79,18 +89,23 @@ const Payment = () => {
       <Helmet>
         <title>Nạp tiền vào ví</title>
       </Helmet>
-      {isMobile && <StepTitle title={`Số dư : ${formattedValuePrice(balance.toString())}đ`}/>} 
+      {isMobile && <StepTitle title={`Số dư : ${formattedValuePrice(balance.toString())}đ`} />}
       <Button onClick={() => navigate('/wallet')} variant='outlined' sx={{ mb: 2 }}>
         <KeyboardBackspaceOutlinedIcon className='mr-2' fontSize='small' /> Quay lại ví tiền
       </Button>
-      <Typography className='!bg-yellow-300 !mb-3 rounded-md p-2'>
-        <span className=''>
+      <div className='!bg-yellow-300 !mb-3 rounded-md p-2'>
+        <span className='flex items-center gap-x-4'>
           <span className='font-bold'>
-            Nếu sau 5 phút, số dư vẫn không được cập nhật vui lòng liên hệ{' '}
-            <span className='text-red-500'>0934 945 803</span> để được hỗ trợ giải quyết nhanh chóng.
+            Nếu sau 5 phút, số dư vẫn không được cập nhật vui lòng{' '}
+            <span>
+              <Button variant='contained' color='error' size='small' onClick={handleShowSupportInfo}>
+                Nhấn vào đây
+              </Button>
+            </span>{' '}
+            để được hỗ trợ giải quyết nhanh chóng.
           </span>
         </span>
-      </Typography>
+      </div>
       <Card className='!bg-white !mb-5'>
         <CardHeader title='Nạp tiền vào ví Uni Quiz' />
         <CardContent>

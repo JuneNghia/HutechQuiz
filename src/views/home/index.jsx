@@ -10,7 +10,7 @@ import {
   Typography,
   Grid
 } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import StepTitle from '../../components/StepTitle'
 import { Helmet } from 'react-helmet'
@@ -18,6 +18,8 @@ import SearchIcon from '@mui/icons-material/Search'
 import BookOutlinedIcon from '@mui/icons-material/BookOutlined'
 import AccessAlarmOutlinedIcon from '@mui/icons-material/AccessAlarmOutlined'
 import NumbersOutlinedIcon from '@mui/icons-material/NumbersOutlined'
+import Swal from 'sweetalert2'
+import zaloQrImg from '../../assets/zalo-qr.png'
 
 const listSubject = [
   {
@@ -249,6 +251,14 @@ const Home = () => {
     subject.title.toLowerCase().includes(searchKeyword.toLowerCase())
   )
 
+  const handleShowSupportInfo = useCallback(() => {
+    Swal.fire({
+      html: `<div class='flex items-center flex-col justify-center'>
+      <h5 class='mb-4'>Mở ứng dụng Zalo và quét mã dưới đây</h5><img src='${zaloQrImg}' width='200'></div>`,
+      confirmButtonText: 'Xong'
+    })
+  }, [])
+
   return (
     <>
       <Helmet>
@@ -256,18 +266,16 @@ const Home = () => {
       </Helmet>
       <StepTitle title='Trang chủ' />
 
-      <Typography className='!bg-yellow-300 !mb-5 rounded-md p-2'>
+      <div className='!bg-yellow-300 !mb-5 rounded-md p-2'>
         <span className=''>
-          <span className='font-bold'>
-            Hotline hỗ trợ:
-            <span className='text-red-500'> 0934 945 803 {'(Zalo)'}</span>
+          <span className='font-bold flex items-center gap-x-4'>
+            Cần hỗ trợ ?
+            <Button variant='contained' color='error' size='small' onClick={handleShowSupportInfo}>
+              Nhấn vào đây
+            </Button>
           </span>
-          <p className='font-bold'>
-            Thời gian hỗ trợ:
-            <span className='text-red-500'> 07:00 - 23:00</span>
-          </p>
         </span>
-      </Typography>
+      </div>
 
       <TextField
         className='w-full bg-white !mb-5'

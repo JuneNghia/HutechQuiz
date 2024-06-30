@@ -1,10 +1,11 @@
 import { Box, Button, Card, CardContent, CardHeader, Typography, useMediaQuery, useTheme } from '@mui/material'
-import React, { Fragment, useEffect, useState } from 'react'
+import React, { Fragment, useCallback, useEffect, useState } from 'react'
 import Swal from 'sweetalert2'
 import useAuth from '../../hooks/useAuth'
 import PageLoader from '../../components/Loader/PageLoader'
 import qrMomo from '../../assets/momo-qr.png'
 import qrBank from '../../assets/bank-qr.png'
+import zaloQrImg from '../../assets/zalo-qr.png'
 
 const BankInfo = ({ data, type }) => {
   const { user } = useAuth()
@@ -17,12 +18,26 @@ const BankInfo = ({ data, type }) => {
   const infoMomo = ['Số điện thoại : 0934945803', 'Tên người nhận : Nguyễn Minh Trung Nghĩa']
 
   const handlePaid = () => {
-    Swal.fire(
-      '',
-      'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút số dư sẽ tự động cập nhật lại.<br/><br/><b>Hotline hỗ trợ : 0934 945 803</b>',
-      'info'
-    )
+    Swal.fire({
+      html: 'Sau khi thực hiện thanh toán, vui lòng đợi khoảng 3-5 phút số dư sẽ tự động cập nhật lại',
+      icon: 'info',
+      cancelButtonText: 'Liên hệ hỗ trợ',
+      cancelButtonColor: 'red',
+      showCancelButton: true
+    }).then((confirm) => {
+      if (confirm.dismiss) {
+        handleShowSupportInfo()
+      }
+    })
   }
+
+  const handleShowSupportInfo = useCallback(() => {
+    Swal.fire({
+      html: `<div class='flex items-center flex-col justify-center'>
+      <h5 class='mb-4'>Mở ứng dụng Zalo và quét mã dưới đây</h5><img src='${zaloQrImg}' width='200'></div>`,
+      confirmButtonText: 'Xong'
+    })
+  }, [])
 
   useEffect(() => {
     setTimeout(() => {

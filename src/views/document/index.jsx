@@ -1,10 +1,11 @@
 import { Box, Card, CardContent, CardHeader, Chip, IconButton, TextField, Typography } from '@mui/material'
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import { Helmet } from 'react-helmet'
 import data from './data.json'
 import SearchIcon from '@mui/icons-material/Search'
 import Swal from 'sweetalert2'
 import StepTitle from '../../components/StepTitle'
+import zaloQrImg from '../../assets/zalo-qr.png'
 
 const textFieldStyle = {
   '& .MuiInputBase-root': {
@@ -17,12 +18,13 @@ const textFieldStyle = {
 const Document = () => {
   const [searchKeyword, setSearchKeyword] = useState('')
 
-  const showAlert = (subject) => {
+  const handleShowSupportInfo = useCallback((subject) => {
     Swal.fire({
-      icon: 'info',
-      html: `Liên hệ các Admin sau để mua tài liệu môn <br/><b class='text-blue-500'>${subject}</b><br/> <div class='mt-2'><b>Admin 1 : 0934 945 803 ( Zalo )</b><br/> <b>Admin 2 : 0335 585 970 ( Zalo )</b><br/>  <b>Admin 3 : 0967 319 312 ( Zalo )</b><br/></div>`
+      html: `<div class='flex items-center flex-col justify-center'>
+      <h5 class='mb-4'>Mở ứng dụng Zalo và quét mã dưới đây hoặc liên hệ <br/><span class='font-bold text-red-700'>Zalo: 0335.585.970 - 0967.319.312</span><br/> để mua tài liệu ôn tập môn <span class='text-blue-500 font-bold'>${subject}</span></h5><img src='${zaloQrImg}' width='200'></div>`,
+      confirmButtonText: 'Xong'
     })
-  }
+  }, [])
 
   const filteredData = data.filter((document) => {
     if (
@@ -69,7 +71,7 @@ const Document = () => {
                 color='success'
                 size='medium'
                 className='!mr-2 !mb-2'
-                onClick={() => showAlert(subject)}
+                onClick={() => handleShowSupportInfo(subject)}
               />
             ))}
           </CardContent>
